@@ -15,6 +15,7 @@ import deleteActivity from '@/apis/delete/deleteActivity';
 import useModal from '@/hooks/useModal';
 import ExpandableText from '@/components/ExpandableText';
 import { auth } from '@/utils/auth/api';
+import DarkModeStore from '@/context/themeContext';
 
 /* eslint-disable */
 
@@ -29,6 +30,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
   const [activityIdToDelete, setActivityIdToDelete] = useState<number | null>(null);
 
   const { openModal, closeModal } = useModal();
+  const { isDarkMode } = DarkModeStore((state) => state);
 
   const handleDeleteModal = (activityId: number) => {
     setActivityIdToDelete(activityId);
@@ -138,7 +140,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
             </div>
 
             <div className='flex gap-[0.2rem]'>
-              <Image src={ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
+              <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
               <p className='text-[1.4rem] text-nomad-black overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
             </div>
           </div>
@@ -157,8 +159,8 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
               <Map address={activityData?.address} />
 
               <div className='flex gap-[0.4rem] mt-[0.8rem]'>
-                <Image src={ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
-                <p className='text-nomad-black text-[1.4rem] max-w-[70rem] overflow-hidden whitespace-nowrap text-ellipsis'>{activityData?.address}</p>
+              <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
+                <p className='text-nomad-black text-[1.4rem] max-w-[70rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
               </div>
               <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem]' />
               <ReviewList reviews={reviewsData?.reviews} averageRating={reviewsData?.averageRating} totalCount={reviewsData?.totalCount} />

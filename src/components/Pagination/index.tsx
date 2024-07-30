@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { ICON } from '@/constant/importImages';
-import PageItem from './PageItem';
 import DarkModeStore from '@/context/themeContext';
+import PageItem from './PageItem';
 
 interface PaginationProps {
   totalPages: number;
@@ -12,7 +12,7 @@ interface PaginationProps {
 
 function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) {
   const { isDarkMode } = DarkModeStore((state) => state);
-  
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -46,12 +46,7 @@ function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) 
           }`}
         >
           <div className='absolute inset-0 flex justify-center items-center'>
-            <Image
-              src={isDarkMode ? ICON.leftArrow.whiteColor.src : ICON.leftArrow.default.src}
-              alt={isDarkMode ? ICON.leftArrow.whiteColor.alt : ICON.leftArrow.default.alt}
-              width={20}
-              height={20}
-            />
+            <Image src={isDarkMode ? ICON.leftArrow.whiteColor.src : ICON.leftArrow.default.src} alt={isDarkMode ? ICON.leftArrow.whiteColor.alt : ICON.leftArrow.default.alt} width={20} height={20} />
           </div>
         </button>
       </div>

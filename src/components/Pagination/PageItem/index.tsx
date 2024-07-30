@@ -7,7 +7,8 @@ interface Props {
 }
 
 function PageItem({ pageNumber, currentPage, onPageChange }: Props) {
-  const PageLinkComponent = pageNumber === currentPage ? 'bg-green-dark dark:bg-gray-10 text-white dark:text-[#000] border-none' : 'text-green-dark dark:text-gray-10 border-green-dark dark:border-gray-10';
+  const PageLinkComponent =
+    pageNumber === currentPage ? 'bg-green-dark dark:bg-gray-10 text-white dark:text-[#000] border-none' : 'text-green-dark dark:text-gray-10 border-green-dark dark:border-gray-10';
 
   return (
     <li className='inline-block mx-1'>

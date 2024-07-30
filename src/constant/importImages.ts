@@ -47,6 +47,7 @@ import IconNotification from '../../public/icons/Icon_notification.svg';
 import IconSubtract from '../../public/icons/Icon_subtract.svg';
 import IconAdd from '../../public/icons/Icon_Add.svg';
 import IconMapMarker from '../../public/icons/Icon_map_marker.svg';
+import IconMapMarkerDarkMode from '../../public/icons/Icon_mapmarker_darkmode.svg';
 import IconClose from '../../public/icons/Icon_close.svg';
 import IconDarkBell from '../../public/icons/Icon_darkmode_bell.svg';
 
@@ -342,6 +343,10 @@ export const ICON = {
       src: IconMapMarker,
       alt: '마커',
     },
+    whiteColor: {
+      src: IconMapMarkerDarkMode,
+      alt: '맵 마커 다크모드',
+    },
     active: {},
   },
   close: {
@@ -355,8 +360,8 @@ export const ICON = {
     default: {
       src: IconDarkBell,
       alt: '다크 모드 알림',
-    }
-  }
+    },
+  },
 };
 
 export const IMAGE = {

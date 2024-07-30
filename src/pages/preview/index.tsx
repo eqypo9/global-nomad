@@ -7,8 +7,6 @@ import { filterCategories } from '@/constant/filterCategoryOptions';
 import CategoryButton from '@/components/FilterButton/CategoryButton';
 import { Input } from '@/components/Input';
 import Dropdown from '@/components/Dropdown';
-import { IMAGE } from '@/constant';
-import Image from 'next/image';
 
 /* eslint-disable */
 export const getStaticProps = async () => ({
@@ -170,7 +168,6 @@ function Index() {
         )}
       </div>
       <hr />
-      <Image src={IMAGE.darkLogo.src} alt={IMAGE.darkLogo.alt} height={28} width={166} />
     </>
   );
 }

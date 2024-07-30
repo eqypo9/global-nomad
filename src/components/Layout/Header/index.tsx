@@ -93,9 +93,7 @@ export default function Header(): JSX.Element | null {
     <div className='flex justify-around items-center sticky top-0 w-full h-28 bg-white border-b border-gray-300 z-50 dark:bg-[#000]'>
       <div className='flex justify-between items-center max-w-screen-xl w-full mx-auto px-6'>
         <Link href='/'>
-          <Image 
-          src={isDarkMode ? IMAGE.darkLogo.src : IMAGE.logo.nav.src} 
-          alt={isDarkMode ? IMAGE.logo.nav.alt : IMAGE.darkLogo.alt} height={28} width={166} />
+          <Image src={isDarkMode ? IMAGE.darkLogo.src : IMAGE.logo.nav.src} alt={isDarkMode ? IMAGE.logo.nav.alt : IMAGE.darkLogo.alt} height={28} width={166} />
         </Link>
         <div className='flex items-center gap-10'>
           <DarkModeButton />
@@ -111,9 +109,7 @@ export default function Header(): JSX.Element | null {
           ) : (
             <div className='relative flex items-center gap-10'>
               <button type='button' className='flex items-center' onClick={isNotificationOpenToggle}>
-                <Image 
-                src={isDarkMode ? ICON.darkModeBell.default.src : ICON.notification.default.src} 
-                alt={isDarkMode ? ICON.darkModeBell.default.alt : ICON.notification.default.alt} />
+                <Image src={isDarkMode ? ICON.darkModeBell.default.src : ICON.notification.default.src} alt={isDarkMode ? ICON.darkModeBell.default.alt : ICON.notification.default.alt} />
               </button>
               {/* {isNotificationOpen && (
                 <Modal
