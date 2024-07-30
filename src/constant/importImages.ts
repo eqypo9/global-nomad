@@ -48,6 +48,7 @@ import IconSubtract from '../../public/icons/Icon_subtract.svg';
 import IconAdd from '../../public/icons/Icon_Add.svg';
 import IconMapMarker from '../../public/icons/Icon_map_marker.svg';
 import IconClose from '../../public/icons/Icon_close.svg';
+import IconDarkBell from '../../public/icons/Icon_darkmode_bell.svg';
 
 import ImageLogoSmall from '../../public/images/Image_logo_small.svg';
 import ImageLogo from '../../public/images/Image_logo.svg';
@@ -350,6 +351,12 @@ export const ICON = {
     },
     active: {},
   },
+  darkModeBell: {
+    default: {
+      src: IconDarkBell,
+      alt: '다크 모드 알림',
+    }
+  }
 };
 
 export const IMAGE = {
@@ -365,7 +372,7 @@ export const IMAGE = {
   },
   darkLogo: {
     src: ImageDarkLogo,
-    alt: '다크 모드 로고'
+    alt: '다크 모드 로고',
   },
   avatar: {
     default: {

@@ -7,15 +7,15 @@ import youtubeIcon from 'public/svgs/akar-icons_youtube-fill.svg';
 
 function Footer() {
   return (
-    <footer className='bottom-0 left-0 right-0 flex justify-center w-full h-64 bg-footer-bg '>
+    <footer className='bottom-0 left-0 right-0 flex justify-center w-full h-64 bg-footer-bg dark:bg-[#000]'>
       <div className='flex flex-col justify-center items-center w-full px-[3.2rem] text-gray-500 text-[1.6rem] max-w-[120rem] h-[16rem] md:flex md:flex-row md:justify-between'>
-        <span className='hidden md:block'>©codeit - 2023</span>
+        <span className='hidden md:block dark:text-gray-10'>©codeit - 2023</span>
         <div className='flex gap-12 justify-center'>
           <span className='md:hidden'>©codeit - 2023</span>
-          <Link href='/privacy-policy' className='hover:text-gray-700'>
+          <Link href='/privacy-policy' className='hover:text-gray-700 dark:text-gray-10'>
             Privacy Policy
           </Link>
-          <Link href='/faq' className='hover:text-gray-700'>
+          <Link href='/faq' className='hover:text-gray-700 dark:text-gray-10'>
             FAQ
           </Link>
         </div>

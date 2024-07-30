@@ -99,7 +99,6 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
       }),
   });
 
-  // 스피너로 대체
   if (isLoadingActivity || isLoadingReviews) {
     return <div>Loading...</div>;
   }
