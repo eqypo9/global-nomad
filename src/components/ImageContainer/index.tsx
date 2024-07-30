@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import useResponsiveSize from '@/hooks/useResponsiveSize';
-import Slider from '../Slider';
 import DarkModeStore from '@/context/themeContext';
+import Slider from '../Slider';
 
 interface ImageContainerProps {
   mainImageUrl: string;
