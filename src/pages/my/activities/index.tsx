@@ -67,7 +67,7 @@ export default function MyActivities() {
 
   return (
     <MyLayout>
-      <main className='bg-gray-10 dark:bg-nomad-black mb-[12rem] min-h-[81rem] max-md:min-h-[67rem]'>
+      <main className='bg-gray-10 max-w-[80rem] w-full dark:bg-nomad-black mb-[12rem] min-h-[81rem] max-md:min-h-[67rem]'>
         <div className='flex justify-between mb-[2.4rem]'>
           <h2 className='text-[3.2rem] text-[#000] leading-[3.8rem] font-bold'>내 체험 관리</h2>
           <Link

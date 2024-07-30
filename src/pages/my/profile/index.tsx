@@ -1,8 +1,7 @@
 import patchMyprofile from '@/apis/patch/patchMyProfile';
 import Button from '@/components/Button';
 import { Input } from '@/components/Input';
-import SideNavigation from '@/components/SideNavigation';
-import SideNavigationMobileSize from '@/components/SideNavigation/MobileSize';
+import MyLayout from '@/components/MyLayout';
 import { USER_INPUT_VALIDATION } from '@/constant';
 import useModal from '@/hooks/useModal';
 import { FormValues } from '@/utils/auth/types';
@@ -10,7 +9,7 @@ import { MyInfoProps } from '@/utils/types';
 import { useQuery } from '@tanstack/react-query';
 
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 const { email, nickname, password, passwordConfirm } = USER_INPUT_VALIDATION;
@@ -56,12 +55,6 @@ function Profile() {
     queryKey: ['myInfo'],
   });
 
-  const [isSideNavVisible, setIsSideNavVisible] = useState(false);
-
-  const toggleSideNav = () => {
-    setIsSideNavVisible(!isSideNavVisible);
-  };
-
   useEffect(() => {
     if (data?.nickname) {
       setValue('nickname', data.nickname);
@@ -85,13 +78,7 @@ function Profile() {
   };
 
   return (
-    <section className='pt-[7.2rem] pb-[15rem] px-[2rem] max-w-[124rem] mx-auto md:flex gap-[2.4rem] items-start'>
-      <div className='hidden md:block'>
-        <SideNavigation />
-      </div>
-      <div className='md:hidden '>
-        <SideNavigationMobileSize toggleSideNav={toggleSideNav} isSideNavVisible={isSideNavVisible} />
-      </div>
+    <MyLayout>
       <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
         <div className='flex justify-between'>
           <h2 className='text-[3.2rem] leading-[3.819rem] font-[700] '>내 정보</h2>
@@ -131,7 +118,7 @@ function Profile() {
           </label>
         </div>
       </form>
-    </section>
+    </MyLayout>
   );
 }
 
