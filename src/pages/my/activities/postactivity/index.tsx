@@ -190,7 +190,7 @@ export default function PostActivitiy() {
 
   return (
     <MyLayout>
-      <main className='bg-gray-10 dark:bg-nomad-black dark:text-gray-10 mb-[27rem] max-lg:mb-[40rem] max-md:mb-[13.6rem] text-[1.6rem]'>
+      <main className='bg-gray-10 max-w-[80rem] w-full  dark:bg-nomad-black dark:text-gray-10 mb-[27rem] max-lg:mb-[40rem] max-md:mb-[13.6rem] text-[1.6rem]'>
         <form onSubmit={() => false} className='relative text-[1.6rem] max-md:text-[1.4rem]'>
           <div className='flex justify-between mb-[2.4rem] '>
             <h2 className='text-[3.2rem] text-[#000] dark:text-[#fff] leading-[3.8rem] font-bold'>내 체험 등록</h2>
@@ -341,7 +341,7 @@ export default function PostActivitiy() {
             type='button'
             onClick={handleSubmit}
             color='black'
-            cssName='absolute top-0 right-0 w-[12rem] h-[4.8rem] text-[1.6rem] leading-[2.6rem] rounded-[0.4rem] border-none focus:bg-gray-200 '
+            cssName='absolute top-0 right-0 w-[12rem] h-[4.8rem] text-[1.6rem] dark:text-nomad-black dark:bg-gray-10 leading-[2.6rem] rounded-[0.4rem] border-none focus:bg-gray-200 '
             text='등록하기'
           />
         </form>

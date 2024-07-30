@@ -2,8 +2,7 @@ import getMyReservationList from '@/apis/get/getMyReservationList';
 import Card from '@/components/Card';
 import MyReservationCardInfo from '@/components/Card/myReservationCardInfo';
 import FilterDropButton from '@/components/FilterButton/FilterDropButton';
-import SideNavigation from '@/components/SideNavigation';
-import SideNavigationMobileSize from '@/components/SideNavigation/MobileSize';
+import MyLayout from '@/components/MyLayout';
 import { IReservationCardInfo } from '@/types/ReservationInfo';
 import { StatusFilter } from '@/types/StatusFilter';
 import setReservationStatueInfo from '@/utils/setReservationStatueInfo';
@@ -18,12 +17,6 @@ function ReservationHistory() {
   const { ref, inView } = useInView({
     threshold: 0,
   });
-
-  const [isSideNavVisible, setIsSideNavVisible] = useState(false);
-
-  const toggleSideNav = () => {
-    setIsSideNavVisible(!isSideNavVisible);
-  };
 
   const handleGetReservationList = useCallback(async (filterOption: string | undefined) => {
     const result = await getMyReservationList({ filterOption });
@@ -59,13 +52,7 @@ function ReservationHistory() {
 
   return (
     <>
-      <section className='pt-[14.2rem] pb-[15rem] px-[2rem] max-w-[124rem] mx-auto flex gap-[2.4rem] items-start'>
-        <div className='hidden md:block'>
-          <SideNavigation />
-        </div>
-        <div className='md:hidden '>
-          <SideNavigationMobileSize toggleSideNav={toggleSideNav} isSideNavVisible={isSideNavVisible} />
-        </div>
+      <MyLayout>
         <div className='w-full'>
           <div className='flex justify-between items-center'>
             <h1 className='text-[3.2rem] font-[700] leading-[3.819rem]'>예약 내역</h1>
@@ -80,7 +67,7 @@ function ReservationHistory() {
               ))}
           </div>
         </div>
-      </section>
+      </MyLayout>
       {isLoading && <div className='h-0 w-full' aria-hidden ref={ref} />}
     </>
   );

@@ -1,17 +1,27 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import SideNavigation from '../SideNavigation';
+import SideNavigationMobileSize from '../SideNavigation/MobileSize';
 
 /** 내 정보나 예약 내역등 profile이 있는 페이지들의 공통으로 나타나는 컴포넌트 */
 type Children = {
   children: ReactNode;
 };
 export default function MyLayout({ children }: Children) {
+  const [isSideNavVisible, setIsSideNavVisible] = useState(false);
+
+  const toggleSideNav = () => {
+    setIsSideNavVisible(!isSideNavVisible);
+  };
+
   return (
-    <div className='flex justify-center gap-x-[2.4rem] pt-[7.2rem] px-[2.4rem] bg-[#FAFAFA] max-lg:pt-[2.4rem] max-md:gap-x-[1.6rem]'>
-      <nav className='w-[38.6rem] max-lg:w-[25.1rem] max-md:hidden'>
+    <section className='pt-[2.4rem] md:pt-[7.2rem] pb-[15rem] px-[2rem] max-w-[124rem] mx-auto sm:flex gap-[2.4rem] items-start'>
+      <div className='hidden sm:block'>
         <SideNavigation />
-      </nav>
-      <div className='max-w-[79.2rem] w-full'>{children}</div>
-    </div>
+      </div>
+      <div className='sm:hidden'>
+        <SideNavigationMobileSize toggleSideNav={toggleSideNav} isSideNavVisible={isSideNavVisible} />
+      </div>
+      {children}
+    </section>
   );
 }
