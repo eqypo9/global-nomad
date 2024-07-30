@@ -21,11 +21,11 @@ function ReservationContent({ schedules, selectedDate, selectedTime, onDateChang
 
   return (
     <div>
-      <p className='my-[1.6rem] font-bold text-nomad-black text-[2rem]'>날짜</p>
+      <p className='my-[1.6rem] font-bold text-nomad-black text-[2rem] dark:text-gray-10'>날짜</p>
       <div className='flex justify-center'>
         <CustomCalendar selectedDate={selectedDate} onChange={onDateChange} reservedDates={reservedDates} />
       </div>
-      <p className='my-[1.6rem] font-bold text-nomad-black text-[1.8rem]'>예약 가능한 시간</p>
+      <p className='my-[1.6rem] font-bold text-nomad-black text-[1.8rem] dark:text-gray-10'>예약 가능한 시간</p>
       <div className='flex flex-wrap gap-[1.2rem]'>
         {filteredTimes.length > 0 ? (
           filteredTimes.map((schedule) => (
@@ -38,7 +38,7 @@ function ReservationContent({ schedules, selectedDate, selectedTime, onDateChang
             />
           ))
         ) : (
-          <p className='text-nomad-black text-[1.6rem]'>예약 가능한 시간이 없습니다.</p>
+          <p className='text-nomad-black text-[1.6rem] dark:text-gray-10'>예약 가능한 시간이 없습니다.</p>
         )}
       </div>
     </div>

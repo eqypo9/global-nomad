@@ -3,6 +3,11 @@
   background-color: #ffffff;
 }
 
+.dark .calendar-container {
+  width: 30rem;
+  background-color: #1b1b1b;
+}
+
 .custom-calendar {
   width: 100%;
   height: 100%;
