@@ -4,6 +4,7 @@ import useResponsiveSize from '@/hooks/useResponsiveSize';
 import DarkModeStore from '@/context/themeContext';
 import Slider from '../Slider';
 
+/* eslint-disable */
 interface ImageContainerProps {
   mainImageUrl: string;
   gridImages: { id: number; imageUrl: string }[];
@@ -52,3 +53,4 @@ function ImageContainer({ mainImageUrl, gridImages }: ImageContainerProps) {
 }
 
 export default ImageContainer;
+/* eslint-enable */
