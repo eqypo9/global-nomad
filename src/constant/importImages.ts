@@ -51,6 +51,7 @@ import IconClose from '../../public/icons/Icon_close.svg';
 
 import ImageLogoSmall from '../../public/images/Image_logo_small.svg';
 import ImageLogo from '../../public/images/Image_logo.svg';
+import ImageDarkLogo from '../../public/images/Image_darkmode_logo.svg';
 import ImageDefaultProfile from '../../public/images/Image_default_profile_image.png';
 import ImageNoData from '../../public/images/Image_no_data.svg';
 import ImageStreetDance from '../../public/images/Image_street_dance.jpg';
@@ -361,6 +362,10 @@ export const IMAGE = {
       src: ImageLogoSmall,
       alt: '로고',
     },
+  },
+  darkLogo: {
+    src: ImageDarkLogo,
+    alt: '다크 모드 로고'
   },
   avatar: {
     default: {

@@ -9,7 +9,7 @@ export default function Layout({ children }: Children) {
   return (
     <>
       <Header />
-      <div>{children}</div>
+      <div className='dark:bg-black'>{children}</div>
       <Footer />
     </>
   );

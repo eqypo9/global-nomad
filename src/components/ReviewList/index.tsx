@@ -45,14 +45,14 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
   return (
     <>
       <div className='flex flex-col gap-[1.6rem]'>
-        <p className='text-nomad-black font-bold text-[2rem]'>후기</p>
+        <p className='text-nomad-black font-bold text-[2rem] dark:text-gray-10'>후기</p>
         <div className='flex gap-[1.6rem] items-center'>
-          <p className='text-[5rem] font-bold'>{averageRating.toFixed(1)}</p>
+          <p className='text-[5rem] font-bold dark:text-gray-10'>{averageRating.toFixed(1)}</p>
           <div className='flex flex-col gap-[0.4rem]'>
-            <p className='text-[1.8rem] text-nomad-black'>{getRating(averageRating)}</p>
+            <p className='text-[1.8rem] text-nomad-black dark:text-gray-10'>{getRating(averageRating)}</p>
             <div className='flex items-center gap-[0.6rem]'>
               <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
-              <p className='text-black text-[1.4rem]'>{totalCount}개 후기</p>
+              <p className='text-black text-[1.4rem] dark:text-gray-10'>{totalCount}개 후기</p>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
 
       {totalCount === 0 ? (
         <div className='mb-[20rem]'>
-          <p className='text-nomad-black text-[1.6rem]'>등록된 후기가 없습니다.</p>
+          <p className='text-nomad-black text-[1.6rem] dark:text-gray-10'>등록된 후기가 없습니다.</p>
         </div>
       ) : (
         <>
@@ -77,11 +77,11 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
               </div>
               <div>
                 <div className='flex mb-[0.8rem]'>
-                  <p className='text-[1.6rem] font-bold max-w-[16rem] overflow-hidden whitespace-nowrap text-ellipsis'>{review.user.nickname}</p>
-                  <p className='mx-[0.8rem] text-[1.4rem]'>|</p>
-                  <p className='text-[1.6rem] text-gray-300'>{new Date(review.createdAt).toLocaleDateString()}</p>
+                  <p className='text-[1.6rem] font-bold max-w-[16rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{review.user.nickname}</p>
+                  <p className='mx-[0.8rem] text-[1.4rem] dark:text-gray-10'>|</p>
+                  <p className='text-[1.6rem] text-gray-300 dark:text-gray-5'>{new Date(review.createdAt).toLocaleDateString()}</p>
                 </div>
-                <p className='text-[1.6rem] text-nomad-black'>{review.content}</p>
+                <p className='text-[1.6rem] text-nomad-black dark:text-gray-10'>{review.content}</p>
               </div>
             </div>
           ))}
