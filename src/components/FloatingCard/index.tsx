@@ -20,7 +20,7 @@ function FloatingCard({ schedules, price }: FloatingCardProps) {
   return (
     <div className='w-full max-w-[38.4rem] h-auto bg-white border-[0.2rem] border-gray-50 shadow-lg rounded-[0.8rem] p-[1rem] mx-auto dark:bg-black'>
       <div className='px-[2.4rem]'>
-        <div className='flex items-center gap-[0.8rem] mb-[1.6rem]'>
+        <div className='flex flex-wrap items-center gap-[0.8rem] mb-[1.6rem]'>
           <p className='text-[2.8rem] font-bold dark:text-gray-10'>₩ {formattedPrice}</p>
           <p className='text-[2rem] dark:text-gray-10'> / 인</p>
         </div>
@@ -31,7 +31,7 @@ function FloatingCard({ schedules, price }: FloatingCardProps) {
         <div className='border border-solid border-gray-50 mt-[1.6rem]' />
         <p className='my-[1.2rem] font-bold text-[2rem] dark:text-gray-10'>참여 인원 수</p>
         <div className='flex items-center gap-[0.4rem]'>
-          <div className='w-[12rem] h-[4rem] flex items-center mt-[0.8rem] mb-[2.4rem] rounded-[0.6rem] border-2 border-gray-50 border-solid'>
+          <div className='w-[12rem] h-[4rem] flex items-center mt-[0.8rem] mb-[2.4rem] rounded-[0.6rem] border-2 border-gray-50 border-solid dark:bg-white'>
             <button type='button' onClick={() => handleParticipantsChange(-1)} className='px-[1.6rem] py-[0.8rem]' aria-label='Decrement participants'>
               <Image src={ICON.minusInput.default.src} alt={ICON.minusInput.default.alt} width={40} height={40} />
             </button>
@@ -46,7 +46,7 @@ function FloatingCard({ schedules, price }: FloatingCardProps) {
           <Button text='예약하기' color='black' cssName='w-[33.6rem] h-[4.6rem] text-[1.6rem] text-bold' onClick={handleReservation} disabled={isButtonDisabled} />
         </div>
         <div className='border border-solid border-gray-50 mt-[1.6rem]' />
-        <div className='flex justify-between my-[1.8rem]'>
+        <div className='flex flex-wrap justify-between my-[1.8rem]'>
           <p className='text-[2rem] font-bold dark:text-gray-10'>총 합계</p>
           <p className='text-[2rem] font-bold dark:text-gray-10'>₩ {useFormatPrice(totalCost)}</p>
         </div>

@@ -1,9 +1,9 @@
 .calendar-container {
-  width: 29rem;
+  width: 28rem;
 }
 
 .dark .calendar-container {
-  width: 29rem;
+  width: 28rem;
   background-color: #1b1b1b;
 }
 
