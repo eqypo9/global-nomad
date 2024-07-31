@@ -34,17 +34,11 @@ function Map({ address }: MapProps) {
         geocoder.addressSearch(address, (result: any, status: any) => {
           if (status === kakao.maps.services.Status.OK) {
             const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-            const markerImageSrc = '/images/test_map_marker.png';
-            const markerImageSize = new kakao.maps.Size(65, 90);
-            const markerImageOptions = { offset: new kakao.maps.Point(27, 69) };
-            const markerImage = new kakao.maps.MarkerImage(markerImageSrc, markerImageSize, markerImageOptions);
-
+            
             const markerPosition = coords;
             const marker = new kakao.maps.Marker({
               map,
               position: markerPosition,
-              image: markerImage,
             });
             marker.setMap(map);
 
@@ -68,7 +62,6 @@ function Map({ address }: MapProps) {
   }, [address]);
 
   return (
-    // 반응형 수정중
     <div className='relative w-full'>
       <div
         id='map'

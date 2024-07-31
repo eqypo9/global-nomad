@@ -2,15 +2,15 @@ import { ReactNode } from 'react';
 
 /* eslint-disable */
 export default function DetailLayout({ children }: { children: ReactNode }) {
-  // 반응형 수정중
   return (
     <main
       className='
       max-w-[120rem] mx-auto 
-      pt-[7.8rem] pb-[14rem] min-h-[calc(100vh-16rem)]
+      pt-[2rem] pb-[2rem] min-h-[calc(100vh-4rem)]
       lg:px-[2.4rem] 
       md:px-[1.6rem] 
-      px-[36rem]
+      px-[2rem] 
+      sm:px-[1rem]
     '
     >
       {children}
