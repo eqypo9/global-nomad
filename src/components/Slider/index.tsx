@@ -51,20 +51,32 @@ function Slider({ images, defaultImage }: SliderProps) {
 
   return (
     <div className={styles['slider-container']}>
-      <button className={`${styles['slider-button']} ${styles.prev}`} onClick={prevSlide} />
+      <button
+        className={`${styles['slider-button']} ${styles.prev}`}
+        onClick={prevSlide}
+        aria-label="Previous slide"
+      />
       <div className={styles.slider}>
         {filteredImages.map((imageUrl, index) => (
           <div key={imageUrl} className={`${styles.slide} ${currentSlide === index ? styles.active : ''}`}>
-            <Image src={imageUrl} alt={`slide ${index}`} layout='fill' objectFit='cover' className='object-cover' />
+            <Image src={imageUrl} alt={`slide ${index}`} layout='fill' objectFit='cover' />
           </div>
         ))}
         <div className={styles.dots}>
           {filteredImages.map((_, index) => (
-            <div key={index} className={`${styles.dot} ${currentSlide === index ? styles.active : ''}`} onClick={() => goToSlide(index)} />
+            <div
+              key={index}
+              className={`${styles.dot} ${currentSlide === index ? styles.active : ''}`}
+              onClick={() => goToSlide(index)}
+            />
           ))}
         </div>
       </div>
-      <button className={`${styles['slider-button']} ${styles.next}`} onClick={nextSlide} />
+      <button
+        className={`${styles['slider-button']} ${styles.next}`}
+        onClick={nextSlide}
+        aria-label="Next slide"
+      />
     </div>
   );
 }

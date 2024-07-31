@@ -34,7 +34,7 @@ function Map({ address }: MapProps) {
         geocoder.addressSearch(address, (result: any, status: any) => {
           if (status === kakao.maps.services.Status.OK) {
             const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            
+
             const markerPosition = coords;
             const marker = new kakao.maps.Marker({
               map,
@@ -65,10 +65,7 @@ function Map({ address }: MapProps) {
     <div className='relative w-full'>
       <div
         id='map'
-        className='relative w-full h-full rounded-[1.6rem]
-        lg:w-full lg:h-[45rem]  
-        md:w-full md:h-[27.6rem] 
-      '
+        className="w-full h-[45rem] rounded-2xl xl:h-[45rem] lg:h-[27.6rem] md:h-[45rem]"
       />
       {loading && <p className='absolute text-[2rem]'>카카오 지도 불러오는중...</p>}
     </div>

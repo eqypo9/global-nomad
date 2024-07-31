@@ -30,7 +30,7 @@ function ImageContainer({ mainImageUrl, gridImages }: ImageContainerProps) {
     <div className={`flex max-w-[100%] h-[53.4rem] gap-[0.8rem] my-[4rem] md:w-full md:h-[31rem] sm:w-full sm:h-[30rem] sm:my-[2.4rem] sm:justify-center ${textColorClass}`}>
       {size === 4 ? (
         <div className='w-full flex justify-center'>
-          <div className='w-full max-w-[37.5rem] h-full max-h-[31rem]'>
+          <div className='w-full h-full'>
             <Slider images={images} defaultImage={defaultImage} />
           </div>
         </div>

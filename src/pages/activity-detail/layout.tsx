@@ -6,7 +6,7 @@ export default function DetailLayout({ children }: { children: ReactNode }) {
     <main
       className='
       max-w-[120rem] mx-auto 
-      pt-[2rem] pb-[2rem] min-h-[calc(100vh-4rem)]
+      pt-[7.8rem] pb-[2rem] min-h-[calc(100vh-4rem)]
       lg:px-[2.4rem] 
       md:px-[1.6rem] 
       px-[2rem] 
