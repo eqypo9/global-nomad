@@ -61,8 +61,8 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsTablet(width <= 1024 && width > 480);
-      setIsMobile(width <= 480);
+      setIsTablet(width <= 1024 && width > 768);
+      setIsMobile(width <= 768);
     };
 
     handleResize();

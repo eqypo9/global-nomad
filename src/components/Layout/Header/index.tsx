@@ -120,7 +120,7 @@ export default function Header(): JSX.Element | null {
                 />
               )} */}
               <div className='relative flex items-center gap-10'>
-                <div className='h-9 border-r border-gray-300 dark:border-gray-10' />
+                <div className='h-9 border-r-2 border-gray-100 dark:border-gray-10' />
                 <div className='flex items-center gap-4'>
                   <Avatar profileImageUrl={MyInfoData?.profileImageUrl} type='gnb' />
                   <button type='button' className='flex items-center text-[1.4rem] font-medium text-black dark:text-gray-10' onClick={isDropdownOpenToggle} ref={ref}>
