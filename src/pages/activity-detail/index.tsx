@@ -133,12 +133,12 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           </div>
         </div>
 
-        <div className='flex gap-[1.2rem]'>
-          <div className='flex gap-[0.6rem]'>
-            <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
-            <p className='text-[1.4rem] text-black dark:text-gray-10'>{activityData?.rating}</p>
-            <p className='text-[1.4rem] text-black dark:text-gray-10'>({activityData?.reviewCount})</p>
-          </div>
+          <div className='flex gap-[1.2rem]'>
+            <div className='flex gap-[0.6rem]'>
+              <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
+              <p className='text-[1.4rem] text-black dark:text-gray-10'>{activityData?.rating}</p>
+              <p className='text-[1.4rem] text-black dark:text-gray-10'>({activityData?.reviewCount})</p>
+            </div>
 
           <div className='flex gap-[0.2rem]'>
             <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
@@ -146,7 +146,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           </div>
         </div>
 
-        <ImageContainer mainImageUrl={activityData?.bannerImageUrl} gridImages={activityData?.subImages} />
+          <ImageContainer mainImageUrl={activityData?.bannerImageUrl} gridImages={activityData?.subImages} />
 
         <div className='flex flex-col gap-[1.6rem] md:flex-row md:gap-[1.6rem]'>
           <div className='w-full md:w-[70%]'>

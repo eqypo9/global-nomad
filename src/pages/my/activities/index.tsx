@@ -67,9 +67,9 @@ export default function MyActivities() {
 
   return (
     <MyLayout>
-      <main className='bg-gray-10 max-w-[80rem] w-full dark:bg-nomad-black mb-[12rem] min-h-[81rem] max-md:min-h-[67rem]'>
+      <main className='bg-gray-10 max-w-[80rem] w-full dark:bg-black dark:text-gray-10 mb-[12rem] min-h-[81rem] max-md:min-h-[67rem]'>
         <div className='flex justify-between mb-[2.4rem]'>
-          <h2 className='text-[3.2rem] text-[#000] leading-[3.8rem] font-bold'>내 체험 관리</h2>
+          <h2 className='text-[3.2rem] text-[#000] dark:text-white leading-[3.8rem] font-bold'>내 체험 관리</h2>
           <Link
             href='/my/activities/postactivity'
             className='flex justify-center items-center w-[12rem] h-[4.8rem] text-gray-10 bg-nomad-black dark:text-nomad-black dark:bg-gray-10 font-bold text-[1.6rem] leading-[2.6rem] rounded-[0.4rem]'

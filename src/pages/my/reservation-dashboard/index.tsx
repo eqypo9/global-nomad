@@ -1,7 +1,7 @@
 import getMyActivities from '@/apis/get/getMyActivities';
 import { useEffect, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import SideNavigation from '@/components/SideNavigation';
+import MyLayout from '@/components/MyLayout';
 import Calendar2 from './calendar';
 import ActivityDropDown from './ActivityDropDown';
 
@@ -14,7 +14,6 @@ function Index() {
   const [activityLists, setActivityLists] = useState<ActivityType[]>([]);
   const [selectedActivityId, setSelectedActivityId] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -36,21 +35,6 @@ function Index() {
     getMyAct();
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 480);
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   const handleActivitySelected = (selectedItem: ActivityType) => {
     setSelectedActivityId(selectedItem.id);
   };
@@ -60,21 +44,18 @@ function Index() {
   };
 
   return (
-    <div className='flex flex-row py-[1.6rem] px-[1.6rem] gap-[4rem] h-[130rem] justify-center'>
-      {!isMobile && (
-        <div className='max-w-[38.4rem] h-[43.2rem]'>
-          <SideNavigation />
-        </div>
-      )}
-      <div className='w-[100%] max-w-[80rem] max-h-[81.3rem]'>
-        <h1 className='text-[#000] text-[3.2rem] font-[700] mb-[4.2rem]'>예약 현황</h1>
-        {error && <p className='text-red-500'>{error}</p>}
-        <ActivityDropDown labelText='체험명' items={activityLists} onItemSelected={handleActivitySelected} />
-        <div className='container mx-auto p-4'>
-          <Calendar2 items={activityLists} selectedActivityId={selectedActivityId} onStatusChange={handleStatusChange} />
+    <MyLayout>
+      <div className='flex w-full flex-row py-[1.6rem] px-[1.6rem] gap-[4rem] h-[130rem] justify-center'>
+        <div className='w-[100%] max-w-[80rem] max-h-[81.3rem]'>
+          <h1 className='text-[#000] text-[3.2rem] font-[700] mb-[4.2rem]'>예약 현황</h1>
+          {error && <p className='text-red-500'>{error}</p>}
+          <ActivityDropDown labelText='체험명' items={activityLists} onItemSelected={handleActivitySelected} />
+          <div className='container mx-auto p-4'>
+            <Calendar2 items={activityLists} selectedActivityId={selectedActivityId} onStatusChange={handleStatusChange} />
+          </div>
         </div>
       </div>
-    </div>
+    </MyLayout>
   );
 }
 

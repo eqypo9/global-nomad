@@ -13,10 +13,10 @@ const { ellipse, xMedium } = ICON;
 
 /**
  * Notifications component to display and manage user notifications.
- * 
+ *
  * This component fetches and displays a list of user notifications using infinite scrolling.
  * Users can delete notifications, and important content within the notifications is highlighted.
- * 
+ *
  * @returns {JSX.Element} The rendered Notifications component.
  */
 export default function Notifications() {
@@ -43,7 +43,7 @@ export default function Notifications() {
 
   /**
    * Handles the deletion of a notification.
-   * 
+   *
    * @param {number} id - The ID of the notification to be deleted.
    */
   const handelDeleteNotification = (id: number) => {
@@ -52,7 +52,7 @@ export default function Notifications() {
 
   /**
    * Highlights specific words in the notification content.
-   * 
+   *
    * @param {string} content - The content of the notification.
    * @returns {string} The content with highlighted words.
    */
@@ -68,7 +68,7 @@ export default function Notifications() {
 
   /**
    * Renders the notification description with highlighted content.
-   * 
+   *
    * @param {string} context - The content of the notification.
    * @returns {JSX.Element} The rendered description.
    */
@@ -85,7 +85,7 @@ export default function Notifications() {
   return (
     <>
       <h2 className='text-[2rem] font-bold text-black'>알림 {notificationsData?.totalCount}개</h2>
-      <ul className={`flex flex-col items-start gap-2 mt-4 font-['Spoqa Han Sans Neo'] w-[36.8rem] h-[27rem] overflow-scroll ${notificationsData?.totalCount === 0 ? 'hidden' : ''}`}>
+      <ul className={`flex flex-col items-start gap-2 mt-4 font-['Spoqa Han Sans Neo'] w-[32.8rem] h-[27rem] overflow-scroll ${notificationsData?.totalCount === 0 ? 'hidden' : ''}`}>
         {!isSuccess || notificationsData.totalCount === 0 ? (
           <h3 className='text-[1.8rem] font-semibold text-gray-600'>알림이 없습니다.</h3>
         ) : (

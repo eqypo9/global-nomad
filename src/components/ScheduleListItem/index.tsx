@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Input } from '../Input';
 
 interface Schedule {
@@ -20,8 +19,13 @@ export default function ScheduleListItem({ schedule, delSchedule }: { schedule: 
         <span className='flex flex-col justify-center self-center text-[2rem] leading-[2.6rem] text-[#1b1b1b] mx-[1.2rem] font-bold max-lg:hidden '>~</span>
         <Input type='text' value={endTime} readOnly cssName={`${INPUT_STYLE} ${TIME_INPUT_STYLE}`} />
       </div>
-      <button type='button' onClick={() => delSchedule(schedule)} className='relative flex-shrink-0 w-[5.6rem] h-[5.6rem] max-md:w-[4.4rem] max-md:h-[4.4rem]'>
-        <Image src='/icons/Icon_minus_time.svg' fill alt='시간대 삭제' />
+      <button
+        type='button'
+        draggable
+        onClick={() => delSchedule(schedule)}
+        className='relative flex-shrink-0 w-[5.6rem] h-[5.6rem] max-md:w-[4.4rem] max-md:h-[4.4rem] bg-[url("/icons/Icon_minus_time.svg")] dark:bg-[url("/icons/Icon_minus_time_dark.svg")] bg-cover bg-no-repeat text-transparent'
+      >
+        시간대 삭제
       </button>
     </div>
   );
