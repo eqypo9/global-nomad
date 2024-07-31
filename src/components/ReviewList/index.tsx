@@ -27,18 +27,10 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
   const totalPages = Math.ceil(totalCount / reviewsPerPage);
 
   const getRating = (rating: number): string => {
-    if (rating >= 4 && rating <= 5) {
-      return '매우 만족';
-    }
-    if (rating >= 3 && rating < 4) {
-      return '만족';
-    }
-    if (rating >= 2 && rating < 3) {
-      return '보통';
-    }
-    if (rating >= 1 && rating < 2) {
-      return '약간 만족';
-    }
+    if (rating >= 4 && rating <= 5) return '매우 만족';
+    if (rating >= 3 && rating < 4) return '만족';
+    if (rating >= 2 && rating < 3) return '보통';
+    if (rating >= 1 && rating < 2) return '불만족';
     return '후기 없음';
   };
 
@@ -68,7 +60,7 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
             <div key={review.id} className={`flex gap-[1.6rem] py-[2.4rem] ${index !== currentReviews.length - 1 ? 'border-b-[0.2rem] border-gray-50 border-solid' : ''}`}>
               <div className='flex-shrink-0'>
                 <Image
-                  src={review.user.profileImageUrl}
+                  src={review.user.profileImageUrl || ''}
                   alt={`${review.user.nickname}의 프로필 이미지`}
                   width={45}
                   height={45}

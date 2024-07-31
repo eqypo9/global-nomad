@@ -24,7 +24,7 @@ function Map({ address }: MapProps) {
       kakao.maps.load(() => {
         const container = document.getElementById('map');
         const options = {
-          center: new kakao.maps.LatLng(37.56785, 126.9888), // 초기 중심 위치 (코드잇)
+          center: new kakao.maps.LatLng(37.56785, 126.9888),
           level: 4,
         };
         const map = new kakao.maps.Map(container, options);
@@ -68,9 +68,16 @@ function Map({ address }: MapProps) {
   }, [address]);
 
   return (
-    <div className='relative w-[79rem] h-[45rem] rounded-[1.6rem] md:w-full md:h-[27.6rem] sm:w-full sm:h-[45rem]'>
-      <div id='map' className='w-full h-full' />
-      {loading && <p className='absolute text-nomad-black text-[2rem]'>카카오 지도 API 연결 중...</p>}
+    // 반응형 수정중
+    <div className='relative w-full'>
+      <div
+        id='map'
+        className='relative w-full h-full rounded-[1.6rem]
+        lg:w-full lg:h-[45rem]  
+        md:w-full md:h-[27.6rem] 
+      '
+      />
+      {loading && <p className='absolute text-[2rem]'>카카오 지도 불러오는중...</p>}
     </div>
   );
 }

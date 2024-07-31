@@ -99,10 +99,10 @@ export default function Header(): JSX.Element | null {
           <DarkModeButton />
           {!Auth ? (
             <div className='flex gap-10'>
-              <Link href='/signin' className='flex items-center text-lg font-medium text-black'>
+              <Link href='/signin' className='flex items-center text-[1.4rem] font-medium text-black dark:text-gray-10'>
                 로그인
               </Link>
-              <Link href='/signup' className='flex items-center text-lg font-medium text-black'>
+              <Link href='/signup' className='flex items-center text-[1.4rem] font-medium text-black dark:text-gray-10'>
                 회원가입
               </Link>
             </div>

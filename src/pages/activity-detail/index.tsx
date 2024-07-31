@@ -16,6 +16,7 @@ import useModal from '@/hooks/useModal';
 import ExpandableText from '@/components/ExpandableText';
 import { auth } from '@/utils/auth/api';
 import DarkModeStore from '@/context/themeContext';
+import DetailLayout from './layout';
 
 /* eslint-disable */
 
@@ -122,58 +123,58 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
   const isUserActivity = activityData.userId === userData.id;
 
   return (
-      <div className='pt-[7rem] px-[1.6rem] sm:px-[2.4rem] md:px-[3.2rem] lg:px-[18rem]'>
-        <div className='flex flex-col gap-[0.25rem]'>
-          <p className='text-[1.4rem] text-nomad-black dark:text-gray-10'>{activityData?.category}</p>
-          <div className='flex items-center justify-between'>
-            <h1 className='text-[3.2rem] text-nomad-black font-bold overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.title}</h1>
-            <div className='flex items-center'>
-              <div className='flex items-center'>{isUserActivity && <MeatBall editHref={`/my/activities/editactivity/${id}`} handleDelete={() => handleDeleteModal(id)} />}</div>
-            </div>
+    <DetailLayout>
+      <div className='flex flex-col gap-[0.25rem]'>
+        <p className='text-[1.4rem] dark:text-gray-10'>{activityData?.category}</p>
+        <div className='flex items-center justify-between'>
+          <h1 className='text-[3.2rem] font-bold overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.title}</h1>
+          <div className='flex items-center'>
+            <div className='flex items-center'>{isUserActivity && <MeatBall editHref={`/my/activities/editactivity/${id}`} handleDelete={() => handleDeleteModal(id)} />}</div>
+          </div>
+        </div>
+
+        <div className='flex gap-[1.2rem]'>
+          <div className='flex gap-[0.6rem]'>
+            <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
+            <p className='text-[1.4rem] text-black dark:text-gray-10'>{activityData?.rating}</p>
+            <p className='text-[1.4rem] text-black dark:text-gray-10'>({activityData?.reviewCount})</p>
           </div>
 
-          <div className='flex gap-[1.2rem]'>
-            <div className='flex gap-[0.6rem]'>
-              <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
-              <p className='text-[1.4rem] text-black dark:text-gray-10'>{activityData?.rating}</p>
-              <p className='text-[1.4rem] text-black dark:text-gray-10'>({activityData?.reviewCount})</p>
-            </div>
+          <div className='flex gap-[0.2rem]'>
+            <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
+            <p className='text-[1.4rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
+          </div>
+        </div>
 
-            <div className='flex gap-[0.2rem]'>
-              <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
-              <p className='text-[1.4rem] text-nomad-black overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
+        <ImageContainer mainImageUrl={activityData?.bannerImageUrl} gridImages={activityData?.subImages} />
+
+        <div className='flex flex-col gap-[1.6rem] md:flex-row md:gap-[1.6rem]'>
+          <div className='w-full md:w-[70%]'>
+            <div className='border-t-[0.2rem] border-gray-50 border-solid' />
+            <div className='flex flex-col gap-[1.6rem]'>
+              <p className='font-bold text-[2rem] pt-[4rem] dark:text-gray-10'>체험 설명</p>
+              <ExpandableText text={activityData?.description || ''} />
             </div>
+            <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem] sm:my-[2.4rem] dark:text-gray-10' />
+
+            <Map address={activityData?.address} />
+
+            <div className='flex gap-[0.4rem] mt-[0.8rem]'>
+              <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
+              <p className='text-[1.4rem] max-w-[70rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
+            </div>
+            <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem]' />
+            <ReviewList reviews={reviewsData?.reviews} averageRating={reviewsData?.averageRating} totalCount={reviewsData?.totalCount} />
           </div>
 
-          <ImageContainer mainImageUrl={activityData?.bannerImageUrl} gridImages={activityData?.subImages} />
-
-          <div className='flex flex-col gap-[1.6rem] md:flex-row md:gap-[1.6rem]'>
-            <div className='w-full md:w-[70%]'>
-              <div className='border-t-[0.2rem] border-gray-50 border-solid' />
-              <div className='flex flex-col gap-[1.6rem]'>
-                <p className='text-nomad-black font-bold text-[2rem] pt-[4rem] dark:text-gray-10'>체험 설명</p>
-                <ExpandableText text={activityData?.description || ''} />
-              </div>
-              <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem] sm:my-[2.4rem] dark:text-gray-10' />
-
-              <Map address={activityData?.address} />
-
-              <div className='flex gap-[0.4rem] mt-[0.8rem]'>
-              <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
-                <p className='text-nomad-black text-[1.4rem] max-w-[70rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
-              </div>
-              <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem]' />
-              <ReviewList reviews={reviewsData?.reviews} averageRating={reviewsData?.averageRating} totalCount={reviewsData?.totalCount} />
-            </div>
-
-            <div className='w-full md:w-[30%] mt-[1.6rem] md:mt-0'>
-              {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} />}
-              {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} />}
-              {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} />}
-            </div>
+          <div className='w-full md:w-[30%] mt-[1.6rem] md:mt-0'>
+            {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} />}
+            {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} />}
+            {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} />}
           </div>
         </div>
       </div>
+    </DetailLayout>
   );
 }
 
