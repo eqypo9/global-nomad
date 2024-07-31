@@ -63,10 +63,7 @@ function Map({ address }: MapProps) {
 
   return (
     <div className='relative w-full'>
-      <div
-        id='map'
-        className="w-full h-[45rem] rounded-2xl xl:h-[45rem] lg:h-[27.6rem] md:h-[45rem]"
-      />
+      <div id='map' className='w-full h-[45rem] rounded-2xl xl:h-[45rem] lg:h-[27.6rem] md:h-[45rem]' />
       {loading && <p className='absolute text-[2rem]'>카카오 지도 불러오는중...</p>}
     </div>
   );
