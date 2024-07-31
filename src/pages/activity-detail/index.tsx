@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
@@ -19,7 +20,6 @@ import DarkModeStore from '@/context/themeContext';
 import DetailLayout from './layout';
 
 /* eslint-disable */
-
 export interface ActivityDetailsProps {
   id: number;
 }
@@ -124,6 +124,21 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
 
   return (
     <DetailLayout>
+      <Head>
+        <title>
+          {activityData.title} - {activityData.category}
+        </title>
+        <meta name='description' content={activityData.description || 'Detailed activity description'} />
+        <meta name='keywords' content={`activity, ${activityData.category}, reviews`} />
+        <meta property='og:title' content={activityData.title} />
+        <meta property='og:description' content={activityData.description || 'Detailed activity description'} />
+        <meta property='og:image' content={activityData.bannerImageUrl} />
+        <meta property='og:url' content={typeof window !== 'undefined' ? window.location.href : ''} />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:title' content={activityData.title} />
+        <meta name='twitter:description' content={activityData.description || 'Detailed activity description'} />
+        <meta name='twitter:image' content={activityData.bannerImageUrl} />
+      </Head>
       <div className='flex flex-col gap-[0.25rem]'>
         <p className='text-[1.4rem] dark:text-gray-10'>{activityData?.category}</p>
         <div className='flex items-center justify-between'>
@@ -133,12 +148,12 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           </div>
         </div>
 
-          <div className='flex gap-[1.2rem]'>
-            <div className='flex gap-[0.6rem]'>
-              <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
-              <p className='text-[1.4rem] text-black dark:text-gray-10'>{activityData?.rating}</p>
-              <p className='text-[1.4rem] text-black dark:text-gray-10'>({activityData?.reviewCount})</p>
-            </div>
+        <div className='flex gap-[1.2rem]'>
+          <div className='flex gap-[0.6rem]'>
+            <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
+            <p className='text-[1.4rem] text-black dark:text-gray-10'>{activityData?.rating}</p>
+            <p className='text-[1.4rem] text-black dark:text-gray-10'>({activityData?.reviewCount})</p>
+          </div>
 
           <div className='flex gap-[0.2rem]'>
             <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
@@ -146,7 +161,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           </div>
         </div>
 
-          <ImageContainer mainImageUrl={activityData?.bannerImageUrl} gridImages={activityData?.subImages} />
+        <ImageContainer mainImageUrl={activityData?.bannerImageUrl} gridImages={activityData?.subImages} />
 
         <div className='flex flex-col gap-[1.6rem] md:flex-row md:gap-[1.6rem]'>
           <div className='w-full md:w-[70%]'>
@@ -179,5 +194,4 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
 }
 
 export default ActivityDetail;
-
 /* eslint-enable */
