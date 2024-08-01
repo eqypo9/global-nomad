@@ -112,12 +112,12 @@ function calendar2({ selectedActivityId }: ActivityDropDownProps) {
   };
 
   return (
-    <div className='text-[#000] my-[1.6rem] relative'>
+    <div className='text-[#000] my-[1.6rem] relative dark:text-gray-10'>
       {isCalendarClick && selectedDate && (
         <div
           className={`fixed top-0 w-full h-full bg-white z-20 transition-transform transform ${
             isCalendarClick ? 'translate-x-0  z-40' : '-translate-x-full'
-          } md:absolute md:w-[42.9rem] md:h-[69.7rem] md:bg-white right-0 md:transform-none border border-[#DDDDDD] shadow-[0_0.4rem_1.6rem_0_rgba(17,34,17,0.05)] rounded-[1.2rem] `}
+          } md:absolute md:w-[42.9rem] md:h-[69.7rem] h-full md:bg-white right-0 md:transform-none border border-[#DDDDDD] shadow-[0_0.4rem_1.6rem_0_rgba(17,34,17,0.05)] rounded-[1.2rem] `}
         >
           <ReservationInfo date={selectedDate} activityId={selectedActivityId} onClose={handleClose} />
         </div>
@@ -143,7 +143,7 @@ function calendar2({ selectedActivityId }: ActivityDropDownProps) {
             <button
               type='button'
               key={day.format('YYYY-MM-DD')}
-              className={`flex w-1/7 h-[8.4rem] p-[0.3rem]   border-[#e8e8e8] border flex-col ${day.isSame(currentMonth, 'month') ? '' : 'bg-gray-50'} ${day.isSame(dayjs(), 'day') ? 'border-blue border-[0.2rem]' : ''}  hover:border-blue hover:border-[0.3rem]`}
+              className={`flex w-1/7 h-[8.4rem] p-[0.3rem]   border-[#e8e8e8] border flex-col ${day.isSame(currentMonth, 'month') ? '' : 'bg-gray-50 dark:bg-[#404040] '} ${day.isSame(dayjs(), 'day') ? 'border-blue border-[0.2rem]' : ''}  hover:border-blue hover:border-[0.3rem]`}
               onClick={() => handleCalendarClick(day.format('YYYY-MM-DD'))}
             >
               <div className='text-left w-[100%]'>

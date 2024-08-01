@@ -51,10 +51,10 @@ function ReservationStatus({ selectedStatus, reservationId, activityId, onClickC
       console.log(selectedStatus);
       return (
         <>
-          <button onClick={handleClickConfirmed} className='w-[8.2rem] h-[3.8rem] rounded-[0.6rem] bg-nomad-black text-white'>
+          <button onClick={handleClickConfirmed} className='w-[8.2rem] h-[3.8rem] rounded-[0.6rem] bg-nomad-black text-white dark:text-gray-10 '>
             승인하기
           </button>
-          <button onClick={handleClickDeclined} className='w-[8.2rem] h-[3.8rem] rounded-[0.6rem] text-nomad-black border-[0.1rem] border-nomad-black'>
+          <button onClick={handleClickDeclined} className='w-[8.2rem] h-[3.8rem] rounded-[0.6rem] text-nomad-black border-[0.1rem] border-nomad-black dark:text-gray-10 dark:border-white'>
             거절하기
           </button>
         </>
@@ -73,11 +73,11 @@ export default function ReservationCard({ selectedStatus, nickname, headCount, s
     console.log(selectedStatus);
     return (
       <li className='flex flex-col justify-between items-stretch rounded-md border border-gray-50 p-6 w-full h-[11.6rem]'>
-        <p className='flex items-start gap-4 text-lg font-medium text-gray-600 text-[1.6rem]'>
-          닉네임<span className='text-black'>{nickname}</span>
+        <p className='flex items-start gap-4 text-lg font-medium text-gray-600 text-[1.6rem] dark:text-gray-10'>
+          닉네임<span className='text-black dark:text-gray-10'>{nickname}</span>
         </p>
-        <p className='flex items-start gap-4 text-lg font-medium text-gray-600 text-[1.6rem]'>
-          인원<span className='text-black'>{headCount}명</span>
+        <p className='flex items-start gap-4 text-lg font-medium text-gray-600 text-[1.6rem] dark:text-gray-10'>
+          인원<span className='text-black dark:text-gray-10'>{headCount}명</span>
         </p>
         <div className='flex justify-end items-end gap-2.5'>
           <ReservationStatus onClickCloseModal={onClickCloseModal} activityId={activityId} reservationId={reservationId} selectedStatus={selectedStatus} date={date} scheduledId={scheduledId} />
@@ -85,6 +85,6 @@ export default function ReservationCard({ selectedStatus, nickname, headCount, s
       </li>
     );
   }
-  return <li className='flex flex-col justify-between items-stretch rounded-md border border-gray-300 p-6 w-[38.2rem] h-[11.6rem]'>해당하는 예약 내역이 없습니다</li>;
+  return <li className='flex flex-col justify-between items-stretch rounded-md border border-gray-300 p-6 w-[38.2rem] h-[11.6rem] dark:text-gray-10'>해당하는 예약 내역이 없습니다</li>;
 }
 /* eslint-enable */
