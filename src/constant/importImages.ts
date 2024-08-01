@@ -15,6 +15,7 @@ import IconTwitter from '../../public/icons/Icon_twitter.svg';
 import IconYoutube from '../../public/icons/Icon_youtube.svg';
 import IconStarOn from '../../public/icons/Icon_star_on.svg';
 import IconStarOff from '../../public/icons/Icon_star_off.svg';
+import IconStarOffDark from '../../public/icons/Icon_star_off_dark.svg';
 import IconTextBoxCheck from '../../public/icons/Icon_text-box_check.svg';
 import IconTextBoxCheckNoSelect from '../../public/icons/Icon_text-box_check_noSelect.svg';
 import IconMenu from '../../public/icons/Icon_meatball.svg';
@@ -148,6 +149,10 @@ export const ICON = {
     },
     active: {
       src: IconStarOn,
+      alt: '별',
+    },
+    dark: {
+      src: IconStarOffDark,
       alt: '별',
     },
   },

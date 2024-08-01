@@ -25,11 +25,11 @@ export default function MyLayout({ children }: Children) {
   }, [router]);
 
   return isLoaded ? (
-    <section className='pt-[2.4rem] md:pt-[7.2rem] pb-[15rem] px-[2rem] max-w-[124rem] mx-auto sm:flex gap-[2.4rem] items-start'>
-      <div className='hidden sm:block'>
+    <section className='pt-[2.4rem] lg:pt-[7.2rem] pb-[15rem] px-[2rem] max-w-[124rem] mx-auto sm:flex gap-[2.4rem] items-start'>
+      <div className='hidden md:block'>
         <SideNavigation />
       </div>
-      <div className='sm:hidden'>
+      <div className='md:hidden'>
         <SideNavigationMobileSize toggleSideNav={toggleSideNav} isSideNavVisible={isSideNavVisible} />
       </div>
       {children}

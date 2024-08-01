@@ -13,12 +13,13 @@ interface FormData {
 interface Props {
   id: number;
   onClickCloseModal: () => void;
+  currentFilterOption: string | undefined;
+  refreshReservationList: (filterOption: string | undefined) => Promise<void>;
 }
 
 // 1.리뷰 리스트 리액트쿼리 마이그레이션
-// 2.후기 작성하면 더이상 못하게 막아야 됨
 
-export default function ReviewForm({ id, onClickCloseModal }: Props) {
+export default function ReviewForm({ id, onClickCloseModal, currentFilterOption, refreshReservationList }: Props) {
   // const queryClient = useQueryClient();
   const { control, handleSubmit, setValue, register } = useForm<FormData>({
     defaultValues: { rating: 0, content: '' },
@@ -28,6 +29,7 @@ export default function ReviewForm({ id, onClickCloseModal }: Props) {
     mutationFn: (data: FormData) => postMyReview(id, data),
     onSuccess: () => {
       onClickCloseModal();
+      refreshReservationList(currentFilterOption);
       // queryClient.invalidateQueries({ queryKey: ['MyReservations'] });
     },
   });
@@ -41,7 +43,7 @@ export default function ReviewForm({ id, onClickCloseModal }: Props) {
       <RatingInput control={control} setValue={setValue} />
       <textarea
         {...register('content', { required: '후기를 작성해 주세요' })}
-        className='text-[1.6rem] border border-gray-400 w-full min-h-[22.4rem] resize-none p-2 px-4 rounded-md'
+        className='text-[1.6rem] dark:text-gray-10 border border-gray-400 dark:bg-black dark:border-gray-10 w-full md:h-[22.4rem] h-[40vh] resize-none p-2 px-4 rounded-md'
         placeholder='후기를 작성해주세요'
       />
       <Button type='submit' color='black' text='작성하기' cssName='py-[1.5rem] text-[1.6rem] leading-[2.6rem] font-[700]' />
