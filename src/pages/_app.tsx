@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import darkModeStore from '@/context/themeContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
     router.events.on('routeChangeError', handleComplete);
 
     handleComplete(); // initial load
-    
+
     return () => {
       router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleComplete);

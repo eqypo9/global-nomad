@@ -15,6 +15,7 @@ interface CardResourceProps {
 
 export default function CardResource({ activitiesData, banner }: CardResourceProps) {
   const router = useRouter();
+  const [isHovered, setIsHovered] = useState(false);
 
   const { data: userData, isLoading } = useQuery({
     queryKey: ['userData'],
@@ -38,8 +39,6 @@ export default function CardResource({ activitiesData, banner }: CardResourcePro
       router.push(`/activity-detail/${id}`);
     }
   };
-
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
     if (banner) {
@@ -87,34 +86,24 @@ export default function CardResource({ activitiesData, banner }: CardResourcePro
           <span className='text-[#a1a1a1]'>({activitiesData.reviewCount})</span>
         </div>
         <div
-          className={`${
-            banner
-              ? 'md:w-[23rem] md:h-[7.2rem] w-[14.6rem] h-[7.2rem] md:leading-[3.6rem] ledading-[2.15rem] md:text-[3rem] text-[1.8rem]'
-              : 'md:text-[2.4rem] md:leading-[2.86rem] text-[1.8rem] leading-[2.15rem]'
-          } 
+          className={`${banner ? 'md:w-[23rem] md:h-[7.2rem] w-[14.6rem] h-[7.2rem] md:leading-[3.6rem] ledading-[2.15rem] md:text-[3rem] text-[1.8rem]'
+           : 'md:text-[2.4rem] md:leading-[2.86rem] text-[1.8rem] leading-[2.15rem]'} 
           font-semibold line-clamp-1`}
         >
           {activitiesData.title}
         </div>
         <div
-          className={` ${
-            banner
-              ? 'md:leading-[2.4rem] md:text-[2rem] leading-[1.9rem] text-[1.6rem] md:h-[2.4rem] h-[1.9rem]'
-              : 'md:leading-[3.34rem] md:text-[2.8rem] leading-[2.4rem] text-[2rem] md:h-[3.3rem] h-[2.4rem]'
-          } 
+          className={` ${banner ? 'md:leading-[2.4rem] md:text-[2rem] leading-[1.9rem] text-[1.6rem] md:h-[2.4rem] h-[1.9rem]' 
+           : 'md:leading-[3.34rem] md:text-[2.8rem] leading-[2.4rem] text-[2rem] md:h-[3.3rem] h-[2.4rem]'} 
           flex items-center font-bold gap-2 `}
         >
           {activitiesData.price === 0 ? (
             '무료체험'
           ) : (
             <>
-              ￦ {activitiesData.price.toLocaleString()}
-              <span
-                className={`${banner ? 'text-[1.4rem] leading-[1.67rem]' : 'md:leading-[2.4rem] md:text-[2rem] text-[1.6rem] leading-[1.9rem]'} 
-              font-normal text-[#a4a1aa]`}
-              >
-                / 인
-              </span>
+              ￦ {activitiesData.price.toLocaleString()} 
+              <span className={`${banner ? 'text-[1.4rem] leading-[1.67rem]' : 'md:leading-[2.4rem] md:text-[2rem] text-[1.6rem] leading-[1.9rem]'} 
+              font-normal text-[#a4a1aa]`}>/ 인</span>
             </>
           )}
         </div>
