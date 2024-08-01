@@ -50,6 +50,7 @@ import IconMapMarker from '../../public/icons/Icon_map_marker.svg';
 import IconMapMarkerDarkMode from '../../public/icons/Icon_mapmarker_darkmode.svg';
 import IconClose from '../../public/icons/Icon_close.svg';
 import IconDarkBell from '../../public/icons/Icon_darkmode_bell.svg';
+import IconDownload from '../../public/icons/Icon_download.svg';
 
 import ImageLogoSmall from '../../public/images/Image_logo_small.svg';
 import ImageLogo from '../../public/images/Image_logo.svg';
@@ -360,6 +361,12 @@ export const ICON = {
     default: {
       src: IconDarkBell,
       alt: '다크 모드 알림',
+    },
+  },
+  download: {
+    default: {
+      src: IconDownload,
+      alt: '다운로드',
     },
   },
 };
