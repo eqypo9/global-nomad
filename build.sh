@@ -1,5 +1,5 @@
 #!/bin/sh
 cd ../
 mkdir output
-cp -R ./[nomad]/* ./output
-cp -R ./output ./[nomad]/
+cp -R ./nomad/* ./output
+cp -R ./output ./nomad/
