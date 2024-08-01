@@ -113,7 +113,7 @@
 
 .custom-calendar .react-calendar__month-view__days .reserved-date {
   background-color: #ced8d5; 
-  border-radius: 50%; 
+  border-radius: 0.8rem; 
   color: #ffffff;
   position: relative; 
 }
