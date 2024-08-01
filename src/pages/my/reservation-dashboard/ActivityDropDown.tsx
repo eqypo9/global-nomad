@@ -64,7 +64,7 @@ function ActivityDropDown({ items, onItemSelected, labelText }: ActivityDropDown
       </button>
       {isOpen && (
         <div className='absolute mt-[5.6rem] border-[black] border-[0.1rem] w-full rounded-md bg-white shadow-lg z-10 text-[black] dark:bg-black dark:border-white text-gray-10'>
-          <ul className='pt-[0.25rem]'>
+          <ul className='pt-[0.25rem] text-[black] dark:text-gray-10'>
             {items.map((item) => (
               // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
               <li
