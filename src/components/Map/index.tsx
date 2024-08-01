@@ -43,7 +43,7 @@ function Map({ address }: MapProps) {
             marker.setMap(map);
 
             const infowindow = new window.kakao.maps.InfoWindow({
-              content: `<div style="width:150px;text-align:center;padding:6px 0;">${result[0].road_address.building_name}</div>`,
+              content: `<div style="width:150px;font-size:14px;text-align:center;padding:6px 0;border-color:#000000;">${result[0].road_address.building_name}</div>`,
             });
             infowindow.open(map, marker);
 

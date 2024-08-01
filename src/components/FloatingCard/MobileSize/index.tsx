@@ -54,11 +54,11 @@ function MobileCard({ price, schedules }: MobileCardProps) {
 
   return (
     <>
-      <div className='fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full bg-white border border-gray-200 rounded-lg shadow-md flex flex-row items-center justify-between p-4 z-50'>
+      <div className='fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full bg-white border-2 border-solid border-gray-50 rounded-lg shadow-md flex flex-row items-center justify-between p-4 z-50'>
         <div className='flex flex-col gap-[0.8rem]'>
           <div className='flex flex-row items-center'>
             <p className='text-[2rem] font-bold text-nomad-black'>₩ {formattedPrice.toLocaleString()} /</p>
-            <p className='text-[1.8rem] text-green-dark cursor-pointer underline ml-1' onClick={() => setIsParticipantsPopupOpen(true)}>
+            <p className='text-[1.8rem] text-medium text-green-dark cursor-pointer underline ml-1 px-[0.6rem]' onClick={() => setIsParticipantsPopupOpen(true)}>
               {participantsText}
             </p>
           </div>

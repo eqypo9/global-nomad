@@ -11,7 +11,7 @@ function Footer() {
       <div className='flex flex-col justify-center items-center w-full px-[3.2rem] text-gray-500 text-[1.6rem] max-w-[120rem] h-[16rem] md:flex md:flex-row md:justify-between'>
         <span className='hidden md:block dark:text-gray-10'>©codeit - 2023</span>
         <div className='flex gap-12 justify-center'>
-          <span className='md:hidden'>©codeit - 2023</span>
+          <span className='md:hidden dark:text-gray-10'>©codeit - 2023</span>
           <Link href='/privacy-policy' className='hover:text-gray-700 dark:text-gray-10'>
             Privacy Policy
           </Link>

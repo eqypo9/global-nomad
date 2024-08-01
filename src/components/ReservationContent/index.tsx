@@ -38,7 +38,7 @@ function ReservationContent({ schedules, selectedDate, selectedTime, onDateChang
             />
           ))
         ) : (
-          <p className='text-nomad-black text-[1.6rem] dark:text-gray-10'>예약 가능한 시간이 없습니다.</p>
+          <p className='text-gray-500 text-medium text-[1.6rem] dark:text-gray-10'>예약 가능한 시간이 없습니다.</p>
         )}
       </div>
     </div>
