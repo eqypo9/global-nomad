@@ -116,7 +116,7 @@ function calendar2({ selectedActivityId }: ActivityDropDownProps) {
       {isCalendarClick && selectedDate && (
         <div
           className={`fixed top-0 w-full h-full bg-white z-20 transition-transform transform ${
-            isCalendarClick ? 'translate-x-0  z-40' : '-translate-x-full'
+            isCalendarClick ? 'translate-x-0  z-50' : '-translate-x-full'
           } md:absolute md:w-[42.9rem] md:h-[69.7rem] h-full md:bg-white right-0 md:transform-none border border-[#DDDDDD] shadow-[0_0.4rem_1.6rem_0_rgba(17,34,17,0.05)] rounded-[1.2rem] `}
         >
           <ReservationInfo date={selectedDate} activityId={selectedActivityId} onClose={handleClose} />
