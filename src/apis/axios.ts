@@ -9,7 +9,7 @@ instance.interceptors.request.use((config) => {
   const ignoreAuthPaths = [/activity-detail\/\d+/]; // 인증을 요구하지 않을 경로 패턴
 
   // 경로가 인증을 요구하지 않는 경로 목록에 포함되어 있는지 확인
-  const isIgnoreAuthPath = ignoreAuthPaths.some((pattern) => pattern.test(newConfig.url));
+  const isIgnoreAuthPath = ignoreAuthPaths.some((pattern) => pattern.test(newConfig.url || ''));
 
   if (isIgnoreAuthPath) {
     // 임시 토큰 설정 (예: 'temporary-token' 문자열)
