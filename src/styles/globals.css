@@ -3,6 +3,8 @@
 @tailwind utilities;
 @import '../styles/calendar.module.css';
 @import '../styles/slider.module.css';
+@import '../styles/swiper.module.css';
+
 @font-face {
   font-family: 'Pretendard';
   font-weight: 100;
@@ -208,7 +210,7 @@ html {
 body {
   font-family: 'Pretendard', sans-serif;
   color: rgb(var(--foreground-rgb));
-  background-color: white; /* 기본 배경 색상을 흰색으로 설정 */
+  background-color: #fafafa;
 }
 
 a {

@@ -34,6 +34,14 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
     return '후기 없음';
   };
 
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}.${month}.${day}`;
+  };
+
   return (
     <>
       <div className='flex flex-col gap-[1.6rem]'>
@@ -71,7 +79,7 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
                 <div className='flex mb-[0.8rem]'>
                   <p className='text-[1.6rem] font-bold max-w-[16rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{review.user.nickname}</p>
                   <p className='mx-[0.8rem] text-[1.4rem] dark:text-gray-10'>|</p>
-                  <p className='text-[1.6rem] text-gray-300 dark:text-gray-5'>{new Date(review.createdAt).toLocaleDateString()}</p>
+                  <p className='text-[1.6rem] text-gray-300 dark:text-gray-5'>{formatDate(review.createdAt)}</p>
                 </div>
                 <p className='text-[1.6rem] text-nomad-black dark:text-gray-10'>{review.content}</p>
               </div>
