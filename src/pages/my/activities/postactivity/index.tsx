@@ -59,7 +59,7 @@ export default function PostActivitiy() {
   const DATE_INPUT_LABEL_STYLE = 'flex flex-col gap-y-[1rem] max-md:gap-y-[0.8rem]';
   const LABEL_STYLE = 'text-black dark:text-white text-[2.4rem] font-bold leading-[2.6rem] max-md:text-[2rem]';
   const INPUT_STYLE = 'h-[5.6rem] leading-[2.6rem] py-[0.8rem] px-[1.6rem]';
-  const TIME_INPUT_STYLE = 'h-[5.6rem] w-[14rem] max-lg:w-[10.4rem] max-md:w-[7.9rem] max-md:h-[4.4rem] max-md:text-[1.4rem]';
+  const TIME_INPUT_STYLE = 'h-[5.6rem] w-[14rem] max-lg:w-[10.4rem] max-md:w-[6rem] max-md:h-[4.4rem] max-md:text-[1.4rem]';
 
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
