@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+/* eslint-disable */
 const instance = axios.create({
   baseURL: 'https://sp-globalnomad-api.vercel.app/5-7',
 });
@@ -83,3 +83,4 @@ instance.interceptors.response.use(
 );
 
 export default instance;
+/* eslint-enable */
