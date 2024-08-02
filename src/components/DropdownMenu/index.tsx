@@ -17,6 +17,7 @@ interface DropdownMenuProps {
    * 각 항목은 텍스트와 클릭 핸들러를 포함합니다.
    */
   dropdownMenuList: { text: string; handleClick: () => void }[];
+  positionClasses?: string;
 }
 
 /**
@@ -47,12 +48,12 @@ interface DropdownMenuProps {
  *   ]}
  * />
  */
-function DropdownMenu({ type = 'gnb', dropdownMenuList }: DropdownMenuProps): JSX.Element {
+function DropdownMenu({ type = 'gnb', dropdownMenuList, positionClasses = '' }: DropdownMenuProps): JSX.Element {
   const baseStyles = 'absolute top-full right-0 w-[16rem] z-10 bg-white border border-gray-300 rounded-lg shadow-md';
   const typeStyles = type === 'meatball' ? 'mt-12 md:mt-8' : 'mt-16 md:mt-8';
 
   return (
-    <div className={`${baseStyles} ${typeStyles}`}>
+    <div className={`${positionClasses}${baseStyles} ${typeStyles}`}>
       {dropdownMenuList.map((dropdownMenu) => (
         <button
           key={dropdownMenu.text}
