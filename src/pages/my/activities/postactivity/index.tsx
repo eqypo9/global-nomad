@@ -10,7 +10,6 @@ import MyLayout from '@/components/MyLayout';
 import ScheduleListItem from '@/components/ScheduleListItem';
 import useModal from '@/hooks/useModal';
 import { POSTActivitiesReq } from '@/utils/types/myActivities';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, KeyboardEvent, MouseEvent, useRef, useState } from 'react';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
@@ -190,7 +189,7 @@ export default function PostActivitiy() {
 
   return (
     <MyLayout>
-      <main className='bg-gray-10 max-w-[80rem] w-full  dark:bg-nomad-black dark:text-gray-10 mb-[27rem] max-lg:mb-[40rem] max-md:mb-[13.6rem] text-[1.6rem]'>
+      <main className='bg-gray-10 max-w-[80rem] w-full  dark:bg-black dark:text-gray-10 mb-[27rem] max-lg:mb-[40rem] max-md:mb-[13.6rem] text-[1.6rem]'>
         <form onSubmit={() => false} className='relative text-[1.6rem] max-md:text-[1.4rem]'>
           <div className='flex justify-between mb-[2.4rem] '>
             <h2 className='text-[3.2rem] text-[#000] dark:text-[#fff] leading-[3.8rem] font-bold'>내 체험 등록</h2>
@@ -302,11 +301,12 @@ export default function PostActivitiy() {
                   <div className='flex flex-col-reverse'>
                     <button
                       type='button'
-                      className='relative w-[5.6rem] h-[5.6rem] max-md:w-[4.4rem] max-md:h-[4.4rem] disabled:'
+                      draggable
+                      className='relative w-[5.6rem] h-[5.6rem] max-md:w-[4.4rem] max-md:h-[4.4rem] bg-[url("/icons/Icon_plus_time.svg")] dark:bg-[url("/icons/Icon_plus_time_dark.svg")] bg-cover bg-no-repeat text-transparent'
                       onClick={addSchedule}
                       disabled={!schedule.date || !schedule.endTime || !schedule.startTime}
                     >
-                      <Image src='/icons/Icon_plus_time.svg' fill alt='시간대 추가' />
+                      시간대 추가
                     </button>
                   </div>
                 </div>

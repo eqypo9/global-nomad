@@ -55,7 +55,7 @@ function ReservationHistory() {
       <MyLayout>
         <div className='w-full'>
           <div className='flex justify-between items-center'>
-            <h1 className='text-[3.2rem] font-[700] leading-[3.819rem]'>예약 내역</h1>
+            <h1 className='text-[3.2rem] dark:text-gray-10 font-[700] leading-[3.819rem]'>예약 내역</h1>
             <FilterDropButton text={currentOption ? setReservationStatueInfo(currentOption).name : '전체'} setFunc={setCurrentOption} />
           </div>
           <div className='pt-[1.6rem] flex flex-col gap-[2.4rem]'>

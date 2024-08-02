@@ -81,24 +81,24 @@ function Profile() {
     <MyLayout>
       <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
         <div className='flex justify-between'>
-          <h2 className='text-[3.2rem] leading-[3.819rem] font-[700] '>내 정보</h2>
+          <h2 className='text-[3.2rem] leading-[3.819rem] font-[700] dark:text-gray-10 '>내 정보</h2>
           <Button type='submit' color='black' text='저장하기' cssName='w-[12rem] py-[1.1rem] text-[1.6rem] font-[700] leading-[2.6rem]' />
         </div>
         <div className='pt-[2.4rem] flex flex-col gap-[3.2rem]'>
           <label htmlFor='nickname' className='flex flex-col gap-[1.6rem]'>
-            <span className='text-[2.4rem] font-[700] leading-[2.6rem]  text-[#1b1b1b]'>닉네임</span>
+            <span className='text-[2.4rem] font-[700] leading-[2.6rem] text-[#1b1b1b] dark:text-gray-10'>닉네임</span>
             <Input id='nickname' {...register('nickname', rules.nicknameRules)} name='nickname' type='text' isError={!!errors.nickname} errorMessage={errors.nickname?.message} maxLength={10} />
           </label>
           <label htmlFor='email' className='flex flex-col gap-[1.6rem]'>
-            <span className='text-[2.4rem] font-[700] leading-[2.6rem]  text-[#1b1b1b]'>이메일</span>
+            <span className='text-[2.4rem] font-[700] leading-[2.6rem] text-[#1b1b1b] dark:text-gray-10'>이메일</span>
             <Input id='email' name='email' value={data?.email} type='email' readOnly />
           </label>
           <label htmlFor='password' className='flex flex-col gap-[1.6rem]'>
-            <span className='text-[2.4rem] font-[700] leading-[2.6rem]  text-[#1b1b1b]'>비밀번호</span>
+            <span className='text-[2.4rem] font-[700] leading-[2.6rem] text-[#1b1b1b] dark:text-gray-10'>비밀번호</span>
             <Input id='password' {...register('password', rules.passwordRules)} name='password' type='password' isError={!!errors.password} errorMessage={errors.password?.message} maxLength={30} />
           </label>
           <label htmlFor='passwordConfirm' className='flex flex-col gap-[1.6rem]'>
-            <span className='text-[2.4rem] font-[700] leading-[2.6rem]  text-[#1b1b1b]'>비밀번호 재입력</span>
+            <span className='text-[2.4rem] font-[700] leading-[2.6rem] text-[#1b1b1b] dark:text-gray-10'>비밀번호 재입력</span>
             <Input
               id='passwordConfirm'
               {...register('passwordConfirm', {

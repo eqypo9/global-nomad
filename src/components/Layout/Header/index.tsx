@@ -11,6 +11,8 @@ import { MyInfoProps } from '@/utils/types';
 import DropdownMenu from '@/components/DropdownMenu';
 import Avatar from '@/components/Avatar';
 import DarkModeButton from '@/components/DarkModeButton';
+import DarkModeStore from '@/context/themeContext';
+import Notifications from '@/components/Modal/ModalContents/notifications';
 // import Modal from '../Modals';
 
 /**
@@ -27,6 +29,8 @@ export default function Header(): JSX.Element | null {
   const ref = useRef<HTMLButtonElement>(null);
 
   useOutsideClick(ref, isDropdownOpen, isDropdownOpenToggle);
+
+  const { isDarkMode } = DarkModeStore();
 
   /**
    * 현재 사용자의 정보를 가져오는 함수입니다.
@@ -87,26 +91,26 @@ export default function Header(): JSX.Element | null {
   }
 
   return (
-    <div className='flex justify-around items-center sticky top-0 w-full h-28 bg-white border-b border-gray-300 z-50'>
+    <div className='flex justify-around items-center sticky top-0 w-full h-28 bg-white border-b border-gray-300 z-50 dark:bg-[#000]'>
       <div className='flex justify-between items-center max-w-screen-xl w-full mx-auto px-6'>
         <Link href='/'>
-          <Image src={IMAGE.logo.nav.src} alt={IMAGE.logo.nav.alt} height={28} width={166} />
+          <Image src={isDarkMode ? IMAGE.darkLogo.src : IMAGE.logo.nav.src} alt={isDarkMode ? IMAGE.logo.nav.alt : IMAGE.darkLogo.alt} height={28} width={166} />
         </Link>
         <div className='flex items-center gap-10'>
           <DarkModeButton />
           {!Auth ? (
             <div className='flex gap-10'>
-              <Link href='/signin' className='flex items-center text-lg font-medium text-black'>
+              <Link href='/signin' className='flex items-center text-[1.4rem] font-medium text-black dark:text-gray-10'>
                 로그인
               </Link>
-              <Link href='/signup' className='flex items-center text-lg font-medium text-black'>
+              <Link href='/signup' className='flex items-center text-[1.4rem] font-medium text-black dark:text-gray-10'>
                 회원가입
               </Link>
             </div>
           ) : (
             <div className='relative flex items-center gap-10'>
               <button type='button' className='flex items-center' onClick={isNotificationOpenToggle}>
-                <Image src={ICON.notification.default.src} alt={ICON.notification.default.alt} />
+                <Image src={isDarkMode ? ICON.darkModeBell.default.src : ICON.notification.default.src} alt={isDarkMode ? ICON.darkModeBell.default.alt : ICON.notification.default.alt} />
               </button>
               {/* {isNotificationOpen && (
                 <Modal
@@ -115,12 +119,11 @@ export default function Header(): JSX.Element | null {
                   setShowModal={isNotificationOpenToggle}
                 />
               )} */}
-              {isNotificationOpen && <div />}
               <div className='relative flex items-center gap-10'>
-                <div className='h-9 border-r border-gray-300' />
+                <div className='h-9 border-r-2 border-gray-100 dark:border-gray-10' />
                 <div className='flex items-center gap-4'>
                   <Avatar profileImageUrl={MyInfoData?.profileImageUrl} type='gnb' />
-                  <button type='button' className='flex items-center text-lg font-medium text-black' onClick={isDropdownOpenToggle} ref={ref}>
+                  <button type='button' className='flex items-center text-[1.4rem] font-medium text-black dark:text-gray-10' onClick={isDropdownOpenToggle} ref={ref}>
                     {MyInfoData?.nickname}
                   </button>
                   {isDropdownOpen && <DropdownMenu type='gnb' dropdownMenuList={MyMenuList} />}
@@ -130,6 +133,11 @@ export default function Header(): JSX.Element | null {
           )}
         </div>
       </div>
+      {isNotificationOpen && (
+        <div className='absolute w-[36.8rem] p-[2rem] bg-green-light rounded-[0.8rem] h-[33.7rem] bottom-[-35rem] right-[10%] z-60'>
+          <Notifications />
+        </div>
+      )}
     </div>
   );
 }

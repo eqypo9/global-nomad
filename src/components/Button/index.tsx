@@ -9,15 +9,15 @@ interface Props extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement
 }
 
 function Button({ text, color, onClick, cssName, link, type, disabled, ...props }: Props) {
-  const enabledBackgroundColor = color === 'black' ? 'bg-[#112211]' : 'bg-[#ffffff]';
-  const enabledBorderColor = color === 'white' ? 'border-[#000000]' : 'border-[#112211]';
-  const enabledTextColor = color === 'black' ? 'text-[#ffffff]' : 'text-[#112211]';
+  const enabledBackgroundColor = color === 'black' ? 'bg-[#000000]' : 'bg-[#ffffff]';
+  const enabledBorderColor = color === 'white' ? 'border-[#000000]' : 'border-[#ffffff]';
+  const enabledTextColor = color === 'black' ? 'text-white' : 'text-[#000000]';
 
-  const backgroundColor = disabled ? 'bg-[#a4a1aa]' : enabledBackgroundColor;
-  const borderColor = disabled ? 'bg-[#a4a1aa]' : enabledBorderColor;
-  const textColor = disabled ? 'text-[#ffffff]' : enabledTextColor;
+  const backgroundColor = disabled ? 'bg-gray-300' : enabledBackgroundColor;
+  const borderColor = disabled ? 'bg-gray-300' : enabledBorderColor;
+  const textColor = disabled ? 'text-white' : enabledTextColor;
 
-  const buttonStyle = `flex justify-center items-center px-5 py-3 font-bold border ${borderColor} ${backgroundColor} ${textColor} rounded-md disabled:cursor-not-allowed ${cssName}`;
+  const buttonStyle = `flex justify-center items-center px-5 py-3 font-bold border border-1 border-solid ${borderColor} ${backgroundColor} ${textColor} rounded-md disabled:cursor-not-allowed ${cssName}`;
 
   return link && !disabled ? (
     <Link href={link} className={buttonStyle}>

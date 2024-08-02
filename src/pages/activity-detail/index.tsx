@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
@@ -15,9 +16,10 @@ import deleteActivity from '@/apis/delete/deleteActivity';
 import useModal from '@/hooks/useModal';
 import ExpandableText from '@/components/ExpandableText';
 import { auth } from '@/utils/auth/api';
+import DarkModeStore from '@/context/themeContext';
+import DetailLayout from './layout';
 
 /* eslint-disable */
-
 export interface ActivityDetailsProps {
   id: number;
 }
@@ -29,6 +31,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
   const [activityIdToDelete, setActivityIdToDelete] = useState<number | null>(null);
 
   const { openModal, closeModal } = useModal();
+  const { isDarkMode } = DarkModeStore((state) => state);
 
   const handleDeleteModal = (activityId: number) => {
     setActivityIdToDelete(activityId);
@@ -58,8 +61,8 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsTablet(width <= 1024 && width > 480);
-      setIsMobile(width <= 480);
+      setIsTablet(width <= 1024 && width > 768);
+      setIsMobile(width <= 768);
     };
 
     handleResize();
@@ -99,7 +102,6 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
       }),
   });
 
-  // 스피너로 대체
   if (isLoadingActivity || isLoadingReviews) {
     return <div>Loading...</div>;
   }
@@ -121,11 +123,26 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
   const isUserActivity = activityData.userId === userData.id;
 
   return (
-    <div className='mt-[7rem] px-[1.6rem] sm:px-[2.4rem] md:px-[3.2rem] lg:px-[18rem] dark:bg-nomad-black'>
+    <DetailLayout>
+      <Head>
+        <title>
+          {activityData.title} - {activityData.category}
+        </title>
+        <meta name='description' content={activityData.description || 'Detailed activity description'} />
+        <meta name='keywords' content={`activity, ${activityData.category}, reviews`} />
+        <meta property='og:title' content={activityData.title} />
+        <meta property='og:description' content={activityData.description || 'Detailed activity description'} />
+        <meta property='og:image' content={activityData.bannerImageUrl} />
+        <meta property='og:url' content={typeof window !== 'undefined' ? window.location.href : ''} />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:title' content={activityData.title} />
+        <meta name='twitter:description' content={activityData.description || 'Detailed activity description'} />
+        <meta name='twitter:image' content={activityData.bannerImageUrl} />
+      </Head>
       <div className='flex flex-col gap-[0.25rem]'>
-        <p className='text-[1.4rem] text-nomad-black dark:text-gray-10'>{activityData?.category}</p>
+        <p className='text-[1.4rem] dark:text-gray-10'>{activityData?.category}</p>
         <div className='flex items-center justify-between'>
-          <h1 className='text-[3.2rem] text-nomad-black font-bold overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.title}</h1>
+          <h1 className='text-[3.2rem] font-bold overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.title}</h1>
           <div className='flex items-center'>
             <div className='flex items-center'>{isUserActivity && <MeatBall editHref={`/my/activities/editactivity/${id}`} handleDelete={() => handleDeleteModal(id)} />}</div>
           </div>
@@ -139,8 +156,8 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           </div>
 
           <div className='flex gap-[0.2rem]'>
-            <Image src={ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
-            <p className='text-[1.4rem] text-nomad-black overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
+            <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
+            <p className='text-[1.4rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
           </div>
         </div>
 
@@ -150,15 +167,16 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           <div className='w-full md:w-[70%]'>
             <div className='border-t-[0.2rem] border-gray-50 border-solid' />
             <div className='flex flex-col gap-[1.6rem]'>
-              <p className='text-nomad-black font-bold text-[2rem] pt-[4rem] dark:text-gray-10'>체험 설명</p>
+              <p className='font-bold text-[2rem] pt-[4rem] dark:text-gray-10'>체험 설명</p>
               <ExpandableText text={activityData?.description || ''} />
             </div>
             <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem] sm:my-[2.4rem] dark:text-gray-10' />
+
             <Map address={activityData?.address} />
 
             <div className='flex gap-[0.4rem] mt-[0.8rem]'>
-              <Image src={ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
-              <p className='text-nomad-black text-[1.4rem] max-w-[70rem] overflow-hidden whitespace-nowrap text-ellipsis'>{activityData?.address}</p>
+              <Image src={isDarkMode ? ICON.mapMarker.whiteColor.src : ICON.mapMarker.default.src} alt={ICON.mapMarker.default.alt} width={18} height={18} />
+              <p className='text-[1.4rem] max-w-[70rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
             </div>
             <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem]' />
             <ReviewList reviews={reviewsData?.reviews} averageRating={reviewsData?.averageRating} totalCount={reviewsData?.totalCount} />
@@ -171,10 +189,9 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           </div>
         </div>
       </div>
-    </div>
+    </DetailLayout>
   );
 }
 
 export default ActivityDetail;
-
 /* eslint-enable */

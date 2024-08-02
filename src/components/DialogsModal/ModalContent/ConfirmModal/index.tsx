@@ -8,12 +8,12 @@ function ConfirmModal({ modalData, closeFunction }: IModalContentProps) {
   useModalScrollBlock();
 
   return (
-    <div className='w-[29.8rem] p-[2.4rem] rounded-[0.8rem] text-center flex flex-col gap-[3.2rem] items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#FFFFFF] z-[999]'>
+    <div className='w-[29.8rem] p-[2.4rem] rounded-[0.8rem] text-center flex flex-col gap-[3.2rem] items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-10 dark:bg-black dark:border dark:border-gray-10 z-[999]'>
       <div className='flex flex-col items-center gap-[1.6rem]'>
-        <div className='size-[2.4rem] rounded-[50%] bg-[#112211] flex justify-center items-center'>
+        <div className='size-[2.4rem] rounded-[50%] bg-[#112211] dark:border dark:border-gray-10 dark:bg-black flex justify-center items-center'>
           <Image width={12} height={12} src={ICON.check.default.src} alt={ICON.check.default.alt} />
         </div>
-        <span className='font-[500] text-[1.8rem] text-[#333236] leading-[2.148rem]'>{modalData.content}</span>
+        <span className='font-[500] text-[1.8rem] text-[#333236] dark:text-gray-10 leading-[2.148rem]'>{modalData.content}</span>
       </div>
       <div className='flex gap-[0.8rem]'>
         <Button cssName='w-[8rem]' text={modalData.btnName[0]} color='white' onClick={closeFunction} />

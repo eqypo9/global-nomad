@@ -1,4 +1,5 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import SideNavigation from '../SideNavigation';
 import SideNavigationMobileSize from '../SideNavigation/MobileSize';
 
@@ -8,20 +9,32 @@ type Children = {
 };
 export default function MyLayout({ children }: Children) {
   const [isSideNavVisible, setIsSideNavVisible] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const router = useRouter();
 
   const toggleSideNav = () => {
     setIsSideNavVisible(!isSideNavVisible);
   };
 
-  return (
-    <section className='pt-[2.4rem] md:pt-[7.2rem] pb-[15rem] px-[2rem] max-w-[124rem] mx-auto sm:flex gap-[2.4rem] items-start'>
-      <div className='hidden sm:block'>
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')) {
+      router.push('/');
+    } else {
+      setIsLoaded(true);
+    }
+  }, [router]);
+
+  return isLoaded ? (
+    <section className='pt-[2.4rem] lg:pt-[7.2rem] pb-[15rem] px-[2rem] max-w-[124rem] mx-auto sm:flex gap-[2.4rem] items-start'>
+      <div className='hidden md:block'>
         <SideNavigation />
       </div>
-      <div className='sm:hidden'>
+      <div className='md:hidden'>
         <SideNavigationMobileSize toggleSideNav={toggleSideNav} isSideNavVisible={isSideNavVisible} />
       </div>
       {children}
     </section>
+  ) : (
+    <div>로딩중</div>
   );
 }

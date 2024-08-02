@@ -51,20 +51,20 @@ function ActivityDropDown({ items, onItemSelected, labelText }: ActivityDropDown
 
   return (
     <div className='flex flex-col relative' ref={dropdownRef}>
-      {labelText && <label className='absolute top-[-0.65rem] pl-[0.5rem] pr-[0.5rem] left-[1rem] bg-[white] text-[black] z-10'>{labelText}</label>}
+      {labelText && <label className='absolute top-[-0.65rem] pl-[0.5rem] pr-[0.5rem] left-[1rem] bg-[white] text-[black] z-10  dark:bg-black dark:text-gray-10'>{labelText}</label>}
       <button
         type='button'
-        className='relative border border-black h-[5.6rem] text-left text-[black] text-[1.6rem] bg-[white] pl-[1.6rem] py-[1rem] pr-[2.5rem] rounded outline-none overflow-hidden text-ellipsis'
+        className='relative border border-black h-[5.6rem] text-left text-[black] text-[1.6rem] bg-[white] pl-[1.6rem] py-[1rem] pr-[2.5rem] rounded outline-none overflow-hidden text-ellipsis dark:bg-black dark:border-white dark:text-gray-10'
         onClick={handleButtonClick}
       >
-        <div className='absolute flex flex-row w-[2.4rem] h-[2.4rem] text-[black] right-[1rem] bottom-[1.5rem]' /* onClick={handleClickDropDown} */>
+        <div className='absolute flex flex-row w-[2.4rem] h-[2.4rem] text-[black] right-[1rem] bottom-[1.5rem] dark:text-gray-10' /* onClick={handleClickDropDown} */>
           {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
         </div>
         {selectedItem}
       </button>
       {isOpen && (
-        <div className='absolute mt-[5.6rem] border-[black] border-[0.1rem] w-full rounded-md bg-white shadow-lg z-10 text-[black]'>
-          <ul className='pt-[0.25rem]'>
+        <div className='absolute mt-[5.6rem] border-[black] border-[0.1rem] w-full rounded-md bg-white shadow-lg z-10 text-[black] dark:bg-black dark:border-white text-gray-10'>
+          <ul className='pt-[0.25rem] text-[black] dark:text-gray-10'>
             {items.map((item) => (
               // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
               <li

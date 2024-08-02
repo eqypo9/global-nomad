@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Controller, Control, UseFormSetValue } from 'react-hook-form';
 import { ICON } from '@/constant';
 import Image from 'next/image';
+import DarkModeStore from '@/context/themeContext';
 
 const { star } = ICON;
 
@@ -16,7 +17,9 @@ interface StarProps {
 const RATINGS = [1, 2, 3, 4, 5];
 
 function Star({ selected = false, onClick, onMouseOut, onMouseOver }: StarProps) {
-  const StarAction = selected ? star.active.src : star.default.src;
+  const { isDarkMode } = DarkModeStore();
+  const StarAction = selected ? star.active.src : isDarkMode ? star.dark.src : star.default.src;
+
   return <Image width={56} height={56} src={StarAction} alt={star.default.alt} onMouseOver={onMouseOver} onMouseOut={onMouseOut} onClick={onClick} className='cursor-pointer' />;
 }
 

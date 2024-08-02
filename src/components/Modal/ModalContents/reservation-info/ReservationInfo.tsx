@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import ReservationCard from './ReservationCard';
 import ActivityDropDown, { ActivityType } from '@/pages/my/reservation-dashboard/ActivityDropDown';
 import IconX from 'public/icons/Icon_X_bold.svg';
+import IconX_D from 'public/icons/Icon_X_D_bold.svg';
 
 interface ReservationSchedule {
   count: { pending: number; confirmed: number; declined: number };
@@ -119,17 +120,17 @@ export default function ReservationInfo({ date, activityId, onClose }: Props) {
   }, [onClose]);
 
   return (
-    <div ref={containerRef} className='p-[2rem]'>
+    <div ref={containerRef} className='p-[2rem] dark:bg-black h-full'>
       <div className='flex flex-row justify-between'>
-        <h1 className='text-[2.8rem] font-bold text-black leading-[2.6rem]'>예약 정보</h1>
-        <button className='w-[2rem] h-[2rem]' style={{ backgroundImage: `url(${IconX.src})` }} onClick={onClose} />
+        <h1 className='text-[2.8rem] font-bold text-black leading-[2.6rem] dark:text-gray-10'>예약 정보</h1>
+        <button className='w-[2rem] h-[2rem] dark:bg-[url("/icons/Icon_X_D_bold.svg")] bg-[url("/icons/Icon_X_bold.svg")]' onClick={onClose} />
       </div>
       <ul className='flex items-start text-[2rem] font-normal text-gray-600 gap-[1.2rem] mt-[3.4rem] leading-[2.6rem] border-b border-gray-300'>
         {STATUSES.map((status) => (
           <button
             key={status}
             onClick={() => handleSelect(status)}
-            className={`mb-[-0.2rem] py-0 px-[0.4rem] pb-[1.3rem] ${
+            className={`mb-[-0.2rem] py-0 px-[0.4rem] pb-[1.3rem] dark:text-gray-10 ${
               selectedStatus === (status === '신청' ? 'pending' : status === '확정' ? 'confirmed' : 'declined') ? 'font-semibold text-darkgreen border-b-4 border-darkgreen' : ''
             }`}
             type='button' // eslint-disable-line react/button-has-type
@@ -140,8 +141,8 @@ export default function ReservationInfo({ date, activityId, onClose }: Props) {
       </ul>
       <article className='flex flex-col items-start pt-[2.5rem] mb-[6rem] gap-[3.2rem] w-full overflow-scroll'>
         <div className='w-full'>
-          <h3 className='text-[2rem] font-semibold text-black mb-[0.4rem]'>예약 날짜</h3>
-          <p className='text-[2rem] font-normal text-black mb-[1rem]'>{date}</p>
+          <h3 className='text-[2rem] font-semibold text-black mb-[0.4rem] dark:text-gray-10'>예약 날짜</h3>
+          <p className='text-[2rem] font-normal text-black mb-[1rem] dark:text-gray-10'>{date}</p>
           {filteredDropdownList.length > 0 && ( // 수정된 부분
             <ActivityDropDown
               items={filteredDropdownList}
@@ -151,8 +152,8 @@ export default function ReservationInfo({ date, activityId, onClose }: Props) {
           )}
         </div>
         <div className='overflow-auto w-full'>
-          <h3 className='text-[2rem] font-semibold text-black mb-[0.4rem]'>예약 내역</h3>
-          <ul className='flex flex-col items-start gap-[1.4rem] mt-[1.6rem] w-full max-h-[25rem] min-h-[17.5rem]'>
+          <h3 className='text-[2rem] font-semibold text-black mb-[0.4rem] dark:text-gray-10'>예약 내역</h3>
+          <ul className='flex flex-col items-start gap-[1.4rem] mt-[1.6rem] w-full max-h-[25rem] min-h-[17.5rem] dark:text-gray-10'>
             {cardList?.length !== 0 ? (
               cardList?.map((reservation: ReservationCardType) => (
                 <ReservationCard
@@ -170,7 +171,7 @@ export default function ReservationInfo({ date, activityId, onClose }: Props) {
                 />
               ))
             ) : (
-              <li className='flex flex-col justify-between items-stretch border rounded-md border-gray-300 p-[1.6rem] w-full h-[11.6rem] text-[1.8rem] font-medium text-gray-600'>
+              <li className='flex flex-col justify-between items-stretch border rounded-md border-gray-300 p-[1.6rem] w-full h-[11.6rem] text-[1.8rem] font-medium text-gray-600 dark:text-gray-10'>
                 예약 내역이 없습니다
               </li>
             )}

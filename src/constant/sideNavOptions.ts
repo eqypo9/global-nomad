@@ -34,7 +34,7 @@ const SIDE_NAV_OPTIONS = [
   {
     id: 3,
     iconSrc: {
-      seleted: ICON.calendarCheck.default.src.selected,
+      selected: ICON.calendarCheck.default.src.selected,
       noSelected: ICON.calendarCheck.default.src.noSelected,
     },
     iconAlt: ICON.calendar.default.alt,

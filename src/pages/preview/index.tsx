@@ -167,6 +167,7 @@ function Index() {
           </div>
         )}
       </div>
+      <hr />
     </>
   );
 }

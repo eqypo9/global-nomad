@@ -15,6 +15,7 @@ import IconTwitter from '../../public/icons/Icon_twitter.svg';
 import IconYoutube from '../../public/icons/Icon_youtube.svg';
 import IconStarOn from '../../public/icons/Icon_star_on.svg';
 import IconStarOff from '../../public/icons/Icon_star_off.svg';
+import IconStarOffDark from '../../public/icons/Icon_star_off_dark.svg';
 import IconTextBoxCheck from '../../public/icons/Icon_text-box_check.svg';
 import IconTextBoxCheckNoSelect from '../../public/icons/Icon_text-box_check_noSelect.svg';
 import IconMenu from '../../public/icons/Icon_meatball.svg';
@@ -47,10 +48,14 @@ import IconNotification from '../../public/icons/Icon_notification.svg';
 import IconSubtract from '../../public/icons/Icon_subtract.svg';
 import IconAdd from '../../public/icons/Icon_Add.svg';
 import IconMapMarker from '../../public/icons/Icon_map_marker.svg';
+import IconMapMarkerDarkMode from '../../public/icons/Icon_mapmarker_darkmode.svg';
 import IconClose from '../../public/icons/Icon_close.svg';
+import IconDarkBell from '../../public/icons/Icon_darkmode_bell.svg';
+import IconDownload from '../../public/icons/Icon_download.svg';
 
 import ImageLogoSmall from '../../public/images/Image_logo_small.svg';
 import ImageLogo from '../../public/images/Image_logo.svg';
+import ImageDarkLogo from '../../public/images/Image_darkmode_logo.svg';
 import ImageDefaultProfile from '../../public/images/Image_default_profile_image.png';
 import ImageNoData from '../../public/images/Image_no_data.svg';
 import ImageStreetDance from '../../public/images/Image_street_dance.jpg';
@@ -144,6 +149,10 @@ export const ICON = {
     },
     active: {
       src: IconStarOn,
+      alt: '별',
+    },
+    dark: {
+      src: IconStarOffDark,
       alt: '별',
     },
   },
@@ -340,6 +349,10 @@ export const ICON = {
       src: IconMapMarker,
       alt: '마커',
     },
+    whiteColor: {
+      src: IconMapMarkerDarkMode,
+      alt: '맵 마커 다크모드',
+    },
     active: {},
   },
   close: {
@@ -348,6 +361,18 @@ export const ICON = {
       alt: '닫기',
     },
     active: {},
+  },
+  darkModeBell: {
+    default: {
+      src: IconDarkBell,
+      alt: '다크 모드 알림',
+    },
+  },
+  download: {
+    default: {
+      src: IconDownload,
+      alt: '다운로드',
+    },
   },
 };
 
@@ -361,6 +386,10 @@ export const IMAGE = {
       src: ImageLogoSmall,
       alt: '로고',
     },
+  },
+  darkLogo: {
+    src: ImageDarkLogo,
+    alt: '다크 모드 로고',
   },
   avatar: {
     default: {
