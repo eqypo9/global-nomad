@@ -49,7 +49,7 @@ interface DropdownMenuProps {
  * />
  */
 function DropdownMenu({ type = 'gnb', dropdownMenuList, positionClasses = '' }: DropdownMenuProps): JSX.Element {
-  const baseStyles = 'absolute top-full right-0 w-[16rem] z-10 bg-white border border-gray-300 rounded-lg shadow-md';
+  const baseStyles = 'absolute top-full right-0 w-[16rem] z-10 bg-white border border-gray-300 rounded-lg shadow-md dark:bg-black';
   const typeStyles = type === 'meatball' ? 'mt-12 md:mt-8' : 'mt-16 md:mt-8';
 
   return (
@@ -58,7 +58,7 @@ function DropdownMenu({ type = 'gnb', dropdownMenuList, positionClasses = '' }: 
         <button
           key={dropdownMenu.text}
           onClick={dropdownMenu.handleClick}
-          className='flex items-center justify-center md:w-[16rem] w-[14rem] md:h-[6.2rem] h-[4.9rem] md:text-[1.8rem] text-[1.4rem] font-medium border-t border-gray-300 text-gray-800 hover:bg-gray-300 first:border-t-0 first:rounded-t-lg last:rounded-b-lg'
+          className='flex items-center justify-center md:w-[16rem] w-[14rem] md:h-[6.2rem] h-[4.9rem] md:text-[1.8rem] text-[1.4rem] font-medium border-t border-gray-300 text-gray-800 hover:bg-gray-300 first:border-t-0 first:rounded-t-lg last:rounded-b-lg dark:text-gray-10'
           type='button' // 버튼에 타입 속성 추가
         >
           {dropdownMenu.text}
