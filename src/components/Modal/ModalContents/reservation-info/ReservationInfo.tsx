@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import ReservationCard from './ReservationCard';
 import ActivityDropDown, { ActivityType } from '@/pages/my/reservation-dashboard/ActivityDropDown';
 import IconX from 'public/icons/Icon_X_bold.svg';
+import IconX_D from 'public/icons/Icon_X_D_bold.svg';
 
 interface ReservationSchedule {
   count: { pending: number; confirmed: number; declined: number };
@@ -122,7 +123,7 @@ export default function ReservationInfo({ date, activityId, onClose }: Props) {
     <div ref={containerRef} className='p-[2rem] dark:bg-black h-full'>
       <div className='flex flex-row justify-between'>
         <h1 className='text-[2.8rem] font-bold text-black leading-[2.6rem] dark:text-gray-10'>예약 정보</h1>
-        <button className='w-[2rem] h-[2rem]' style={{ backgroundImage: `url(${IconX.src})` }} onClick={onClose} />
+        <button className='w-[2rem] h-[2rem] dark:bg-[url("/icons/Icon_X_D_bold.svg")] bg-[url("/icons/Icon_X_bold.svg")]' onClick={onClose} />
       </div>
       <ul className='flex items-start text-[2rem] font-normal text-gray-600 gap-[1.2rem] mt-[3.4rem] leading-[2.6rem] border-b border-gray-300'>
         {STATUSES.map((status) => (

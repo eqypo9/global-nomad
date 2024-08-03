@@ -12,7 +12,7 @@ interface SliderProps {
 function Slider({ images, defaultImage }: SliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
+  const [initialSlide, setInitialSlide] = useState(0);
 
   const filteredImages = images.filter((image) => image !== defaultImage);
 
@@ -38,14 +38,14 @@ function Slider({ images, defaultImage }: SliderProps) {
     setCurrentSlide((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
   };
 
-  const openModal = (imageUrl: string) => {
-    setModalImageUrl(imageUrl);
+  const openModal = (index: number) => {
+    setInitialSlide(index);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setModalImageUrl(null);
+    setInitialSlide(0);
   };
 
   if (filteredImages.length <= 1) {
@@ -59,7 +59,7 @@ function Slider({ images, defaultImage }: SliderProps) {
                 alt='slide'
                 layout='fill'
                 objectFit='cover'
-                onClick={() => openModal(filteredImages[0])}  
+                onClick={() => openModal(0)}
                 className={styles.image}  
               />
             </div>
@@ -84,7 +84,7 @@ function Slider({ images, defaultImage }: SliderProps) {
               alt={`slide ${index}`}
               layout='fill'
               objectFit='cover'
-              onClick={() => openModal(imageUrl)}  
+              onClick={() => openModal(index)}
               className={styles.image}  
             />
           </div>
@@ -104,11 +104,10 @@ function Slider({ images, defaultImage }: SliderProps) {
         onClick={nextSlide}
         aria-label="Next slide"
       />
-      <ImageModal isOpen={isModalOpen} imageUrl={modalImageUrl || ''} onClose={closeModal} />
+      <ImageModal isOpen={isModalOpen} images={filteredImages} initialSlide={initialSlide} onClose={closeModal} />
     </div>
   );
 }
 
 export default Slider;
-
 /* eslint-enable */

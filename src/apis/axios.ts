@@ -1,17 +1,29 @@
 import axios from 'axios';
-
+/* eslint-disable */
 const instance = axios.create({
   baseURL: 'https://sp-globalnomad-api.vercel.app/5-7',
 });
 
 instance.interceptors.request.use((config) => {
   const newConfig = { ...config };
+  const ignoreAuthPaths = [/activity-detail\/\d+/]; // 인증을 요구하지 않을 경로 패턴
+
+  // 경로가 인증을 요구하지 않는 경로 목록에 포함되어 있는지 확인
+  const isIgnoreAuthPath = ignoreAuthPaths.some((pattern) => pattern.test(newConfig.url || ''));
+
+  if (isIgnoreAuthPath) {
+    // 임시 토큰 설정 (예: 'temporary-token' 문자열)
+    newConfig.headers.Authorization = `Bearer temporary-token`;
+    return newConfig; // 인증 없이 요청
+  }
+
   if (newConfig.headers.Authorization) return newConfig;
 
   const accessToken = localStorage.getItem('accessToken');
   if (accessToken) {
     newConfig.headers.Authorization = `Bearer ${accessToken}`;
   }
+
   return newConfig;
 });
 
@@ -71,3 +83,4 @@ instance.interceptors.response.use(
 );
 
 export default instance;
+/* eslint-enable */

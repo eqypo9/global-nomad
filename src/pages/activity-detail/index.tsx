@@ -144,7 +144,11 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
         <div className='flex items-center justify-between'>
           <h1 className='text-[3.2rem] font-bold overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.title}</h1>
           <div className='flex items-center'>
-            <div className='flex items-center'>{isUserActivity && <MeatBall editHref={`/my/activities/editactivity/${id}`} handleDelete={() => handleDeleteModal(id)} />}</div>
+            <div className='flex items-center'>
+              {isUserActivity && (
+                <MeatBall editHref={`/my/activities/editactivity/${id}`} handleDelete={() => handleDeleteModal(id)} />
+              )}
+            </div>
           </div>
         </div>
 
@@ -163,8 +167,8 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
 
         <ImageContainer mainImageUrl={activityData?.bannerImageUrl} gridImages={activityData?.subImages} />
 
-        <div className='flex flex-col gap-[1.6rem] md:flex-row md:gap-[1.6rem]'>
-          <div className='w-full md:w-[70%]'>
+        <div className={`flex flex-col gap-[1.6rem] ${isUserActivity ? 'w-full' : 'md:flex-row md:gap-[1.6rem]'}`}>
+          <div className={`w-full ${isUserActivity ? 'md:w-full' : 'md:w-[70%]'}`}>
             <div className='border-t-[0.2rem] border-gray-50 border-solid' />
             <div className='flex flex-col gap-[1.6rem]'>
               <p className='font-bold text-[2rem] pt-[4rem] dark:text-gray-10'>체험 설명</p>
@@ -182,11 +186,13 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
             <ReviewList reviews={reviewsData?.reviews} averageRating={reviewsData?.averageRating} totalCount={reviewsData?.totalCount} />
           </div>
 
-          <div className='w-full md:w-[30%] mt-[1.6rem] md:mt-0'>
-            {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} />}
-            {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} />}
-            {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} />}
-          </div>
+          {!isUserActivity && (
+            <div className='w-full md:w-[30%] mt-[1.6rem] md:mt-0'>
+              {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} />}
+              {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} />}
+              {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} />}
+            </div>
+          )}
         </div>
       </div>
     </DetailLayout>

@@ -5,10 +5,6 @@ import DarkModeStore from '@/context/themeContext';
 import Slider from '../Slider';
 import ImageModal from '../DialogsModal/ModalContent/ImageModal';
 
-// 기능 추가
-// 돋보기 아이콘 누르면 이미지 모달 띄우기
-// 저장 아이콘 누르면 이미지 저장하기
-
 /* eslint-disable */
 interface ImageContainerProps {
   mainImageUrl: string;
@@ -32,16 +28,16 @@ function ImageContainer({ mainImageUrl, gridImages }: ImageContainerProps) {
   const textColorClass = isDarkMode ? 'text-gray-10' : 'text-black';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
+  const [initialSlide, setInitialSlide] = useState(0);
 
-  const openModal = (imageUrl: string) => {
-    setModalImageUrl(imageUrl);
+  const openModal = (imageIndex: number) => {
+    setInitialSlide(imageIndex);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setModalImageUrl(null);
+    setInitialSlide(0);
   };
 
   return (
@@ -54,19 +50,19 @@ function ImageContainer({ mainImageUrl, gridImages }: ImageContainerProps) {
         </div>
       ) : (
         <>
-          <div className='relative w-1/2 h-full cursor-pointer' onClick={() => openModal(mainImageUrl)}>
+          <div className='relative w-1/2 h-full cursor-pointer' onClick={() => openModal(0)}>
             <Image src={mainImageUrl} alt='mainImage' layout='fill' objectFit='cover' className='object-cover rounded-l-[0.8rem]' />
           </div>
           <div className='relative w-1/2 grid grid-cols-2 grid-rows-2 gap-[0.8rem] rounded-r-[0.8rem] overflow-hidden'>
-            {fillGridImages.map((image) => (
-              <div key={image.id} className='relative w-full h-full cursor-pointer' onClick={() => openModal(image.imageUrl)}>
+            {fillGridImages.map((image, index) => (
+              <div key={image.id} className='relative w-full h-full cursor-pointer' onClick={() => openModal(index + 1)}>
                 <Image src={image.imageUrl} alt={`gridImage ${image.id}`} layout='fill' objectFit='cover' />
               </div>
             ))}
           </div>
         </>
       )}
-      <ImageModal isOpen={isModalOpen} imageUrl={modalImageUrl || ''} onClose={closeModal} />
+      <ImageModal isOpen={isModalOpen} images={images} initialSlide={initialSlide} onClose={closeModal} />
     </div>
   );
 }
