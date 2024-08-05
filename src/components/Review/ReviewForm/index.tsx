@@ -18,8 +18,6 @@ interface Props {
   refreshReservationList: (filterOption: string | undefined) => Promise<void>;
 }
 
-// 1.리뷰 리스트 리액트쿼리 마이그레이션
-
 export default function ReviewForm({ id, onClickCloseModal, currentFilterOption, refreshReservationList }: Props) {
   // const queryClient = useQueryClient();
   const { control, handleSubmit, setValue, register } = useForm<FormData>({

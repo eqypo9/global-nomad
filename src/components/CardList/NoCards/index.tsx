@@ -1,12 +1,13 @@
 import Image from 'next/image';
 
 interface INoCards {
-  pageType: 'activity' | 'reservation';
+  pageType: 'activity' | 'reservation' | 'dashboard';
 }
 
 function getNoItemText(pageType: INoCards['pageType']) {
   switch (pageType) {
     case 'activity':
+    case 'dashboard':
       return '아직 등록한 체험이 없어요';
     case 'reservation':
       return '아직 예약한 내역이 없어요';
