@@ -34,7 +34,17 @@ function CustomCalendar({ selectedDate, onChange, reservedDates }: CustomCalenda
 
   return (
     <div className='calendar-container'>
-      <Calendar onChange={handleDateChange} value={selectedDate} minDate={addDays(new Date(), 1)} locale='en-US' className='custom-calendar' tileClassName={tileClassName} />
+      <Calendar
+        onChange={handleDateChange}
+        value={selectedDate}
+        minDate={addDays(new Date(), 1)}
+        locale='en-US'
+        className='custom-calendar'
+        tileClassName={tileClassName}
+        prev2Label={null}  
+        next2Label={null}  
+        showNeighboringMonth={false}
+      />
     </div>
   );
 }

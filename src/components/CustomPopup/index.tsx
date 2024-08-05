@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { format } from 'date-fns';
 import { ICON } from '@/constant';
 import { Schedule } from '@/utils/types/schedule';
+import DarkModeStore from '@/context/themeContext';
 import Button from '../Button';
 import ReservationContent from '../ReservationContent';
-import DarkModeStore from '@/context/themeContext';
 
 /* eslint-disable */
 
