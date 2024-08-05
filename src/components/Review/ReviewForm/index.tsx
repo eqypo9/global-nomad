@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import postMyReview from '@/apis/post/postMyReview';
 
 import Button from '@/components/Button';
+import useModal from '@/hooks/useModal';
 import RatingInput from '../RatingInput';
 
 interface FormData {
@@ -24,6 +25,7 @@ export default function ReviewForm({ id, onClickCloseModal, currentFilterOption,
   const { control, handleSubmit, setValue, register } = useForm<FormData>({
     defaultValues: { rating: 0, content: '' },
   });
+  const { openModal } = useModal();
 
   const postReviewMutation = useMutation({
     mutationFn: (data: FormData) => postMyReview(id, data),
@@ -34,7 +36,11 @@ export default function ReviewForm({ id, onClickCloseModal, currentFilterOption,
     },
   });
 
-  const submit: SubmitHandler<FormData> = (data) => {
+  const submit: SubmitHandler<FormData> = (data): void => {
+    if (data.rating === 0) {
+      openModal({ btnName: ['확인'], modalType: 'alert', content: '별점을 선택해 주세요.' });
+      return;
+    }
     postReviewMutation.mutate(data);
   };
 
