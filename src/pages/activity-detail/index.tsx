@@ -184,7 +184,7 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
 
         <div className={`flex flex-col gap-[1.6rem] ${isUserActivity ? 'w-full' : 'md:flex-row md:gap-[1.6rem]'}`}>
           <div className={`w-full ${isUserActivity ? 'md:w-full' : 'md:w-[70%]'}`}>
-            <div className='border-t-[0.2rem] border-gray-50 border-solid mt-[8rem]' />
+            <div className={`border-t-[0.2rem] border-gray-50 border-solid ${isMobile ? 'hidden' : 'mt-[8rem]'}`} />
             <div className='flex flex-col gap-[1.6rem]'>
               <p className='font-bold text-[2rem] pt-[4rem] dark:text-gray-10'>체험 설명</p>
               <ExpandableText text={activityData?.description || ''} />
