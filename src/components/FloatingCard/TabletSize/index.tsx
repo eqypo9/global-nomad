@@ -47,7 +47,7 @@ function TabletCard({ schedules, price, userData }: TabletCardProps) {
 
   return (
     <div ref={cardRef} className='sticky top-[8rem] z-10'>
-      <div className={`w-full max-w-[38.4rem] h-auto bg-white border-[0.2rem] border-gray-50 rounded-[0.8rem] shadow-lg p-[1rem] mx-auto dark:bg-black ${isPopupOpen ? 'opacity-50' : ''}`}>
+      <div className={`w-full max-w-[38.4rem] h-auto bg-white border-[0.2rem] border-gray-50 rounded-[0.8rem] shadow-lg p-[1rem] mx-auto mt-[8rem] dark:bg-black ${isPopupOpen ? 'opacity-50' : ''}`}>
         <div className='px-[2.4rem]'>
           <div className='flex flex-wrap items-center gap-[0.8rem] mb-[1.6rem]'>
             <p className='text-[2.8rem] font-bold dark:text-gray-10'>₩ {formattedPrice}</p>

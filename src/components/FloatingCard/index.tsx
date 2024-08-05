@@ -29,7 +29,7 @@ function FloatingCard({ schedules, price, userData }: FloatingCardProps) {
   };
 
   return (
-    <div className='w-full max-w-[38.4rem] h-auto bg-white border-[0.2rem] border-gray-50 shadow-lg rounded-[0.8rem] p-[1rem] mx-auto dark:bg-black'>
+    <div className='w-full max-w-[38.4rem] h-auto bg-white border-[0.2rem] border-gray-50 shadow-lg rounded-[0.8rem] p-[1rem] mt-[8rem] mx-auto dark:bg-black'>
       <div className='px-[2.4rem]'>
         <div className='flex flex-wrap items-center gap-[0.8rem] mb-[1.6rem]'>
           <p className='text-[2.8rem] font-bold dark:text-gray-10'>₩ {formattedPrice}</p>
