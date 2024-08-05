@@ -6,10 +6,17 @@ import { queryKey } from '@/apis/queryKey';
 import deleteNotifications from '@/apis/delete/deleteNotification';
 import useCustomInfiniteQuery from '@/hooks/useCustomInfiniteQuery';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import DarkModeStore from '@/context/themeContext';
 import getTimeAgo from '../utils/getTimeAgo';
+
 /* eslint-disable */
 const { ellipse, xMedium } = ICON;
+
+interface NotificationsProps {
+  onClose: () => void;
+  notificationButtonRef: React.RefObject<HTMLButtonElement>;
+}
 
 /**
  * Notifications component to display and manage user notifications.
@@ -19,9 +26,30 @@ const { ellipse, xMedium } = ICON;
  *
  * @returns {JSX.Element} The rendered Notifications component.
  */
-export default function Notifications() {
+export default function Notifications({ onClose, notificationButtonRef }: NotificationsProps) {
   const queryClient = useQueryClient();
   const observerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { isDarkMode } = DarkModeStore();
+
+  // 외부 클릭 감지용 useEffect 추가
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node) &&
+        notificationButtonRef.current &&
+        !notificationButtonRef.current.contains(event.target as Node) // 알림 버튼이 클릭된 것이 아닌 경우에만 닫힘
+      ) {
+        onClose();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose, notificationButtonRef]);
 
   // Fetch notifications with infinite scrolling
   const {
@@ -72,7 +100,7 @@ export default function Notifications() {
    * @param {string} context - The content of the notification.
    * @returns {JSX.Element} The rendered description.
    */
-  const description = (context: string) => <div className='text-[1.4rem] font-normal text-black leading-[2.2rem]' dangerouslySetInnerHTML={{ __html: highlightContent(context) }} />;
+  const description = (context: string) => <div className='text-[1.4rem] font-normal text-black leading-[2.2rem] dark:text-gray-10' dangerouslySetInnerHTML={{ __html: highlightContent(context) }} />;
 
   // Use intersection observer for infinite scrolling
   useIntersectionObserver({
@@ -83,18 +111,21 @@ export default function Notifications() {
   });
 
   return (
-    <>
-      <h2 className='text-[2rem] font-bold text-black'>알림 {notificationsData?.totalCount}개</h2>
+    <div ref={containerRef} className='absolute w-[36.8rem] p-[2rem] bg-green-light rounded-[0.8rem] h-[33.7rem] bottom-[-34rem] right-[10%] z-60 dark:bg-[black]'>
+      <div className='flex flex-row justify-between '>
+        <h2 className='text-[2rem] font-bold text-black dark:text-gray-10'>알림 {notificationsData?.totalCount}개</h2>
+        <button onClick={onClose} className='bg-[url("/icons/Icon_X_bold.svg")] w-[2rem] h-[2rem] dark:bg-[url("/icons/Icon_X_D_bold.svg")]' />
+      </div>
       <ul className={`flex flex-col items-start gap-2 mt-4 font-['Spoqa Han Sans Neo'] w-[32.8rem] h-[27rem] overflow-scroll ${notificationsData?.totalCount === 0 ? 'hidden' : ''}`}>
         {!isSuccess || notificationsData.totalCount === 0 ? (
-          <h3 className='text-[1.8rem] font-semibold text-gray-600'>알림이 없습니다.</h3>
+          <h3 className='text-[1.8rem] font-semibold text-gray-600 dark:text-gray-10'>알림이 없습니다.</h3>
         ) : (
           notificationsData?.pages.map((notification: any) => (
-            <li key={notification.id} className='flex flex-col items-start gap-1 p-4 bg-white w-full rounded-md border border-gray-200'>
+            <li key={notification.id} className='flex flex-col items-start gap-1 p-4 bg-white w-full rounded-md border border-gray-200 dark:bg-black'>
               <div className='flex justify-between items-center w-full'>
                 <Image
-                  src={ellipse.default.src}
-                  alt={ellipse.default.alt}
+                  src={isDarkMode ? ICON.ellipse.active.src : ICON.ellipse.default.src} // 다크 모드 이미지 선택
+                  alt={isDarkMode ? ICON.ellipse.active.src : ICON.ellipse.default.alt}
                   width={5}
                   height={5}
                   className={`${notification.content.includes('거절') ? 'filter-rejection' : ''} ${notification.content.includes('승인') ? 'filter-approval' : ''}`}
@@ -104,7 +135,7 @@ export default function Notifications() {
                 </button>
               </div>
               <h2>{description(notification.content)}</h2>
-              <p className='text-[1.2rem] font-normal text-gray-400'>{getTimeAgo(notification.createdAt)}</p>
+              <p className='text-[1.2rem] font-normal text-gray-400 dark:text-gray-10'>{getTimeAgo(notification.createdAt)}</p>
             </li>
           ))
         )}
@@ -112,7 +143,7 @@ export default function Notifications() {
           &nbsp;
         </div>
       </ul>
-    </>
+    </div>
   );
 }
 /* eslint-enable */
