@@ -41,6 +41,7 @@ import IconRightArrowWhite from '../../public/icons/Icon_right_arrow-white.svg';
 import IconLeftArrowWhite from '../../public/icons/Icon_left_arrow-white.svg';
 import IconPen from '../../public/icons/Icon_pen.svg';
 import IconEllipse from '../../public/icons/Icon_Ellipse.svg';
+import IconEllipse_D from '../../public/icons/Icon_Ellipse_D.svg';
 import IconFilter from '../../public/icons/Icon_filter.svg';
 import IconCheck from '../../public/icons/Icon_check.svg';
 import IconLoading from '../../public/icons/Icon_loading.svg';
@@ -302,7 +303,10 @@ export const ICON = {
       src: IconEllipse,
       alt: '점',
     },
-    active: {},
+    active: {
+      src: IconEllipse_D, // 다크 모드 이미지
+      alt: '점 다크 모드',
+    },
   },
   filter: {
     default: {

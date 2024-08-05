@@ -46,7 +46,7 @@ function Index() {
 
   return (
     <MyLayout>
-      <div className='flex w-full flex-row py-[1.6rem] px-[1.6rem] gap-[4rem] h-[130rem] justify-center'>
+      <div className='flex w-full flex-row py-[1.6rem] px-[1.6rem] gap-[4rem] justify-center'>
         <div className='w-[100%] max-w-[80rem] max-h-[81.3rem]'>
           <h1 className='text-[#000] text-[3.2rem] font-[700] mb-[4.2rem] dark:text-gray-10 '>예약 현황</h1>
           {error && <p className='text-red-500'>{error}</p>}
@@ -58,7 +58,7 @@ function Index() {
               </div>
             </>
           ) : (
-            <NoCards />
+            <NoCards pageType='dashboard' />
           )}
         </div>
       </div>
