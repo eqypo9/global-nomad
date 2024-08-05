@@ -134,7 +134,7 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
   }
 
   const isUserActivity = activityData.userId === userData.id;
-  const hasReviews = activityData.reviewCount > 0; // 리뷰가 있는지 확인
+  const hasReviews = activityData.reviewCount > 0;
 
   return (
     <DetailLayout>
@@ -170,8 +170,7 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
               className={`text-[1.4rem] text-black dark:text-gray-10 cursor-pointer relative inline-block ${!hasReviews ? '' : 'border-b-[0.1rem] border-black dark:border-gray-10'}`}
               onClick={handleNavReview}
             >
-              <span className={`absolute left-0 bottom-0 w-full ${!hasReviews ? '' : 'border-b-[0.1rem] border-black dark:border-gray-10'}`} />
-              ({activityData?.reviewCount})
+              <span className={`absolute left-0 bottom-0 w-full ${!hasReviews ? '' : 'border-b-[0.1rem] border-black dark:border-gray-10'}`} />({activityData?.reviewCount})
             </p>
           </div>
 

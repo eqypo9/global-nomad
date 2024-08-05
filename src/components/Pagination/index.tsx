@@ -64,12 +64,7 @@ function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) 
           }`}
           aria-label='Previous Page'
         >
-          <Image
-            src={isDarkMode ? ICON.leftArrow.whiteColor.src : ICON.leftArrow.default.src}
-            alt={isDarkMode ? ICON.leftArrow.whiteColor.alt : ICON.leftArrow.default.alt}
-            width={20}
-            height={20}
-          />
+          <Image src={isDarkMode ? ICON.leftArrow.whiteColor.src : ICON.leftArrow.default.src} alt={isDarkMode ? ICON.leftArrow.whiteColor.alt : ICON.leftArrow.default.alt} width={20} height={20} />
         </button>
       </div>
 
