@@ -203,9 +203,9 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
           </div>
           {!isUserActivity && (
             <div className='w-full md:w-[30%] mt-[1.6rem] md:mt-0'>
-              {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} />}
-              {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} />}
-              {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} />}
+              {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} userData={userData} />}
+              {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} userData={userData} />}
+              {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} userData={userData} />}
             </div>
           )}
         </div>

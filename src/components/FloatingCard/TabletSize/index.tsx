@@ -7,17 +7,20 @@ import CustomPopup from '@/components/CustomPopup';
 import useReservation from '@/hooks/useReservation';
 import usePopup from '@/hooks/usePopup';
 import useFormatPrice from '@/hooks/useFormatPrice';
+import { useAuthRedirect } from '@/hooks/useAuthRedirect';
 
 /* eslint-disable */
 interface TabletCardProps {
   schedules: Schedule[];
   price: number;
+  userData: any;
 }
 
-function TabletCard({ schedules, price }: TabletCardProps) {
+function TabletCard({ schedules, price, userData }: TabletCardProps) {
   const formattedPrice = useFormatPrice(price);
   const cardRef = useRef<HTMLDivElement | null>(null);
   const { selectedDate, selectedTime, participants, handleDateChange, handleParticipantsChange, handleTimeChange, handleReservation, isButtonDisabled, totalCost } = useReservation(schedules, price);
+  const redirectToSignIn = useAuthRedirect();
 
   const [selectedTimeText, setSelectedTimeText] = useState<string>('날짜 선택하기');
   const { isPopupOpen, openPopup, closePopup, popupStyles, setPopupPosition } = usePopup(false);
@@ -32,6 +35,14 @@ function TabletCard({ schedules, price }: TabletCardProps) {
       setSelectedTimeText(newTimeText);
     }
     closePopup();
+  };
+
+  const handleReservationClick = () => {
+    if (!userData) {
+      redirectToSignIn();
+      return;
+    }
+    handleReservation();
   };
 
   return (
@@ -64,7 +75,7 @@ function TabletCard({ schedules, price }: TabletCardProps) {
           </div>
 
           <div className='flex justify-center'>
-            <Button text='예약하기' color='black' cssName='w-[33.6rem] h-[4.6rem] text-[1.6rem] text-bold' onClick={handleReservation} disabled={isButtonDisabled} />
+            <Button text='예약하기' color='black' cssName='w-[33.6rem] h-[4.6rem] text-[1.6rem] text-bold' onClick={handleReservationClick} disabled={isButtonDisabled} />
           </div>
           <div className='border border-solid border-gray-50 mt-[1.6rem]' />
           <div className='flex flex-wrap justify-between my-[1.8rem]'>

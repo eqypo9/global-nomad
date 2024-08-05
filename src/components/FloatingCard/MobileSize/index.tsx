@@ -7,17 +7,19 @@ import { Schedule } from '@/utils/types/schedule';
 import useReservation from '@/hooks/useReservation';
 import usePopup from '@/hooks/usePopup';
 import useFormatPrice from '@/hooks/useFormatPrice';
+import { useAuthRedirect } from '@/hooks/useAuthRedirect';
 
 /* eslint-disable */
 interface MobileCardProps {
   price: number;
   schedules: Schedule[];
+  userData: any;
 }
 
-function MobileCard({ price, schedules }: MobileCardProps) {
+function MobileCard({ price, schedules, userData }: MobileCardProps) {
   const formattedPrice = useFormatPrice(price);
   const { selectedDate, selectedTime, participants, handleDateChange, handleParticipantsChange, handleTimeChange, handleReservation, isButtonDisabled, totalCost } = useReservation(schedules, price);
-
+  const redirectToSignIn = useAuthRedirect();
   const [isParticipantsPopupOpen, setIsParticipantsPopupOpen] = useState(false);
   const [selectedTimeText, setSelectedTimeText] = useState<string>('날짜 선택하기');
   const [participantsText, setParticipantsText] = useState<string>('1명');
@@ -52,6 +54,14 @@ function MobileCard({ price, schedules }: MobileCardProps) {
     closePopup();
   };
 
+  const handleReservationClick = () => {
+    if (!userData) {
+      redirectToSignIn();
+      return;
+    }
+    handleReservation();
+  };
+
   return (
     <>
       <div className='fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full bg-white border-2 border-solid border-gray-50 rounded-lg shadow-md flex flex-row items-center justify-between p-4 z-50'>
@@ -67,7 +77,7 @@ function MobileCard({ price, schedules }: MobileCardProps) {
           </p>
         </div>
         <div className='flex flex-col items-center'>
-          <Button text='예약하기' color='black' cssName='w-[10.6rem] h-[4.8rem] text-[1.6rem] font-bold' onClick={handleReservation} disabled={isButtonDisabled} />
+          <Button text='예약하기' color='black' cssName='w-[10.6rem] h-[4.8rem] text-[1.6rem] font-bold' onClick={handleReservationClick} disabled={isButtonDisabled} />
         </div>
       </div>
 
