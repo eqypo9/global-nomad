@@ -9,6 +9,7 @@ declare global {
 
 interface MapProps {
   address: string;
+  // building?: string; => 없을 경우 인풋창 안보이게 또는 건물명 없음으로 뜨게 하기
 }
 
 function Map({ address }: MapProps) {

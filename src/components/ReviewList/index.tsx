@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { ICON } from '@/constant/importImages';
-import Pagination from '@/components/Pagination';
-import ReviewItem from './ReviewItem';
 import { Review } from '@/utils/types/reviews';
+import ReviewItem from './ReviewItem';
 
 interface ReviewListProps {
   reviews: Review[];
@@ -12,21 +11,6 @@ interface ReviewListProps {
 }
 
 function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const reviewsPerPage = 3;
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const sortedReviews = [...reviews].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-
-  const startIndex = (currentPage - 1) * reviewsPerPage;
-  const endIndex = startIndex + reviewsPerPage;
-  const currentReviews = sortedReviews.slice(startIndex, endIndex);
-
-  const totalPages = Math.ceil(totalCount / reviewsPerPage);
-
   const getRating = (rating: number): string => {
     if (rating >= 4 && rating <= 5) return '매우 만족';
     if (rating >= 3 && rating < 4) return '만족';
@@ -56,15 +40,7 @@ function ReviewList({ reviews, averageRating, totalCount }: ReviewListProps) {
           <p className='text-nomad-black text-[1.6rem] dark:text-gray-10'>등록된 후기가 없습니다.</p>
         </div>
       ) : (
-        <>
-          {currentReviews.map((review, index) => (
-            <ReviewItem key={review.id} review={review} isLast={index === currentReviews.length - 1} />
-          ))}
-
-          <div className='mt-[7.2rem] mb-[41rem]'>
-            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-          </div>
-        </>
+        reviews.map((review, index) => <ReviewItem key={review.id} review={review} isLast={index === reviews.length - 1} />)
       )}
     </>
   );
