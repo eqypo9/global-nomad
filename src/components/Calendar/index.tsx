@@ -41,8 +41,8 @@ function CustomCalendar({ selectedDate, onChange, reservedDates }: CustomCalenda
         locale='en-US'
         className='custom-calendar'
         tileClassName={tileClassName}
-        prev2Label={null}  
-        next2Label={null}  
+        prev2Label={null}
+        next2Label={null}
         showNeighboringMonth={false}
       />
     </div>

@@ -42,7 +42,7 @@ function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) 
         <button
           type='button'
           onClick={() => onPageChange(pageNumber)}
-          disabled={currentPage === 1}
+          disabled={currentPage === pageNumber}
           className={`flex justify-center items-center p-[1.7rem] gap-[1rem] w-[4rem] h-[4rem] md:w-[5.5rem] md:h-[5.5rem] rounded-3xl border ${buttonClasses} hover:bg-green-dark dark:hover:bg-white hover:text-white dark:hover:text-[#000] cursor-pointer text-[1.6rem]`}
           aria-label={`Page ${pageNumber}`}
         >
@@ -64,9 +64,12 @@ function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) 
           }`}
           aria-label='Previous Page'
         >
-          <div className='absolute inset-0 flex justify-center items-center'>
-            <Image src={isDarkMode ? ICON.leftArrow.whiteColor.src : ICON.leftArrow.default.src} alt={isDarkMode ? ICON.leftArrow.whiteColor.alt : ICON.leftArrow.default.alt} width={20} height={20} />
-          </div>
+          <Image
+            src={isDarkMode ? ICON.leftArrow.whiteColor.src : ICON.leftArrow.default.src}
+            alt={isDarkMode ? ICON.leftArrow.whiteColor.alt : ICON.leftArrow.default.alt}
+            width={20}
+            height={20}
+          />
         </button>
       </div>
 
@@ -82,14 +85,12 @@ function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) 
           }`}
           aria-label='Next Page'
         >
-          <div className='absolute inset-0 flex justify-center items-center'>
-            <Image
-              src={isDarkMode ? ICON.rightArrow.whiteColor.src : ICON.rightArrow.default.src}
-              alt={isDarkMode ? ICON.rightArrow.whiteColor.alt : ICON.rightArrow.default.alt}
-              width={20}
-              height={20}
-            />
-          </div>
+          <Image
+            src={isDarkMode ? ICON.rightArrow.whiteColor.src : ICON.rightArrow.default.src}
+            alt={isDarkMode ? ICON.rightArrow.whiteColor.alt : ICON.rightArrow.default.alt}
+            width={20}
+            height={20}
+          />
         </button>
       </div>
     </div>

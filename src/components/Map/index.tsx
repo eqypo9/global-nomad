@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import KAKAO_MAP_APP_KEY from '@/constant/constant';
 
+/* eslint-disable */
 declare global {
   interface Window {
     kakao: any;
@@ -9,11 +10,11 @@ declare global {
 
 interface MapProps {
   address: string;
-  // building?: string; => 없을 경우 인풋창 안보이게 또는 건물명 없음으로 뜨게 하기
 }
 
 function Map({ address }: MapProps) {
   const [loading, setLoading] = useState(true);
+  const [infoWindowContent, setInfoWindowContent] = useState('건물명 없음');
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -43,12 +44,17 @@ function Map({ address }: MapProps) {
             });
             marker.setMap(map);
 
+            const buildingName = result[0].road_address?.building_name || '건물명 없음';
+
             const infowindow = new window.kakao.maps.InfoWindow({
-              content: `<div style="width:150px;font-size:14px;text-align:center;padding:6px 0;border-color:#000000;">${result[0].road_address.building_name}</div>`,
+              content: `<div style="width:150px;font-size:14px;text-align:center;padding:6px 0;border-color:#000000;">${buildingName}</div>`,
             });
             infowindow.open(map, marker);
 
             map.setCenter(coords);
+            setLoading(false);
+          } else {
+            setInfoWindowContent('주소를 찾을 수 없습니다');
             setLoading(false);
           }
         });
@@ -71,3 +77,4 @@ function Map({ address }: MapProps) {
 }
 
 export default Map;
+/* eslint-enable */
