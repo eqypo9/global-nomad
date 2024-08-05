@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { ICON } from '@/constant';
 import Button from '@/components/Button';
 import styles from '@/styles/slider.module.css';
+import DarkModeStore from '@/context/themeContext';
 
 /* eslint-disable */
 
@@ -20,6 +21,9 @@ interface ImageModalProps {
 
 function ImageModal({ isOpen, images, onClose, initialSlide = 0 }: ImageModalProps) {
   const [activeSlide, setActiveSlide] = useState(initialSlide);
+  const { isDarkMode } = DarkModeStore((state) => state);
+
+  const defaultImage = '/images/logo_big.png';
 
   useEffect(() => {
     if (isOpen) {
@@ -45,10 +49,12 @@ function ImageModal({ isOpen, images, onClose, initialSlide = 0 }: ImageModalPro
   const modalWidth = 800;
   const modalHeight = 600;
 
+  const filteredImages = images.filter((image) => image !== defaultImage);
+
   return (
     <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50' onClick={handleClose}>
       <div
-        className='relative bg-white border rounded-lg p-[1.6rem] flex flex-col items-center'
+        className='relative bg-white border rounded-lg p-[1.6rem] flex flex-col items-center dark:bg-black'
         style={{
           width: `${modalWidth}px`,
           height: `${modalHeight}px`,
@@ -58,7 +64,7 @@ function ImageModal({ isOpen, images, onClose, initialSlide = 0 }: ImageModalPro
         onClick={(e) => e.stopPropagation()}
       >
         <button type='button' onClick={handleClose} className='z-10 absolute top-4 right-4 p-2 cursor-pointer'>
-          <Image src={ICON.close.default.src} alt={ICON.close.default.alt} width={40} height={40} />
+          <Image src={isDarkMode ? ICON.darkClose.default.src : ICON.close.default.src} alt={isDarkMode ? ICON.darkClose.default.alt : ICON.close.default.alt} width={40} height={40} />
         </button>
         <div className='relative w-full h-full flex items-center justify-center overflow-hidden'>
           <Swiper
@@ -70,7 +76,7 @@ function ImageModal({ isOpen, images, onClose, initialSlide = 0 }: ImageModalPro
             onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
             className={`w-full h-full ${styles.customSwiper}`}
           >
-            {images.map((imageUrl, index) => (
+            {filteredImages.map((imageUrl, index) => (
               <SwiperSlide key={index}>
                 <div className='relative w-full h-full'>
                   <Image src={imageUrl} alt={`Slide ${index}`} layout='fill' objectFit='contain' className='rounded-md' />
@@ -79,7 +85,7 @@ function ImageModal({ isOpen, images, onClose, initialSlide = 0 }: ImageModalPro
             ))}
           </Swiper>
         </div>
-        <Button color='black' text='원본 다운로드' cssName='rounded-[0.8rem] mt-[1.6rem] text-[1.6rem]' onClick={() => handleDownload(images[activeSlide])} />
+        <Button color='black' text='원본 다운로드' cssName='rounded-[0.8rem] mt-[1.6rem] text-[1.6rem]' onClick={() => handleDownload(filteredImages[activeSlide])} />
       </div>
     </div>
   );

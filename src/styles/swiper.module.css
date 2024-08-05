@@ -12,9 +12,20 @@
   transition: color 0.3s ease; 
 }
 
+.dark .swiper-button-prev,
+.dark .swiper-button-next {
+  color: #fafafa !important;
+  transition: color 0.3s ease; 
+}
+
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   color: #000 !important; 
+}
+
+.dark .swiper-button-prev:hover,
+.dark .swiper-button-next:hover {
+  color: #fff !important; 
 }
 
 .swiper-pagination-bullet {
