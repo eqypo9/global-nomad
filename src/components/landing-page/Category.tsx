@@ -15,9 +15,9 @@ export default function Category({ category, isActive = false, onClick }: Catego
     <div
       className={`flex items-center justify-center w-fit flex-shrink-0 
 		md:px-[3rem] md:py-[1.6rem] md:text-[1.8rem] px-[2rem] py-[1rem] text-[1.6rem] gap-[1rem] rounded-[1.5rem] 
-		border border-[#0b3b2d] font-medium  
+		border border-[#0b3b2d] dark:border-white font-medium  
 		text-center cursor-pointer 
-		${isActive ? 'bg-[#0b3b2d] text-white hover:bg-[#112211] ' : 'bg-white text-[#0b3b2d] hover:bg-[#eee] '}`}
+		${isActive ? 'bg-[#0b3b2d] text-white hover:bg-[#112211] ' : ' text-[#0b3b2d] dark:text-white hover:bg-[#eee] '}`}
       onClick={handleClick}
     >
       {category}
