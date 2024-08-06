@@ -98,7 +98,7 @@ export default function Banner() {
 
   return (
     <>
-      <div className='relative flex items-center w-full overflow-hidden'>
+      <div className='relative flex items-center w-full overflow-hidden ml-[2.4rem]'>
         <div className='relative w-full'>
           <button
             onClick={() => handleSwipeClick(-1)}

@@ -26,7 +26,7 @@ export default function ActivitiesList({ category = '전체', activities, search
         </>
       ) : (
         <>
-          <h2 className='flex justify-between items-center w-full text-3xl font-bold text-[#1b1b1b]'>
+          <h2 className='flex justify-between items-center w-full text-3xl font-bold text-[#1b1b1b] dark:text-white'>
             {category || '전체 체험'}
             <PostActivityButton />
           </h2>

@@ -1,7 +1,5 @@
-import { ICON } from '@/constant';
 import useResponsiveSize from '@/hooks/useResponsiveSize';
 import useCategoryFilterStore from '@/utils/landing-page/useCategoryFilterStore';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Filter from './Filter';
 import Category from './Category';
@@ -67,20 +65,6 @@ export default function CategoryFilter() {
             ))}
           </ul>
         </div>
-        {categoryXState !== 0 && (
-          <div className='absolute w-[8rem] h-[5.5rem] left-0 rotate-180 md:flex md:justify-end md:items-center md:bg-gradient-to-l md:from-[#f5f5f5]'>
-            <button onClick={() => handleButtonClick(-1)} className='hidden md:flex'>
-              <Image src={ICON.rightArrow.default.src} alt={ICON.rightArrow.default.alt} height={32} width={32} />
-            </button>
-          </div>
-        )}
-        {categoryXState < translateSize && (
-          <div className='absolute w-[8rem] h-[5.5rem] right-0 md:flex md:justify-end md:items-center md:bg-gradient-to-l md:from-[#f5f5f5]'>
-            <button onClick={() => handleButtonClick(1)} className='hidden md:flex'>
-              <Image src={ICON.rightArrow.default.src} alt={ICON.rightArrow.default.alt} height={32} width={32} />
-            </button>
-          </div>
-        )}
       </div>
       <div>
         <Filter type='price' filterState={filterState} setFilterState={setFilterState} />
