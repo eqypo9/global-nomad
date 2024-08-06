@@ -1,4 +1,3 @@
-
 import useResponsiveSize from '@/hooks/useResponsiveSize';
 import useCategoryFilterStore from '@/utils/landing-page/useCategoryFilterStore';
 import { useEffect, useRef, useState } from 'react';
