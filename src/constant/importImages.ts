@@ -51,6 +51,7 @@ import IconAdd from '../../public/icons/Icon_Add.svg';
 import IconMapMarker from '../../public/icons/Icon_map_marker.svg';
 import IconMapMarkerDarkMode from '../../public/icons/Icon_mapmarker_darkmode.svg';
 import IconClose from '../../public/icons/Icon_close.svg';
+import IconDarkClose from '../../public/icons/Icon_close_dark_mode.svg';
 import IconDarkBell from '../../public/icons/Icon_darkmode_bell.svg';
 import IconDownload from '../../public/icons/Icon_download.svg';
 
@@ -365,6 +366,12 @@ export const ICON = {
       alt: '닫기',
     },
     active: {},
+  },
+  darkClose: {
+    default: {
+      src: IconDarkClose,
+      alt: '다크 모드 닫기',
+    },
   },
   darkModeBell: {
     default: {

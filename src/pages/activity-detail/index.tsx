@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -17,46 +17,26 @@ import useModal from '@/hooks/useModal';
 import ExpandableText from '@/components/ExpandableText';
 import { auth } from '@/utils/auth/api';
 import DarkModeStore from '@/context/themeContext';
+import ReviewPagination from '@/components/Pagination/ReviewPagination';
 import DetailLayout from './layout';
 
 /* eslint-disable */
 export interface ActivityDetailsProps {
   id: number;
+  page: number;
 }
 
-function ActivityDetail({ id }: ActivityDetailsProps) {
+function ActivityDetail({ id, page }: ActivityDetailsProps) {
   const router = useRouter();
   const [isTablet, setIsTablet] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [activityIdToDelete, setActivityIdToDelete] = useState<number | null>(null);
-
   const { openModal, closeModal } = useModal();
   const { isDarkMode } = DarkModeStore((state) => state);
 
-  const handleDeleteModal = (activityId: number) => {
-    setActivityIdToDelete(activityId);
-    openModal({
-      modalType: 'confirm',
-      content: '이 체험을 삭제하시겠습니까?',
-      btnName: ['취소', '삭제하기'],
-      callBackFnc: async () => {
-        if (activityIdToDelete !== null) {
-          try {
-            const response = await deleteActivity(activityIdToDelete);
-            if (response) {
-              router.push('/');
-            } else {
-              alert('활동 삭제 실패');
-            }
-          } catch (error) {
-            console.error('활동 삭제 실패:', error);
-            alert('활동 삭제 실패. 나중에 다시 시도해주세요.');
-          }
-        }
-        closeModal();
-      },
-    });
-  };
+  const [currentPage, setCurrentPage] = useState<number>(page);
+  const itemsPerPage = 3;
+  const reviewListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,7 +46,6 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
     };
 
     handleResize();
-
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -93,14 +72,48 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
     error: reviewsError,
     isLoading: isLoadingReviews,
   } = useQuery<GetReviewsForActivityResponse>({
-    queryKey: ['activityReviews', id],
+    queryKey: ['activityReviews', id, currentPage],
     queryFn: () =>
       getReviewsForActivity({
         id,
-        page: 1,
-        size: 3,
+        page: currentPage,
+        size: itemsPerPage,
       }),
+    enabled: currentPage > 0,
   });
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleNavReview = () => {
+    reviewListRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleDeleteModal = (activityId: number) => {
+    setActivityIdToDelete(activityId);
+    openModal({
+      modalType: 'confirm',
+      content: '이 체험을 삭제하시겠습니까?',
+      btnName: ['취소', '삭제하기'],
+      callBackFnc: async () => {
+        if (activityIdToDelete !== null) {
+          try {
+            const response = await deleteActivity(activityIdToDelete);
+            if (response) {
+              router.push('/');
+            } else {
+              alert('활동 삭제 실패');
+            }
+          } catch (error) {
+            console.error('활동 삭제 실패:', error);
+            alert('활동 삭제 실패. 나중에 다시 시도해주세요.');
+          }
+        }
+        closeModal();
+      },
+    });
+  };
 
   if (isLoadingActivity || isLoadingReviews) {
     return <div>Loading...</div>;
@@ -121,6 +134,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
   }
 
   const isUserActivity = activityData.userId === userData.id;
+  const hasReviews = activityData.reviewCount > 0;
 
   return (
     <DetailLayout>
@@ -144,11 +158,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
         <div className='flex items-center justify-between'>
           <h1 className='text-[3.2rem] font-bold overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.title}</h1>
           <div className='flex items-center'>
-            <div className='flex items-center'>
-              {isUserActivity && (
-                <MeatBall editHref={`/my/activities/editactivity/${id}`} handleDelete={() => handleDeleteModal(id)} />
-              )}
-            </div>
+            <div className='flex items-center'>{isUserActivity && <MeatBall editHref={`/my/activities/editactivity/${id}`} handleDelete={() => handleDeleteModal(id)} />}</div>
           </div>
         </div>
 
@@ -156,7 +166,12 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
           <div className='flex gap-[0.6rem]'>
             <Image src={ICON.star.active.src} alt={ICON.star.active.alt} width={16} height={16} />
             <p className='text-[1.4rem] text-black dark:text-gray-10'>{activityData?.rating}</p>
-            <p className='text-[1.4rem] text-black dark:text-gray-10'>({activityData?.reviewCount})</p>
+            <p
+              className={`text-[1.4rem] text-black dark:text-gray-10 cursor-pointer relative inline-block ${!hasReviews ? '' : 'border-b-[0.1rem] border-black dark:border-gray-10'}`}
+              onClick={handleNavReview}
+            >
+              <span className={`absolute left-0 bottom-0 w-full ${!hasReviews ? '' : 'border-b-[0.1rem] border-black dark:border-gray-10'}`} />({activityData?.reviewCount})
+            </p>
           </div>
 
           <div className='flex gap-[0.2rem]'>
@@ -169,7 +184,7 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
 
         <div className={`flex flex-col gap-[1.6rem] ${isUserActivity ? 'w-full' : 'md:flex-row md:gap-[1.6rem]'}`}>
           <div className={`w-full ${isUserActivity ? 'md:w-full' : 'md:w-[70%]'}`}>
-            <div className='border-t-[0.2rem] border-gray-50 border-solid' />
+            <div className={`border-t-[0.2rem] border-gray-50 border-solid ${isMobile ? 'hidden' : 'mt-[8rem]'}`} />
             <div className='flex flex-col gap-[1.6rem]'>
               <p className='font-bold text-[2rem] pt-[4rem] dark:text-gray-10'>체험 설명</p>
               <ExpandableText text={activityData?.description || ''} />
@@ -183,14 +198,18 @@ function ActivityDetail({ id }: ActivityDetailsProps) {
               <p className='text-[1.4rem] max-w-[70rem] overflow-hidden whitespace-nowrap text-ellipsis dark:text-gray-10'>{activityData?.address}</p>
             </div>
             <div className='border-t-[0.2rem] border-gray-50 border-solid my-[4rem]' />
-            <ReviewList reviews={reviewsData?.reviews} averageRating={reviewsData?.averageRating} totalCount={reviewsData?.totalCount} />
-          </div>
 
+            <div ref={reviewListRef}>
+              <ReviewList reviews={reviewsData?.reviews} averageRating={reviewsData?.averageRating} totalCount={reviewsData?.totalCount} />
+            </div>
+
+            <ReviewPagination itemCount={reviewsData.totalCount} itemsPerPage={itemsPerPage} currentPage={currentPage} onPageChange={handlePageChange} />
+          </div>
           {!isUserActivity && (
             <div className='w-full md:w-[30%] mt-[1.6rem] md:mt-0'>
-              {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} />}
-              {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} />}
-              {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} />}
+              {!isUserActivity && isMobile && <MobileCard schedules={activityData?.schedules} price={activityData?.price} userData={userData} />}
+              {!isUserActivity && isTablet && <TabletCard schedules={activityData?.schedules} price={activityData?.price} userData={userData} />}
+              {!isUserActivity && !isTablet && !isMobile && <FloatingCard schedules={activityData?.schedules} price={activityData?.price} userData={userData} />}
             </div>
           )}
         </div>

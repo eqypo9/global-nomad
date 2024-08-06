@@ -4,6 +4,7 @@ import { ICON } from '@/constant';
 import { Schedule } from '@/utils/types/schedule';
 import useReservation from '@/hooks/useReservation';
 import useFormatPrice from '@/hooks/useFormatPrice';
+import { useAuthRedirect } from '@/hooks/useAuthRedirect';
 import ReservationContent from '../ReservationContent';
 import Button from '../Button';
 
@@ -11,14 +12,24 @@ import Button from '../Button';
 interface FloatingCardProps {
   schedules: Schedule[];
   price: number;
+  userData: any;
 }
 
-function FloatingCard({ schedules, price }: FloatingCardProps) {
+function FloatingCard({ schedules, price, userData }: FloatingCardProps) {
   const formattedPrice = useFormatPrice(price);
   const { selectedDate, selectedTime, participants, handleDateChange, handleParticipantsChange, handleTimeChange, handleReservation, isButtonDisabled, totalCost } = useReservation(schedules, price);
+  const redirectToSignIn = useAuthRedirect();
+
+  const handleReservationClick = () => {
+    if (!userData) {
+      redirectToSignIn();
+      return;
+    }
+    handleReservation();
+  };
 
   return (
-    <div className='w-full max-w-[38.4rem] h-auto bg-white border-[0.2rem] border-gray-50 shadow-lg rounded-[0.8rem] p-[1rem] mx-auto dark:bg-black'>
+    <div className='w-full max-w-[38.4rem] h-auto bg-white border-[0.2rem] border-gray-50 shadow-lg rounded-[0.8rem] p-[1rem] mt-[8rem] mx-auto dark:bg-black'>
       <div className='px-[2.4rem]'>
         <div className='flex flex-wrap items-center gap-[0.8rem] mb-[1.6rem]'>
           <p className='text-[2.8rem] font-bold dark:text-gray-10'>₩ {formattedPrice}</p>
@@ -49,7 +60,7 @@ function FloatingCard({ schedules, price }: FloatingCardProps) {
         </div>
 
         <div className='flex justify-center'>
-          <Button text='예약하기' color='black' cssName='w-[33.6rem] h-[4.6rem] text-[1.6rem] text-bold' onClick={handleReservation} disabled={isButtonDisabled} />
+          <Button text='예약하기' color='black' cssName='w-[33.6rem] h-[4.6rem] text-[1.6rem] text-bold' onClick={handleReservationClick} disabled={isButtonDisabled} />
         </div>
         <div className='border border-solid border-gray-50 mt-[1.6rem]' />
         <div className='flex flex-wrap justify-between my-[1.8rem]'>
@@ -62,5 +73,4 @@ function FloatingCard({ schedules, price }: FloatingCardProps) {
 }
 
 export default FloatingCard;
-
 /* eslint-enable */
