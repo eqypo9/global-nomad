@@ -27,6 +27,7 @@ export default function Header(): JSX.Element | null {
   const { isToggle: isDropdownOpen, handleToggleClick: isDropdownOpenToggle } = useToggleButton();
   const { isToggle: isNotificationOpen, handleToggleClick: isNotificationOpenToggle } = useToggleButton();
   const ref = useRef<HTMLButtonElement>(null);
+  const notiButtonRef = useRef<HTMLButtonElement>(null);
 
   useOutsideClick(ref, isDropdownOpen, isDropdownOpenToggle);
 
@@ -109,16 +110,9 @@ export default function Header(): JSX.Element | null {
             </div>
           ) : (
             <div className='relative flex items-center gap-10'>
-              <button type='button' className='flex items-center' onClick={isNotificationOpenToggle}>
+              <button type='button' className='flex items-center' onClick={isNotificationOpenToggle} ref={notiButtonRef}>
                 <Image src={isDarkMode ? ICON.darkModeBell.default.src : ICON.notification.default.src} alt={isDarkMode ? ICON.darkModeBell.default.alt : ICON.notification.default.alt} />
               </button>
-              {/* {isNotificationOpen && (
-                <Modal
-                  className="absolute top-24 left-0 lg:left-[-225px] w-96"
-                  modalType='notifications'
-                  setShowModal={isNotificationOpenToggle}
-                />
-              )} */}
               <div className='relative flex items-center gap-10'>
                 <div className='h-9 border-r-2 border-gray-100 dark:border-gray-10' />
                 <div className='flex items-center gap-4'>
@@ -133,11 +127,7 @@ export default function Header(): JSX.Element | null {
           )}
         </div>
       </div>
-      {isNotificationOpen && (
-        <div className='absolute w-[36.8rem] p-[2rem] bg-green-light rounded-[0.8rem] h-[33.7rem] bottom-[-35rem] right-[10%] z-60'>
-          <Notifications />
-        </div>
-      )}
+      {isNotificationOpen && <Notifications onClose={isNotificationOpenToggle} notificationButtonRef={notiButtonRef} />}
     </div>
   );
 }

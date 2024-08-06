@@ -17,7 +17,7 @@ export default function AcitivitiesCardList({ activities, delActivity }: { activ
           ))}
         </div>
       ) : (
-        <NoCards />
+        <NoCards pageType='activity' />
       )}
     </div>
   );
