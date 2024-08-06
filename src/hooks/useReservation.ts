@@ -53,7 +53,7 @@ const useReservation = (schedules: Schedule[], price: number) => {
     } catch (error) {
       console.error('Failed to create reservation:', error);
 
-      let errorMessage = '예약에 실패했습니다. 다시 시도해주세요.';
+      let errorMessage = '예약에 실패했습니다. 로그인을 해주세요.';
 
       if (error instanceof AxiosError) {
         if (error.response && error.response.data && error.response.data.message) {

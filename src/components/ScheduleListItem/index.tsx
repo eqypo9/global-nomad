@@ -9,7 +9,7 @@ export default function ScheduleListItem({ schedule, delSchedule }: { schedule: 
   const { date, startTime, endTime } = schedule;
   const slashDate = date.replaceAll('-', '/');
   const INPUT_STYLE = 'h-[5.6rem] leading-[2.6rem] py-[0.8rem] px-[1.6rem] max-md:h-[4.4rem]';
-  const TIME_INPUT_STYLE = 'h-[5.6rem] w-[14rem] max-lg:w-[10.4rem] max-md:w-[7.9rem] max-md:h-[4.4rem] max-md:text-[1.4rem]';
+  const TIME_INPUT_STYLE = 'h-[5.6rem] w-[14rem] max-lg:w-[10.4rem] max-md:w-[6rem] max-md:px-[1rem] max-md:h-[4.4rem] max-md:text-[1.4rem]';
 
   return (
     <div className='flex gap-x-[2.1rem] max-lg:gap-x-[0.5rem] max-md:gap-x-[0.4rem]'>

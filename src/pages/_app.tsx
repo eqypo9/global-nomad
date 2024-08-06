@@ -9,12 +9,15 @@ import React, { useEffect, useState } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import { useRouter } from 'next/router';
 import darkModeStore from '@/context/themeContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { isDarkMode } = darkModeStore();
+
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
@@ -56,6 +59,7 @@ export default function App({ Component, pageProps }: AppProps) {
           {loading && <LoadingScreen />}
           {renderContent()}
           <Modal />
+          <ToastContainer />
         </ModalContextProvider>
       </HydrationBoundary>
       <ReactQueryDevtools />
