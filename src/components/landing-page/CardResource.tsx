@@ -78,7 +78,7 @@ export default function CardResource({ activitiesData, banner }: CardResourcePro
           hover:scale-125 object-cover transition-transform duration-300 md:absolute md:top-0 md:left-0 md:w-full md:h-full`}
         />
       </div>
-      <div className={`${banner ? 'absolute bottom-0 left-0 text-white md:h-[21.4rem] h-[15.7rem]' : 'text-black md:h-[10.7rem] h-[9rem]'} flex flex-col gap-4  w-full`}>
+      <div className={`${banner ? 'absolute bottom-0 left-0 text-white md:h-[21.4rem] h-[15.7rem]' : 'text-black dark:text-white md:h-[10.7rem] h-[9rem]'} flex flex-col gap-4  w-full`}>
         <div className='flex items-center text-lg font-medium'>
           <Image src={ICON.star.active.src} width={20} height={20} alt={ICON.star.active.alt} className='mr-2' />
           {activitiesData.rating}

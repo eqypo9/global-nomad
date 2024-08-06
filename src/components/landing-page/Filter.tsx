@@ -96,7 +96,7 @@ export default function Filter({ type, filterState, setFilterState }: FilterProp
   return (
     <div className='relative w-fit min-w-[13rem]'>
       <button
-        className={`flex justify-between items-end w-full h-[5.3rem] px-[2rem] py-[1.6rem] flex-shrink-0 rounded-[1.5rem] border border-[#0b3b2d] bg-white whitespace-nowrap text-[1.8rem] font-medium text-[#0b3b2d] hover:bg-[#eee] `}
+        className={`flex justify-between items-end w-full h-[5.3rem] px-[2rem] py-[1.6rem] flex-shrink-0 rounded-[1.5rem] border border-[#0b3b2d] dark:border-white bg-white dark:bg-black whitespace-nowrap text-[1.8rem] font-medium dark:text-white text-[#0b3b2d] hover:bg-[#eee] `}
         onClick={isOpenToggle}
         ref={ref}
       >
