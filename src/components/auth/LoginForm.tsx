@@ -44,31 +44,33 @@ export default function LoginForm({ onSigninSubmit: handleSigninSubmit }: LoginF
   const submitVariant = isValid ? 'primary' : 'secondary';
 
   return (
-    <div className='mb-16 md:max-w-[64rem] max-w-[35rem] lg:pt-[10.4rem] mx-auto max-h-screen md:pt-[7.2rem]  sm:px-[1.2rem] pt-[4.4rem]'>
+	
+    <div className='md:max-w-[64rem] max-w-[35rem] lg:pt-[10.4rem] mx-auto max-h-screen md:pt-[7.2rem] sm:px-[1.2rem] pt-[4.4rem]'>
       <fieldset>
         <legend className='sr-only'>Global Nomad 로그인</legend>
         <FormHeader />
         <form className='flex flex-col items-stretch gap-[2.8rem] w-full mt-[4rem]' onSubmit={handleSubmit(onSubmit)}>
           <label className='flex flex-col items-start gap-[0.8rem]'>
-            <span className='text-[1.6rem] font-normal text-black'>이메일</span>
+            <span className='text-[1.6rem] font-normal text-black dark:text-white'>이메일</span>
             <Input {...register('email', rules.emailRules)} name='email' type='email' isError={!!errors.email} errorMessage={errors.email?.message} maxLength={30} />
           </label>
           <label className='flex flex-col items-start gap-[0.8rem]'>
-            <span className='text-[1.6rem] font-normal text-black'>비밀번호</span>
+            <span className='text-[1.6rem] font-normal text-black dark:text-white'>비밀번호</span>
             <Input {...register('password', rules.passwordRules)} name='password' type='password' isError={!!errors.password} errorMessage={errors.password?.message} maxLength={15} />
           </label>
           <SubmitButton size='lg' text='로그인 하기' type='submit' variant={submitVariant} disabled={!isValid} />
         </form>
         <div className='flex justify-center pt-[2.3rem]'>
-          <span className='text-[1.6rem] font-normal text-primary text-[#4b4b4b]'>
+          <span className='text-[1.6rem] font-normal text-primary text-[#4b4b4b] dark:text-[#CED8D5]'>
             회원이 아니신가요?
-            <Link className='text-[#0b3b2d] text-[1.6rem] font-normal text-darkgreen underline pl-[0.5rem]' href='/signup'>
+            <Link className='text-[#0b3b2d] dark:text-white  text-[1.6rem] font-normal text-darkgreen underline pl-[0.5rem]' href='/signup'>
               회원가입하기
             </Link>
           </span>
         </div>
       </fieldset>
     </div>
+
   );
 }
 /* eslint-enable */
