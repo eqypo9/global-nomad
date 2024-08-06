@@ -47,7 +47,7 @@ export default function PostActivitiy() {
   const addressRef = useRef<HTMLInputElement>(null);
 
   const categories = [
-    { id: -10000, category: '문화 예술', title: '문화 예술' },
+    { id: -10000, category: '문화 · 예술', title: '문화 · 예술' },
     { id: -20000, category: '식음료', title: '식음료' },
     { id: -30000, category: '스포츠', title: '스포츠' },
     { id: -40000, category: '투어', title: '투어' },
