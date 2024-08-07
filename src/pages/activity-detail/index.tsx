@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { getDetailsForActivity, getReviewsForActivity, GetDetailsForActivityResponse, GetReviewsForActivityResponse } from '@/apis/get/getActivityDetail';
 import { ICON } from '@/constant/importImages';
 import ImageContainer from '@/components/ImageContainer';
@@ -80,6 +80,8 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
         size: itemsPerPage,
       }),
     enabled: currentPage > 0,
+    retry: false,
+    placeholderData: keepPreviousData,
   });
 
   const handlePageChange = (page: number) => {
@@ -101,16 +103,15 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
           try {
             const response = await deleteActivity(activityIdToDelete);
             if (response) {
-              router.push('/');
-            } else {
-              alert('활동 삭제 실패');
-            }
+              router.push('/'); 
+            } 
           } catch (error) {
             console.error('활동 삭제 실패:', error);
-            alert('활동 삭제 실패. 나중에 다시 시도해주세요.');
+            alert('활동 삭제 실패. 나중에 다시 시도해주세요.'); 
+          } finally {
+            closeModal(); 
           }
         }
-        closeModal();
       },
     });
   };

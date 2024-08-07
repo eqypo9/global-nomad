@@ -12,7 +12,7 @@ function SideNavigationMobileSize({ toggleSideNav, isSideNavVisible }: IMobileSi
   return (
     <div className={`${isSideNavVisible ? 'fixed left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.5)] z-30' : ''}`}>
       <div
-        className={`fixed top-[6.9rem] left-0 w-[80%] h-full bg-white p-6 flex flex-col gap-6 items-center transform transition-transform duration-1000 z-[900] ${
+        className={`fixed top-[6.9rem] left-0 w-[80%] h-full bg-gray-10 dark:bg-gray-400 p-6 flex flex-col gap-6 items-center transform transition-transform duration-1000 z-[900] ${
           isSideNavVisible ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
