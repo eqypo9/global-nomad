@@ -46,20 +46,23 @@ export default function Banner() {
       if (!isHover) {
         const newIndex = currentIndex + 1;
 
-        if (newIndex === 4) {
-          moveToNthBanner(1);
-        }
-
-        setCurrentIndex((prevCurrentIndex) => prevCurrentIndex + 1);
-
-        if (bannerRef.current !== null) {
-          bannerRef.current.style.transition = 'all 0.5s ease-in-out';
+        if (newIndex === bannerList.length) {
+          setCurrentIndex(1);
+          if (bannerRef.current !== null) {
+            bannerRef.current.style.transition = 'none';
+            bannerRef.current.style.transform = 'translateX(0%)';
+          }
+        } else {
+          setCurrentIndex(newIndex);
+          if (bannerRef.current !== null) {
+            bannerRef.current.style.transition = 'all 0.5s ease-in-out';
+          }
         }
       }
     }, 5000);
 
     return () => clearInterval(intervalId);
-  }, [currentIndex, isHover]);
+  }, [currentIndex, isHover, bannerList.length]);
 
   const moveToNthBanner = (index: number) => {
     setTimeout(() => {
@@ -73,15 +76,13 @@ export default function Banner() {
   const handleSwipeClick = (direction: number) => {
     const newIndex = currentIndex + direction;
 
-    if (newIndex === 4) {
+    if (newIndex >= bannerList.length) {
       moveToNthBanner(1);
+    } else if (newIndex < 1) {
+      moveToNthBanner(bannerList.length - 2);
+    } else {
+      setCurrentIndex(newIndex);
     }
-
-    if (newIndex === 0) {
-      moveToNthBanner(3);
-    }
-
-    setCurrentIndex((prevCurrentIndex) => prevCurrentIndex + direction);
 
     if (bannerRef.current !== null) {
       bannerRef.current.style.transition = 'all 0.5s ease-in-out';
