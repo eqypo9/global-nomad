@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { getDetailsForActivity, getReviewsForActivity, GetDetailsForActivityResponse, GetReviewsForActivityResponse } from '@/apis/get/getActivityDetail';
 import { ICON } from '@/constant/importImages';
 import ImageContainer from '@/components/ImageContainer';
@@ -80,6 +80,8 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
         size: itemsPerPage,
       }),
     enabled: currentPage > 0,
+    retry: false,
+    placeholderData: keepPreviousData,
   });
 
   const handlePageChange = (page: number) => {
