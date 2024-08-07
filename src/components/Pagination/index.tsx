@@ -45,6 +45,7 @@ function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) 
           disabled={currentPage === pageNumber}
           className={`flex justify-center items-center gap-[1rem] w-[4rem] h-[4rem] md:w-[5.5rem] md:h-[5.5rem] rounded-3xl border ${buttonClasses} hover:bg-green-dark dark:hover:bg-white hover:text-white dark:hover:text-[#000] cursor-pointer text-[1.6rem]`}
           aria-label={`Page ${pageNumber}`}
+          style={{ transition: 'none' }}
         >
           {pageNumber}
         </button>

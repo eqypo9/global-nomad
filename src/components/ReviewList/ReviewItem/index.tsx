@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Review } from '@/utils/types/reviews';
+import { IMAGE } from '@/constant/importImages';
 
 /* eslint-disable */
 interface ReviewItemProps {
@@ -28,8 +29,8 @@ function ReviewItem({ review, isLast = false }: ReviewItemProps) {
     <div className={`flex gap-[1.6rem] py-[2.4rem] ${!isLast ? 'border-b-[0.2rem] border-gray-50 border-solid' : ''}`}>
       <div className='flex-shrink-0'>
         <Image
-          src={review.user.profileImageUrl || ''}
-          alt={`${review.user.nickname}의 프로필 이미지`}
+          src={review.user.profileImageUrl || IMAGE.avatar.default.src} 
+          alt={review.user.nickname ? `${review.user.nickname}의 프로필 이미지` : '기본 프로필 이미지'}
           width={45}
           height={45}
           className='rounded-full object-cover border border-gray-50 border-solid w-[4.5rem] h-[4.5rem] cursor-pointer'
