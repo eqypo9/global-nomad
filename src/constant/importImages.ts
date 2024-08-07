@@ -57,7 +57,8 @@ import IconDownload from '../../public/icons/Icon_download.svg';
 
 import ImageLogoSmall from '../../public/images/Image_logo_small.svg';
 import ImageLogo from '../../public/images/Image_logo.svg';
-import ImageDarkLogo from '../../public/images/Image_darkmode_logo.svg';
+import ImageDarkLogo from '../../public/images/logo_big_dark_mode.png';
+import ImageDarkLogoSmall from '../../public/images/Image_darkmode_logo.svg';
 import ImageDefaultProfile from '../../public/images/Image_default_profile_image.png';
 import ImageNoData from '../../public/images/Image_no_data.svg';
 import ImageStreetDance from '../../public/images/Image_street_dance.jpg';
@@ -399,8 +400,12 @@ export const IMAGE = {
     },
   },
   darkLogo: {
-    src: ImageDarkLogo,
+    src: ImageDarkLogoSmall,
     alt: '다크 모드 로고',
+    auth: {
+      src: ImageDarkLogo,
+      alt: '로고',
+    },
   },
   avatar: {
     default: {
