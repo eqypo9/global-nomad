@@ -192,7 +192,7 @@ export default function PostActivitiy() {
       <main className='bg-gray-10 max-w-[80rem] w-full  dark:bg-black dark:text-gray-10 mb-[27rem] max-lg:mb-[40rem] max-md:mb-[13.6rem] text-[1.6rem]'>
         <form onSubmit={() => false} className='relative text-[1.6rem] max-md:text-[1.4rem]'>
           <div className='flex justify-between mb-[2.4rem] '>
-            <h2 className='text-[3.2rem] text-[#000] dark:text-[#fff] leading-[3.8rem] font-bold'>내 체험 등록</h2>
+            <h2 className='text-[3.2rem] text-[#000] dark:text-[#fff] leading-[3.8rem] font-bold '>내 체험 등록</h2>
           </div>
           <div className='flex flex-col gap-y-[2.4rem]'>
             {/* ------제목------ */}
@@ -237,7 +237,7 @@ export default function PostActivitiy() {
                 id='price'
                 onChange={(e) => onChangeSetData(e, 'price', 20)}
                 autoComplete='off'
-                value={postData.price}
+                value={postData.price || undefined}
                 cssName={`${INPUT_STYLE} [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
                 onKeyDown={numberOnly}
                 onKeyUp={numberOnly}
