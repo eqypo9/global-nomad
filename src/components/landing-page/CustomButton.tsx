@@ -20,7 +20,7 @@ function LandingPageButton({ size, variant = 'primary', type = 'button', text = 
   };
 
   const variantClasses = {
-    primary: 'bg-[#112211] text-white',
+    primary: 'bg-[#112211] text-white dark:bg-[#CED8D5] dark:text-black',
     secondary: 'bg-[#a4a1aa] text-white',
     outline: 'bg-transparent border border-black hover:bg-[#ddd] hover:border-[#adaeb8] focus:bg-[#ddd] focus:border-[#adaeb8]',
   };

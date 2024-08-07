@@ -10,7 +10,7 @@ export default function PostActivityButton() {
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
     if (accessToken && refreshToken) {
-      router.push('/addActivity');
+      router.push('/my/activities/postactivity');
       return;
     }
     if (!questionRef.current) return;
