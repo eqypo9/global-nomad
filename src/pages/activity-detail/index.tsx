@@ -103,16 +103,15 @@ function ActivityDetail({ id, page }: ActivityDetailsProps) {
           try {
             const response = await deleteActivity(activityIdToDelete);
             if (response) {
-              router.push('/');
-            } else {
-              alert('활동 삭제 실패');
-            }
+              router.push('/'); 
+            } 
           } catch (error) {
             console.error('활동 삭제 실패:', error);
-            alert('활동 삭제 실패. 나중에 다시 시도해주세요.');
+            alert('활동 삭제 실패. 나중에 다시 시도해주세요.'); 
+          } finally {
+            closeModal(); 
           }
         }
-        closeModal();
       },
     });
   };
