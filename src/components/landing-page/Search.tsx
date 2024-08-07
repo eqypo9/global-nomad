@@ -82,9 +82,9 @@ export default function Search({ keyword, onSubmit, onChange }: Props) {
       <div className='flex flex-col relative'>
         <form onSubmit={handleSubmit} className={`flex items-center justify-center w-full gap-3 relative ${isKeyword ? 'active' : ''}`} onFocus={handleSearchFocus}>
           <input
-            className="text-lg font-normal text-[#1b1b1b] dark:text-white w-full p-6 pl-[4.8rem] border dark:border-white 
+            className="text-[1.6rem] font-normal text-[#1b1b1b] dark:text-white w-full p-6 pl-[4.8rem] border dark:border-white 
 			border-[#79747e] rounded-md bg-white dark:bg-black bg-no-repeat bg-[url('/icons/Icon_bed.svg')] 
-			bg-[1.2rem_1.6rem] md:text-base md:bg-[url('/icons/Icon_bed.svg')] md:bg-[1.2rem_1.2rem]"
+ md:bg-[url('/icons/Icon_bed.svg')] bg-[1.2rem_center]"
             type='search'
             onChange={handleValueChange}
             value={keyword}
