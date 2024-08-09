@@ -11,12 +11,6 @@ Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
 2024.07.04 ~ 2024.08.09
 
 ## 팀원 소개
-|<img src="https://avatars.githubusercontent.com/u/41028065?v=4](https://avatars.githubusercontent.com/u/65326956?v=4" width="100px" height="100px">|내용|<img src="https://avatars.githubusercontent.com/u/41028065?v=4" width="100px" height="100px">|
-|------|---|---|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
-
 <table>
   <tbody>
     <tr>
