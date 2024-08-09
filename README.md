@@ -1,8 +1,11 @@
-# NPM을 사용하고 node 버전은 20.15.0로 고정합니다.
+# 스프린트 5기 7팀 고급 프로젝트
 
-`nvm`을 활용해보세요! (활용법 노션에 정리 되어있습니다.)
+# 배포링크
+https://nomad-ebon.vercel.app/
 
-# Branch Convention
+# Global Nomad
+Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
+예를 들어, 여행지에서 어떤 체험을 할지, 비용은 얼마일지 등을 줄여주기 위한 플랫폼입니다
 
 핵심이되는 `develop` , `main` 브랜치 등에는 직접적으로 commit, push등을 진행할 수 없습니다.
 (local husky, repository branch setting 등 에서 위 행동을 할 수 없게 강제합니다.)
