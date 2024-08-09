@@ -7,15 +7,11 @@ https://nomad-ebon.vercel.app/
 Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
 예를 들어, 여행지에서 어떤 체험을 할지, 비용은 얼마일지 등을 줄여주기 위한 플랫폼입니다
 
-핵심이되는 `develop` , `main` 브랜치 등에는 직접적으로 commit, push등을 진행할 수 없습니다.
-(local husky, repository branch setting 등 에서 위 행동을 할 수 없게 강제합니다.)
-(막판에 급한경우 수정가능)
+# 개발 기간
+2024.07.04 ~ 2024.08.09
 
-> `main` , `master`, `develop`, `feat/*` 브랜치들의 PR이 오픈되면 build 테스트를 진행하며 빌드실패 시 PR을 머지할 수 없습니다.
-
-## main / develop
-위 브랜치들에게 머지를 진행할때는 깔끔한 Git 이력을 위해 꼭 squash merge가 될 수 있도록 합니다.
-(PR에서 머지버튼을 누르기 전에 한번더 확인하기)
+## 팀원 소개
+[우제윤]
 
 ## feat
 저희는 프로젝트 규모가 작기 때문에
