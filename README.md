@@ -39,10 +39,12 @@ Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
     </tr>
     <tr>
       <td align="center">
-        <p>예약현황 페이지</p>
+        <p>예약현황</p>
       </td>
       <td align="center">
-        <p>내 정보 수정 / 예약 내역 / 리뷰 작성</p>
+        <p>내 정보 수정</p>
+        <p>예약 내역</p> 
+        <p>리뷰 작성</p>
       </td>
       <td align="center">
         <p>체험 상세</p>
