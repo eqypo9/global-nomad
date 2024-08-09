@@ -11,11 +11,37 @@ Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
 2024.07.04 ~ 2024.08.09
 
 ## 팀원 소개
-|제목|내용|<img src="https://avatars.githubusercontent.com/u/41028065?v=4" width="100px" height="100px">|
+|<img src="https://avatars.githubusercontent.com/u/41028065?v=4](https://avatars.githubusercontent.com/u/65326956?v=4" width="100px" height="100px">|내용|<img src="https://avatars.githubusercontent.com/u/41028065?v=4" width="100px" height="100px">|
 |------|---|---|
 |테스트1|테스트2|테스트3|
 |테스트1|테스트2|테스트3|
 |테스트1|테스트2|테스트3|
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img src="https://avatars.githubusercontent.com/u/65326956?v=4"/><br/>
+        <a href="https://github.com/mijin0928">팀장 우제윤</a>
+      </td>
+      <td align="center">
+        <img src="https://avatars.githubusercontent.com/u/60869993?v=4"/><br/>
+        <a href="https://github.com/rladmswo1715">김은재</a>
+      </td>
+      <td align="center">
+        <img src="https://avatars.githubusercontent.com/u/125109615?v=4"/><br/>
+        <a href="https://github.com/eqypo9">정성혜</a>
+      </td>
+      <td align="center">
+        <img src="https://avatars.githubusercontent.com/u/41028065?v=4" /><br/>
+        <a href="https://github.com/waterkail">이현승</a>
+      </td>
+      <td align="center">
+        <img width="100px" src="https://avatars.githubusercontent.com/u/102913030?v=4"><br/>
+        <a href="https://github.com/SeungRyeolBaek">백승렬</a>
+      </td>
+    </tr>
+  </tbody
 
 ## feat
 저희는 프로젝트 규모가 작기 때문에
