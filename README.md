@@ -3,6 +3,8 @@
 # 배포링크
 https://nomad-ebon.vercel.app/
 
+![part4-team7](https://github.com/user-attachments/assets/a8351fc9-0be1-4f02-8bea-4057244501d7)
+
 # Global Nomad
 Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
 예를 들어, 여행지에서 어떤 체험을 할지, 비용은 얼마일지 등을 줄여주기 위한 플랫폼입니다
@@ -37,19 +39,19 @@ Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
     </tr>
     <tr>
       <td align="center">
-        <p>역할</p>
+        <p>예약현황 페이지</p>
       </td>
       <td align="center">
-        <p></p>
+        <p>내 정보 수정 / 예약 내역 / 리뷰 작성</p>
       </td>
       <td align="center">
-        <p></p>
+        <p>체험 상세</p>
       </td>
       <td align="center">
-        <p></p>
+        <p>내 체험 관리 / 생성 / 수정</p>
       </td>
       <td align="center">
-        <p></p>
+        <p>로그인 / 회원가입 / 메인</p>
       </td>
       <td align="center">
         <p></p>
