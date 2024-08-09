@@ -3,7 +3,7 @@
 # 배포링크
 https://nomad-ebon.vercel.app/
 
-![part4-team7](https://github.com/user-attachments/assets/a8351fc9-0be1-4f02-8bea-4057244501d7)
+![part4-team7](https://github.com/user-attachments/assets/12e51e8c-7a58-4a02-a9ec-efdbab98402f)
 
 # Global Nomad
 Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
