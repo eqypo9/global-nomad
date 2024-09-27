@@ -110,7 +110,8 @@
 
 ## 👨‍💻 담당한 부분: 정성혜
 
-- **체험 상세 페이지** 개발
+- **체험 상세 페이지**  
+  개발
 
   - **예약 카드 반응형 변화**  
     디바이스 크기에 따라 예약 카드 UI가 유동적으로 변화됩니다.
@@ -133,41 +134,50 @@
     체험 상세 페이지에서 이미지를 클릭하면 스와이퍼 형태로 확대 가능하며, 원본 파일을 다운로드할 수 있습니다. 기본 로고 이미지는 제외됩니다.
 
     ![원본 다운로드](https://github.com/user-attachments/assets/485f5065-a3ba-48e8-b4ec-2e1806431839)
-  - **모바일 이미지 슬라이더**
+  
+  - **모바일 이미지 슬라이더**  
     모바일 버전에서는 이미지 슬라이더가 자동으로 넘겨지도록 설정되었습니다.
+
     ![이미지 스와이프](https://github.com/user-attachments/assets/411e0029-de2e-4995-88a8-30b0e6941a3d)
-  - **체험 설명 더보기 기능**
+
+  - **체험 설명 더보기 기능**  
     체험 설명이 길 경우 '더보기' 버튼이 제공되며, 클릭 시 전체 내용을 확인할 수 있습니다.
-  - **캘린더 예약 가능 날짜 시각적 표시**
+
+  - **캘린더 예약 가능 날짜 시각적 표시**  
     예약 가능한 날짜가 캘린더에 시각적으로 표시되어 사용자가 쉽게 확인할 수 있습니다.
-  - **건물명 없는 경우 안내**
+
+  - **건물명 없는 경우 안내**  
     주소지에 건물명이 없을 경우, 지도 인포 윈도우 창에 "건물명 없음"이라는 메시지가 표시됩니다.
+
     ![건물명 없음](https://github.com/user-attachments/assets/9a862318-3529-4f3e-8b12-52c8f8e447a9)
-  - **후기 리스트 연동**
+
+  - **후기 리스트 연동**  
     후기 댓글 개수를 클릭하면 후기 리스트 페이지로 이동할 수 있습니다.
-  - **마이페이지 리다이렉트**
+
+  - **마이페이지 리다이렉트**  
     후기 리스트에서 프로필 이미지나 이름을 클릭하면 해당 사용자의 마이페이지로 이동됩니다.
 
-- 📲 **추가 기능 구현** 
-  - **로그인페이지 리다이렉트**
+- 📲 **추가 기능 구현**  
+  - **로그인페이지 리다이렉트**  
     비로그인 상태에서 체험 상세 페이지에 접근할 경우 로그인 페이지로 이동됩니다.
+
     ![로그인 토스트](https://github.com/user-attachments/assets/e4642402-4f84-4f4e-b264-5e61960781ff)
-  - **다크 모드 토글 버튼**
+
+  - **다크 모드 토글 버튼**  
     사용자의 편의성을 높이기 위해 다크 모드 토글 버튼을 추가하고 상태는 Zustand로 관리합니다.
+
     ![다크모드 전체화면](https://github.com/user-attachments/assets/3e2d3c04-91aa-4a3e-8175-db4edc2cc54e)
 
-
-
-- **Component 작업**
-  1. Button
-  2. Pagination
-  3. Calendar
-  4. CustomPopup
-  5. DarkModeButton
-  6. ExpandableText
-  7. Floating Card
-  8. ImageContainer
-  9. Map
-  10. ReservationContent
-  11. ReviewList
-  12. Slider
+- **Component 작업**  
+  1. Button  
+  2. Pagination  
+  3. Calendar  
+  4. CustomPopup  
+  5. DarkModeButton  
+  6. ExpandableText  
+  7. Floating Card  
+  8. ImageContainer  
+  9. Map  
+  10. ReservationContent  
+  11. ReviewList  
+  12. Slider  
