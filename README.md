@@ -1,108 +1,121 @@
-# 스프린트 5기 7팀 고급 프로젝트
+# <img width="30" src="https://github.com/eqypo9/global-nomad/blob/main/public/images/favicon.ico"> **Global Nomad** - 여행 체험 상품 추천 서비스
 
-# 배포링크
-https://nomad-ebon.vercel.app/
+![Global Nomad](https://github.com/user-attachments/assets/8de18b8c-5d18-4f45-935a-10ce2a6cfd2a)
 
-![part4-team7](https://github.com/user-attachments/assets/12e51e8c-7a58-4a02-a9ec-efdbab98402f)
+## 🌍 배포 링크
+[Global Nomad 배포 링크](https://nomad-ebon.vercel.app/)
 
-# Global Nomad
-Global Nomad 는 여행을 계획할 때 사람들이 겪는 여러 고민
-예를 들어, 여행지에서 어떤 체험을 할지, 비용은 얼마일지 등을 줄여주기 위한 플랫폼입니다
+## 📋 프로젝트 소개
+**Global Nomad**는 여행을 계획할 때 겪는 여러 고민을 해결하는 플랫폼입니다.  
+- 여행지에서의 **체험 선택**부터 **비용**까지, 계획에 필요한 모든 정보를 간편하게 제공합니다.
+- **예약 가능한 날짜**에 따라 **인원 조절**과 **가격 변동**을 한눈에 확인할 수 있습니다.
+- **예약 현황**에 따라 변화하는 **캘린더**와, **반응형 디자인**을 통해 다양한 기기에서 최적화된 UI를 제공합니다.
+- **카카오 지도** 기능을 포함해, 사용자가 여행을 손쉽게 계획할 수 있도록 흥미로운 기능을 다양하게 구성했습니다.
 
-# 개발 기간
-2024.07.04 ~ 2024.08.09
+## 🚀 서비스 기대효과
+- **여행 준비 시간 단축**: 한눈에 체험 상품을 확인하고 예약 과정을 간소화하여, 사용자에게 더 많은 자유 시간을 제공합니다.
+- **맞춤형 경험 제공**: 사용자의 상황에 맞춘 가격 조정 및 다양한 기기에서 편리하게 사용 가능한 UX/UI를 구현했습니다.
+- **커뮤니티 기반 신뢰 형성**: 리뷰 기능을 통해 사용자들이 **실제 경험을 공유**하며, 신뢰성 있는 정보 제공과 **커뮤니티 활성화**에 기여합니다.
 
-## 팀원 소개
+## ⏳ 개발 기간
+**2024.07.04 ~ 2024.08.09**
+
+## 👨‍💻 팀원 소개
 <table>
   <tbody>
     <tr>
       <td align="center">
         <img src="https://avatars.githubusercontent.com/u/65326956?v=4" width="100"/><br/>
-        <a href="https://github.com/wjy308">팀장 우제윤</a>
+        <b><a href="https://github.com/wjy308">팀장 우제윤</a></b>
       </td>
       <td align="center">
         <img src="https://avatars.githubusercontent.com/u/60869993?v=4" width="100"/><br/>
-        <a href="https://github.com/eunjae5">김은재</a>
+        <b><a href="https://github.com/eunjae5">김은재</a></b>
       </td>
       <td align="center">
         <img src="https://avatars.githubusercontent.com/u/125109615?v=4" width="100"/><br/>
-        <a href="https://github.com/sunnyjeong25">정성혜</a>
+        <b><a href="https://github.com/sunnyjeong25">정성혜</a></b>
       </td>
       <td align="center">
         <img src="https://avatars.githubusercontent.com/u/41028065?v=4" width="100"/><br/>
-        <a href="https://github.com/hslee">이현승</a>
+        <b><a href="https://github.com/hslee">이현승</a></b>
       </td>
       <td align="center">
         <img src="https://avatars.githubusercontent.com/u/102913030?v=4" width="100"/><br/>
-        <a href="https://github.com/sybaek96">백승렬</a>
+        <b><a href="https://github.com/sybaek96">백승렬</a></b>
       </td>
     </tr>
     <tr>
-      <td align="center">
-        <p>예약현황</p>
-      </td>
-      <td align="center">
-        <p>내 정보 수정</p>
-        <p>예약 내역</p> 
-        <p>리뷰 작성</p>
-      </td>
-      <td align="center">
-        <p>체험 상세</p>
-      </td>
-      <td align="center">
-        <p>내 체험 관리 / 생성 / 수정</p>
-      </td>
-      <td align="center">
-        <p>로그인 / 회원가입 / 메인</p>
-      </td>
-      <td align="center">
-        <p></p>
-      </td>
+      <td align="center"><p>예약현황</p></td>
+      <td align="center"><p>내 정보 수정 / 예약 내역 / 리뷰 작성</p></td>
+      <td align="center"><p>체험 상세</p></td>
+      <td align="center"><p>내 체험 관리 / 생성 / 수정</p></td>
+      <td align="center"><p>로그인 / 회원가입 / 메인</p></td>
     </tr>
   </tbody>
 </table>
 
-
 ## 💻 기술 스택
 
-#### ▶︎ Framework
+### ▶︎ Framework  
+<div>
+  <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next.js&logoColor=white">
+</div>
 
-<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next.js&logoColor=white">
+### ▶︎ Programming Language  
+<div>
+  <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
+</div>
 
-#### ▶︎ Programming Language
+### ▶︎ CSS  
+<div>
+  <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white">
+</div>
 
-<img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
-
-#### ▶︎ CSS
-
- <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white">
-
-#### ▶︎ State Management Library
+### ▶︎ State Management Library  
+<div>
   <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
   <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=React Query&logoColor=white">
   <img src="https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
-  
-#### ▶︎ Version Control
+</div>
 
-<div style="display: flex">
+### ▶︎ Version Control  
+<div>
   <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white">
 </div>
 
-#### ▶︎ Design
-
-<img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white"/>
-
-#### ▶︎ Communication
-
-<div style="display: flex">
-  <img src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white" />
-  <img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" />
+### ▶︎ Design  
+<div>
+  <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white"/>
 </div>
 
-#### ▶︎ Others
+### ▶︎ Communication  
+<div>
+  <img src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white">
+  <img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white">
+</div>
 
- <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white"> 
+### ▶︎ Others  
+<div>
+  <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white">
   <img src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white">
-<br/>
+</div>
 
+## 🔍 기술 스택 선택 이유
+- **Next.js**: 서버 사이드 렌더링(SSR) 및 정적 사이트 생성(SSG)을 통해 빠른 페이지 로딩과 SEO 최적화를 실현하기 위해 채택했습니다.
+- **TypeScript**: 타입 안정성을 제공하여 런타임 오류를 줄이고 유지보수성을 높이기 위해 사용했습니다.
+- **Tailwind CSS**: 간결하고 재사용 가능한 스타일을 적용하여 빠르고 유연한 UI 개발을 위해 채택했습니다.
+- **React Query와 Zustand**: 비동기 데이터 상태 관리를 효율적으로 처리하고, 컴포넌트 간 전역 상태 공유를 쉽게 구현하기 위해 선택했습니다.
+
+## 📌 담당한 부분: 체험 상세 페이지
+
+- **예약 카드 반응형 변화**: 디바이스 크기에 따라 예약 카드 UI가 유동적으로 변화됩니다.
+- **중복 예약 경고 모달**: 이미 예약한 일정에 다시 예약을 시도할 경우, 경고 모달을 통해 알림을 제공합니다.
+- **이미지 확대 및 다운로드**: 체험 상세 페이지에서 이미지를 클릭하면 스와이퍼 형태로 확대 가능하며, 원본 파일을 다운로드할 수 있습니다. (기본 로고 이미지는 제외)
+- **모바일 이미지 슬라이더**: 모바일 버전에서는 이미지 슬라이더가 자동으로 넘겨지도록 설정되었습니다.
+- **체험 설명 더보기 기능**: 체험 설명이 길 경우 '더보기' 버튼이 제공되며, 클릭 시 전체 내용을 확인할 수 있습니다.
+- **캘린더 예약 가능 날짜 시각적 표시**: 예약 가능한 날짜가 캘린더에 시각적으로 표시되어 사용자가 쉽게 확인할 수 있습니다.
+- **건물명 없는 경우 안내**: 주소지에 건물명이 없을 경우, 지도 인포 윈도우 창에 "건물명 없음"이라는 메시지가 표시됩니다.
+- **후기 리스트 연동**: 후기 댓글 개수를 클릭하면 후기 리스트 페이지로 이동할 수 있습니다.
+- **마이페이지 리다이렉트**: 후기 리스트에서 프로필 이미지나 이름을 클릭하면 해당 사용자의 마이페이지로 이동됩니다.
