@@ -25,7 +25,7 @@ function FilterDropButton({ text, setFunc }: FilterDropButtonProps) {
   const dropFilterCategoryList = dropFilterCategories(filterCategoryClick);
 
   return (
-    <div>
+    <div className='relative'>
       <button
         type='button'
         onClick={handleToggle}
@@ -34,7 +34,7 @@ function FilterDropButton({ text, setFunc }: FilterDropButtonProps) {
         {text}
         <span className={`ml-2 transform transition-transform ${isOpen ? 'rotate-180' : 'rotate-0'}`}>▼</span>
       </button>
-      {isOpen && <DropdownMenu type='gnb' dropdownMenuList={dropFilterCategoryList} />}
+      {isOpen && <DropdownMenu type='gnb' dropdownMenuList={dropFilterCategoryList} positionClasses='top-0 ' />}
     </div>
   );
 }

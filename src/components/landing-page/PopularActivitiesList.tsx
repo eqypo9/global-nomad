@@ -47,7 +47,7 @@ export default function PopularActivitiesList({ popularActivities }: PopularActi
   return (
     <div className='flex flex-col gap-8 w-full'>
       <div className='flex justify-between items-center w-full'>
-        <h2 className='text-[3.6rem] font-bold text-black'>🔥 인기 체험</h2>
+        <h2 className='text-[3.6rem] font-bold text-black dark:text-white'>🔥 인기 체험</h2>
         <div className='flex'>
           <button className='flex items-center justify-center opacity-80 hover:opacity-100 disabled:opacity-40 disabled:cursor-default' onClick={() => handleArrowButtonClick(-1)} disabled={!hasPrev}>
             <Image src={ICON.leftArrow.default.src} alt={ICON.leftArrow.default.alt} height={48} width={48} />

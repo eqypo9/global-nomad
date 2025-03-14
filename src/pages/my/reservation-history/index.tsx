@@ -1,6 +1,7 @@
 import getMyReservationList from '@/apis/get/getMyReservationList';
 import Card from '@/components/Card';
 import MyReservationCardInfo from '@/components/Card/myReservationCardInfo';
+import NoCards from '@/components/CardList/NoCards';
 import FilterDropButton from '@/components/FilterButton/FilterDropButton';
 import MyLayout from '@/components/MyLayout';
 import { IReservationCardInfo } from '@/types/ReservationInfo';
@@ -59,12 +60,15 @@ function ReservationHistory() {
             <FilterDropButton text={currentOption ? setReservationStatueInfo(currentOption).name : '전체'} setFunc={setCurrentOption} />
           </div>
           <div className='pt-[1.6rem] flex flex-col gap-[2.4rem]'>
-            {reservationList &&
+            {reservationList.length > 0 ? (
               reservationList.map((item) => (
                 <Card key={item.id} image={item.activity.bannerImageUrl}>
                   <MyReservationCardInfo data={item} currentFilterOption={currentOption} refreshReservationList={handleGetReservationList} />
                 </Card>
-              ))}
+              ))
+            ) : (
+              <NoCards pageType='reservation' />
+            )}
           </div>
         </div>
       </MyLayout>

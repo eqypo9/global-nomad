@@ -49,10 +49,10 @@ export default function Signup() {
   }
 
   return (
-    <>
+    <div className='dark:bg-black dark:text-white h-[100vh] w-[100vw]'>
       <SignupForm onSignupSubmit={onSignupSubmit} />
       <Confirm dialogRef={dialogRef} text={popupError} />
-    </>
+    </div>
   );
 }
 

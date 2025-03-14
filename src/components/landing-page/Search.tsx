@@ -77,12 +77,14 @@ export default function Search({ keyword, onSubmit, onChange }: Props) {
   if (isLoading) return <Skeleton type='search' />;
 
   return (
-    <div className='p-8 md:p-6 shadow-lg rounded-lg bg-white'>
-      <p className='text-2xl font-bold text-[#333236] mb-8 md:text-lg md:mb-6 leading-10'>무엇을 체험하고 싶으신가요?</p>
+    <div className='p-8 md:p-6 shadow-lg rounded-lg bg-white dark:bg-black'>
+      <p className='text-2xl font-bold text-[#333236] dark:text-white mb-8 md:text-lg md:mb-6 leading-10'>무엇을 체험하고 싶으신가요?</p>
       <div className='flex flex-col relative'>
         <form onSubmit={handleSubmit} className={`flex items-center justify-center w-full gap-3 relative ${isKeyword ? 'active' : ''}`} onFocus={handleSearchFocus}>
           <input
-            className="text-lg font-normal text-[#1b1b1b] w-full p-6 pl-[4.8rem] border border-[#79747e] rounded-md bg-white bg-no-repeat bg-[url('/icons/Icon_bed.svg')] bg-[1.2rem_1.6rem] md:text-base md:bg-[url('/icons/Icon_bed.svg')] md:bg-[1.2rem_1.2rem]"
+            className="text-[1.6rem] font-normal text-[#1b1b1b] dark:text-white w-full p-6 pl-[4.8rem] border dark:border-white 
+			border-[#79747e] rounded-md bg-white dark:bg-black bg-no-repeat bg-[url('/icons/Icon_bed.svg')] 
+ md:bg-[url('/icons/Icon_bed.svg')] bg-[1.2rem_center]"
             type='search'
             onChange={handleValueChange}
             value={keyword}
@@ -92,7 +94,7 @@ export default function Search({ keyword, onSubmit, onChange }: Props) {
             <LandingPageButton type='submit' size='md' text='검색하기' />
           </div>
           {isKeyword && (
-            <span className='text-lg font-normal text-[#a4a1aa] absolute left-14 bg-white px-2 transform -translate-y-8 transition-transform duration-300 md:text-base md:transform-none md:top-[-1rem]'>
+            <span className='text-lg font-normal text-[#a4a1aa] dark:text-white absolute left-14 dark:bg-black bg-white px-2 transform -translate-y-8 transition-transform duration-300 md:text-base md:transform-none md:top-[-1rem]'>
               내가 원하는 체험은
             </span>
           )}

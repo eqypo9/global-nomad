@@ -52,10 +52,10 @@ export default function Signin() {
   // if (signupMutation.isPending) return <div>Loading...</div>;
 
   return (
-    <>
+    <div className='dark:bg-black dark:text-white h-[100vh] w-[100vw]'>
       <LoginForm onSigninSubmit={onSigninSubmit} />
       <Confirm dialogRef={dialogRef} text={popupError} />
-    </>
+    </div>
   );
 }
 

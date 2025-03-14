@@ -41,6 +41,7 @@ import IconRightArrowWhite from '../../public/icons/Icon_right_arrow-white.svg';
 import IconLeftArrowWhite from '../../public/icons/Icon_left_arrow-white.svg';
 import IconPen from '../../public/icons/Icon_pen.svg';
 import IconEllipse from '../../public/icons/Icon_Ellipse.svg';
+import IconEllipse_D from '../../public/icons/Icon_Ellipse_D.svg';
 import IconFilter from '../../public/icons/Icon_filter.svg';
 import IconCheck from '../../public/icons/Icon_check.svg';
 import IconLoading from '../../public/icons/Icon_loading.svg';
@@ -50,12 +51,14 @@ import IconAdd from '../../public/icons/Icon_Add.svg';
 import IconMapMarker from '../../public/icons/Icon_map_marker.svg';
 import IconMapMarkerDarkMode from '../../public/icons/Icon_mapmarker_darkmode.svg';
 import IconClose from '../../public/icons/Icon_close.svg';
+import IconDarkClose from '../../public/icons/Icon_close_dark_mode.svg';
 import IconDarkBell from '../../public/icons/Icon_darkmode_bell.svg';
 import IconDownload from '../../public/icons/Icon_download.svg';
 
 import ImageLogoSmall from '../../public/images/Image_logo_small.svg';
 import ImageLogo from '../../public/images/Image_logo.svg';
-import ImageDarkLogo from '../../public/images/Image_darkmode_logo.svg';
+import ImageDarkLogo from '../../public/images/logo_big_dark_mode.png';
+import ImageDarkLogoSmall from '../../public/images/Image_darkmode_logo.svg';
 import ImageDefaultProfile from '../../public/images/Image_default_profile_image.png';
 import ImageNoData from '../../public/images/Image_no_data.svg';
 import ImageStreetDance from '../../public/images/Image_street_dance.jpg';
@@ -301,7 +304,10 @@ export const ICON = {
       src: IconEllipse,
       alt: '점',
     },
-    active: {},
+    active: {
+      src: IconEllipse_D, // 다크 모드 이미지
+      alt: '점 다크 모드',
+    },
   },
   filter: {
     default: {
@@ -362,6 +368,12 @@ export const ICON = {
     },
     active: {},
   },
+  darkClose: {
+    default: {
+      src: IconDarkClose,
+      alt: '다크 모드 닫기',
+    },
+  },
   darkModeBell: {
     default: {
       src: IconDarkBell,
@@ -388,8 +400,12 @@ export const IMAGE = {
     },
   },
   darkLogo: {
-    src: ImageDarkLogo,
+    src: ImageDarkLogoSmall,
     alt: '다크 모드 로고',
+    auth: {
+      src: ImageDarkLogo,
+      alt: '로고',
+    },
   },
   avatar: {
     default: {

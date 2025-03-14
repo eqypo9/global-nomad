@@ -35,7 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ type, isError, 
           {...props}
           ref={ref}
           type={type === 'password' ? inputType : type}
-          className={`${cssName} bg-white text-black w-full p-4 rounded-md border transition text-[1.6rem]  ${
+          className={`${cssName} bg-white dark:bg-black dark:text-white text-black w-full p-4 rounded-md border transition text-[1.6rem]  ${
             isError ? 'border-red-500' : 'border-gray-400 focus:border-darkgreen'
           } ${type === 'number' ? 'appearance-none' : ''} ${type === 'time' ? 'md:p-4 md:px-2' : ''}`}
           placeholder={props.placeholder}
@@ -140,7 +140,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({ isErro
       <textarea
         {...props}
         ref={ref}
-        className={`w-full h-[34.6rem] p-[1.6rem] border rounded-md resize-none transition ${isError ? 'border-red-500' : 'border-gray-400'} focus:border-darkgreen placeholder-gray-600`}
+        className={`w-full h-[34.6rem] p-[1.6rem] border rounded-md resize-none transition ${isError ? 'border-red-500' : 'border-gray-400'} focus:border-darkgreen placeholder-gray-600 text-black`}
       />
     </div>
     {isError && <p className='pl-2 text-sm text-red-500'>{errorMessage}</p>}
