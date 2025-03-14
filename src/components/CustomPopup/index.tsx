@@ -44,7 +44,7 @@ function CustomPopup({ schedules, selectedDate, selectedTime, onClose, onDateCha
     <div className='fixed inset-0 flex items-center justify-center z-[1000]'>
       <div className='fixed inset-0 bg-transparent bg-opacity-40 z-[-1]' />
       <div
-        className={`relative px-[2.4rem] bg-white rounded-[2.4rem] shadow-lg p-4 w-full h-full max-h-full md:max-w-[48rem] md:max-h-[60rem] ${isDarkMode ? 'dark:bg-black dark:border-gray-10' : 'bg-white border-gray-300'}`}
+        className={`relative px-[2.4rem] bg-white shadow-lg p-4 w-full h-full max-h-full md:max-w-[48rem] md:max-h-[60rem] ${isDarkMode ? 'dark:bg-black dark:border-gray-10' : 'bg-white border-gray-300'}`}
         style={{ borderColor: isDarkMode ? 'gray-10' : 'gray-300' }}
       >
         <button type='button' onClick={handleClose} className='absolute top-4 right-4 p-2'>
@@ -52,7 +52,14 @@ function CustomPopup({ schedules, selectedDate, selectedTime, onClose, onDateCha
         </button>
         <ReservationContent schedules={schedules} selectedDate={currentDate} selectedTime={selectedTime} onDateChange={handleDateChange} onTimeChange={onTimeChange} dateTextSize='2.8rem' />
         <div className='flex justify-center mt-[6.4rem] mb-[3.2rem]'>
-          <Button text='확인' color='black' cssName='w-full max-w-[43.2rem] h-[5.6rem] text-[1.6rem] font-bold' onClick={handleClose} disabled={isButtonDisabled} style={{ position: 'absolute', bottom: '4rem' }} />
+          <Button
+            text='확인'
+            color='black'
+            cssName='w-full max-w-[43.2rem] h-[5.6rem] text-[1.6rem] font-bold'
+            onClick={handleClose}
+            disabled={isButtonDisabled}
+            style={{ position: 'absolute', bottom: '4rem' }}
+          />
         </div>
       </div>
     </div>
